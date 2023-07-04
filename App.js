@@ -1,16 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import {NavigationContainer}from'@react-navigation/native';
 import {createStackNavigator}from'@react-navigation/stack';
 
 import SplashScreen from "./screens/SplashScreen";
-import Login from "./screens/Login";
-import Home from "./screens/Home";
-
-
-import { Provider } from 'react-native-paper'
-
+import Onboarding1 from "./screens/Onboarding1";
+import Onboarding2 from "./screens/Onboarding2";
+import Onboarding3 from "./screens/Onboarding3";
+import Onboarding4 from "./screens/Onboarding4";
+import Login from "./screens/GoferLogin";
+import Home from "./screens/GoferSignup";
 
 
 export default function App() {
@@ -23,8 +23,12 @@ export default function App() {
          <MainNavigator.Navigator screenOptions={{ headerShown: false }} >
 
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
-          <MainNavigator.Screen name="Login" component={Login} />
-          <MainNavigator.Screen name="Home" component={Home} />
+          <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
+          <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
+          <MainNavigator.Screen name="Onboarding3" component={Onboarding3} />
+          <MainNavigator.Screen name="Onboarding4" component={Onboarding4} />
+          <MainNavigator.Screen name="GoferLogin" component={GoferLogin} />
+          <MainNavigator.Screen name="GoferSignup" component={GoferSignup} />
                    
         
 
