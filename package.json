@@ -18,7 +18,8 @@
     "@react-navigation/stack": "*",
     "@react-navigation/native": "6.0.0",
     "react-native-gesture-handler": "~2.8.0",
-    "react-native-safe-area-context": "4.4.1"
+    "react-native-safe-area-context": "4.4.1",
+    "@react-navigation/native-stack": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
