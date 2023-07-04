@@ -1,9 +1,20 @@
-import React from 'react';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import React, { useEffect } from 'react';
+import { ImageBackground, StyleSheet, View, Image} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 
-const SplashScreen = ({navigation}) => (
+const SplashScreen = ({navigation}) => {
+  
+   useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate('Onboarding1');
+    }, 3000); 
+
+    return () => clearTimeout(timeout);
+  }, [navigation]);
+
+ 
+  return (
   <View style={styles.container}>
     <Image 
     source={require('../assets/Gofer.png')}
@@ -12,6 +23,7 @@ const SplashScreen = ({navigation}) => (
 
   </View>
 );
+}
 
 const styles = StyleSheet.create({
   container: {
