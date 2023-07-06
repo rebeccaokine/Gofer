@@ -4,6 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import TextLink from '../components/textLink';
+import PasswordInput from '../components/passwordInput';
 
 const GoferSignup  = ({navigation}) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -62,9 +63,9 @@ const GoferSignup  = ({navigation}) => {
       <FormTextInput 
        placeholder="Email" 
       />
-      <FormTextInput
-       placeholder="Password" 
-       />
+      <PasswordInput 
+       placeholder="Password"
+      />
     </View>
 
     <View style={{
