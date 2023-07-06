@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, SafeAreaView, StyleSheet} from 'react-native';
-import FormTextInput from '../components/formTextInput';
+import PasswordInput from '../components/passwordInput';
 import TextLink from '../components/textLink';
+
 
 const ResetPassword  = ({navigation}) => {
   
@@ -21,10 +22,10 @@ const ResetPassword  = ({navigation}) => {
 
     
     <View>
-      <FormTextInput 
+      <PasswordInput 
        placeholder="New Password" 
       />
-      <FormTextInput 
+      <PasswordInput 
        placeholder="Confirm Password" 
       />
 
