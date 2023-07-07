@@ -9,16 +9,18 @@ import Onboarding1 from "./screens/Onboarding1";
 import Onboarding2 from "./screens/Onboarding2";
 import Onboarding3 from "./screens/Onboarding3";
 import Onboarding4 from "./screens/Onboarding4";
-import Login from "./screens/GoferLogin";
-import Home from "./screens/GoferSignup";
-
+import GoferLogin from "./screens/Gofer/GoferLogin";
+import GoferSignup from "./screens/Gofer/GoferSignup";
+import ForgotPassword from "./screens/ForgotPassword";
+import OneTimePassword from "./screens/OneTimePassword";
+import ResetPassword from "./screens/ResetPassword";
+import Home from './screens/Gofer/Home'
 
 export default function App() {
   const MainNavigator = createStackNavigator();
-
+  
   return (
     <View style ={{flex: 1}}>
-   
       <NavigationContainer>
          <MainNavigator.Navigator screenOptions={{ headerShown: false }} >
 
@@ -29,12 +31,13 @@ export default function App() {
           <MainNavigator.Screen name="Onboarding4" component={Onboarding4} />
           <MainNavigator.Screen name="GoferLogin" component={GoferLogin} />
           <MainNavigator.Screen name="GoferSignup" component={GoferSignup} />
-                   
-        
+          <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
+          <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
+          <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/>
+          <MainNavigator.Screen name="Home" component={Home}/>
 
          </MainNavigator.Navigator>
       </NavigationContainer> 
-      
       
     </View>
   );
