@@ -11,6 +11,7 @@ import {
 import NavigationBar from '../../components/navigationBar';
 import SearchButton from '../../components/searchButton';
 import Categories from '../../components/categories';
+import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
@@ -62,25 +63,42 @@ const Home = () => {
         </View>
 
         <SearchButton placeholder="Find an errand" />
-
-        <View
-          style={{
-            flex: 2,
-          }}>
-          <Text
-            style={{
-              fontWeight: 600,
-              fontSize: 22,
-              marginTop: 15,
-              marginBottom: 10,
-            }}>
-            {' '}
-            Categories{' '}
-          </Text>
-
-          <Categories />
-        </View>
       </View>
+      <View
+        style={{
+          flex: 3,
+          marginLeft: 20,
+        }}>
+        <Text
+          style={{
+            fontWeight: 600,
+            fontSize: 22,
+            marginTop: 25,
+            marginBottom: 10,
+          }}>
+          {' '}
+          Categories{' '}
+        </Text>
+        <Categories />
+      </View>
+ 
+      <View style={{
+          flex: 4,
+          marginLeft: 20,
+        }}>
+      <Text
+          style={{
+            fontWeight: 600,
+            fontSize: 22,
+            marginBottom: 10,
+          }}>
+          {' '}
+          Suggested for you
+        </Text>
+        <Suggested />
+      </View>
+
+        
 
       <NavigationBar />
     </SafeAreaView>
