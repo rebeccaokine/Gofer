@@ -14,7 +14,9 @@ import GoferSignup from "./screens/Gofer/GoferSignup";
 import ForgotPassword from "./screens/ForgotPassword";
 import OneTimePassword from "./screens/OneTimePassword";
 import ResetPassword from "./screens/ResetPassword";
-import Home from './screens/Gofer/Home'
+import Home from './screens/Gofer/Home';
+import HomeCleaning from './screens/HomeCleaning';
+import UpcomingSchedule from './screens/UpcomingSchedule';
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -24,6 +26,7 @@ export default function App() {
       <NavigationContainer>
          <MainNavigator.Navigator screenOptions={{ headerShown: false }} >
 
+          <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
           <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
           <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -35,6 +38,8 @@ export default function App() {
           <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
           <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/>
           <MainNavigator.Screen name="Home" component={Home}/>
+          <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
+          
 
          </MainNavigator.Navigator>
       </NavigationContainer> 
