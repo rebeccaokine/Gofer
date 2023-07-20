@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import NavigationBar from '../../components/navigationBar';
 import SearchButton from '../../components/searchButton';
-import Categories from '../../components/categories';
-import Suggested from '../../components/suggested';
+import UpcomingErrands from '../../components/upcomingErrands';
+import ErrandHistory from '../../components/errandHistory';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
@@ -83,7 +83,7 @@ const HirerHome = ({navigation}) => {
           {' '}
           Ongoing Task{' '}
         </Text>
-        <Categories navigation={navigation} />
+         <ErrandHistory  navigation={navigation} />
       </View>
 
       <View
@@ -100,7 +100,7 @@ const HirerHome = ({navigation}) => {
           }}>
          Upcoming Task
         </Text>
-        <Suggested navigation={navigation}/>
+         <UpcomingErrands  navigation={navigation}/>
       </View>
 
       <NavigationBar/>
