@@ -1,3 +1,3 @@
 # Gofer
 
-An errand runner app
+An errand runner App
