@@ -37,20 +37,7 @@ import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
 
-export default function App() {
-    const [fontsLoaded] = useFonts({
-      'Poppins-Regular': require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
-      'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
-      // Add more font weights if needed
-    });
-  
-    if (!fontsLoaded) {
-      // Font is not yet loaded, return null or a loading screen
-      return null;
-    }
 
-
-  const MainNavigator = createStackNavigator();
   
   return (
     <View style ={{flex: 1}}>
