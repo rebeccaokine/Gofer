@@ -40,7 +40,7 @@ import { useFonts } from 'expo-font';
 export default function App() {
     const [fontsLoaded] = useFonts({
       'Poppins-Regular': require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
-      'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
+      'Poppins-Bold': require('./assets/fonts/Poppins/Poppins-Bold.ttf'),
       // Add more font weights if needed
     });
   
