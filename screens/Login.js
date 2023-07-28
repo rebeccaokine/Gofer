@@ -233,9 +233,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
-   
-    
+    backgroundColor: '#F8EBD3',    
   },
   toggleContainer: {
     flexDirection: 'row',

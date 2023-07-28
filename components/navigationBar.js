@@ -20,7 +20,7 @@ const Navigationbar = () => {
     <View style={styles.container}>
       <TouchableOpacity
         style={[styles.tab, activeTab === 'Home' && styles.activeTab]}
-        onPress={() => navigateToScreen('Home')}
+        onPress={() => navigateToScreen('GoferHome')}
       >
         <Foundation name="home" size={30} color={activeTab === 'Home' ? 'black' : '#00B2FF'} />
       </TouchableOpacity>
