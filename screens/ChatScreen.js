@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '500',
+    fontFamily: 'Poppins-Medium',
     marginLeft: 80,
   },
   chatContainer: {
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   },
   senderName: {
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Poppins-Medium',
     marginBottom: 4,
   },
   messageText: {
