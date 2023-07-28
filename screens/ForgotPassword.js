@@ -49,7 +49,7 @@ const ForgotPassword = ({ navigation }) => {
           borderColor: 'black',
           justifyContent: 'center',
           alignItems: 'center',
-          fontWeight: '500',
+          fontFamily: 'Poppins-Medium',
           marginTop: 10,
           marginHorizontal: 40,
         }}>
@@ -76,7 +76,7 @@ const ForgotPassword = ({ navigation }) => {
               fontSize: 18,
               textAlign: 'center',
               marginTop: 20,
-              fontWeight: '500',
+              fontFamily: 'Poppins-Medium',
             }}>
             {' '}
             Back to login
