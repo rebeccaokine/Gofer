@@ -4,7 +4,6 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
   Image,
 } from 'react-native';
@@ -40,7 +39,7 @@ const HomeCleaning = ({ navigation }) => {
               color: 'black',
               marginBottom: 30,
               textAlign: 'center',
-              fontWeight: '400',
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Home Cleaning
           </Text>
