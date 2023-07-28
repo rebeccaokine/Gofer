@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     marginTop: 10,
     fontSize: 18,
-    fontWeight: '400',
+    fontFamily: 'Poppins-Regular',
   },
 });
 

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: 'white',
     paddingLeft: 30,
-    fontWeight: 300,
+    fontFamily: 'Poppins-Medium',
     color: 'gray',
   },
 });

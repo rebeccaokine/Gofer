@@ -54,7 +54,7 @@ const HomeCleaningErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -68,7 +68,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -83,7 +83,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Regular',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -91,7 +91,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Regular',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -107,7 +107,7 @@ const HomeCleaningErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Regular',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -198,7 +198,7 @@ const HomeCleaningErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -212,7 +212,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -227,7 +227,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -235,7 +235,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -251,7 +251,7 @@ const HomeCleaningErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -341,7 +341,7 @@ const HomeCleaningErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -355,7 +355,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -370,7 +370,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -378,7 +378,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -394,7 +394,7 @@ const HomeCleaningErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -485,7 +485,7 @@ const HomeCleaningErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -499,7 +499,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -514,7 +514,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -522,7 +522,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -538,7 +538,7 @@ const HomeCleaningErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -628,7 +628,7 @@ const HomeCleaningErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -657,7 +657,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -665,7 +665,7 @@ const HomeCleaningErrands = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -681,7 +681,7 @@ const HomeCleaningErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>

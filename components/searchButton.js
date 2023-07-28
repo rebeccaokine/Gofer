@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: 'white',
     paddingLeft: 50,
-    fontWeight: '400',
+    fontFamily: 'Poppins-Regular',
     color: 'gray',
   },
   icon: {

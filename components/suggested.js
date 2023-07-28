@@ -52,7 +52,7 @@ const Suggested = ({navigation}) => {
             <Text
               style={{
                 fontSize: 16,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -68,7 +68,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -85,7 +85,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -93,7 +93,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -111,7 +111,7 @@ const Suggested = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -204,7 +204,7 @@ const Suggested = ({navigation}) => {
             <Text
               style={{
                 fontSize: 16,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -220,7 +220,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -237,7 +237,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -245,7 +245,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -263,7 +263,7 @@ const Suggested = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>
@@ -355,7 +355,7 @@ const Suggested = ({navigation}) => {
             <Text
               style={{
                 fontSize: 16,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
             </Text>
@@ -371,7 +371,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 400,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -388,7 +388,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
                 GH₵
@@ -396,7 +396,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
                   color: '#00B2FF',
@@ -414,7 +414,7 @@ const Suggested = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
                   }}>

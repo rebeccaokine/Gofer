@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
   tabText: {
     color: 'black',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
   },
   activeTab: {
     borderRadius: 30,
   },
   activeTabText: {
     color: '#00B2FF',
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
   },
   contentContainer: {
     marginTop: 10,

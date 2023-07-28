@@ -25,7 +25,7 @@ const ErrandHistory = () => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Monday, 20th August
             </Text>
@@ -33,7 +33,7 @@ const ErrandHistory = () => {
               style={{
                 fontSize: 18,
                 color: '#26AD5C',
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               {' '}
               Completed
@@ -79,7 +79,7 @@ const ErrandHistory = () => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                   marginBottom: 5,
                 }}>
                 Wash my clothes
@@ -109,7 +109,7 @@ const ErrandHistory = () => {
                 <Text
                   style={{
                     fontSize: 16,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     color: '#00B2FF',
                   }}>
                   GH₵
@@ -117,7 +117,7 @@ const ErrandHistory = () => {
                 <Text
                   style={{
                     fontSize: 16,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     marginRight: 20,
                     color: '#00B2FF',
@@ -133,7 +133,7 @@ const ErrandHistory = () => {
                   <Text
                     style={{
                       fontSize: 16,
-                      fontWeight: 600,
+                      fontFamily: 'Poppins-Medium',
                       marginLeft: 5,
                       color: 'gray',
                     }}>

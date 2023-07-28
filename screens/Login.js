@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
         <Text
           style={{
             fontSize: 32,
-            
+            fontFamily: 'Poppins-SemiBold',
             marginHorizontal: 30,
             marginTop: 40,
             marginBottom: 30,
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
+   
     
   },
   toggleContainer: {

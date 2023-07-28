@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     marginHorizontal: 40,
-    fontFamily: 'Poppins',
+    fontFamily: 'Poppins-Medium',
   },
   textInput: {
     borderWidth: 2,
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: 'white',
     paddingLeft: 30,
-    fontWeight: '500',
     color: 'gray',
   },
 });
