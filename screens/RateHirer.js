@@ -37,7 +37,7 @@ const RateHirer = ({ navigation }) => {
               color: 'black',
               marginLeft: 30,
               textAlign: 'center',
-              fontWeight: '400',
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Rate Hirer
           </Text>
@@ -49,7 +49,7 @@ const RateHirer = ({ navigation }) => {
           <Text
             style={{
               textAlign: 'center',
-              fontWeight: 500,
+              fontFamily: 'Poppins-Regular',
               fontSize: 26,
             }}>
             How was working with Stan?
@@ -103,8 +103,7 @@ const RateHirer = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 28,
-                fontWeight: 'bold',
-                fontFamily: 'Poppins',
+                fontFamily: 'Poppins-Medium',
                 textAlign: 'center',
                 color: 'black',
                 paddingTop: 20,
@@ -115,8 +114,7 @@ const RateHirer = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 20,
-                fontWeight: 500,
-                fontFamily: 'Poppins',
+                fontFamily: 'Poppins-Regular',
                 textAlign: 'center',
                 color: 'black',
                 paddingTop: 10,
@@ -140,7 +138,7 @@ const RateHirer = ({ navigation }) => {
                 borderColor: 'black',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontWeight: '500',
+                fontFamily: 'Poppins-Medium',
                 marginTop: 200,
               }}>
               <Text
@@ -161,7 +159,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
   },
   image: {
     alignSelf: 'center',
