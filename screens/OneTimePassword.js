@@ -61,7 +61,7 @@ const OneTimePassword = ({navigation}) => {
           borderColor: 'black', 
           justifyContent: 'center', 
           alignItems: 'center',  
-          fontWeight: 800,       
+          fontFamily: 'Poppins-Medium',      
           marginTop: 10,
           marginHorizontal: 40,
           }}

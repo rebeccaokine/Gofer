@@ -43,7 +43,7 @@ const Profile = ({ navigation }) => {
           <Text
             style={{
               fontSize: 24,
-              fontWeight: '400',
+              fontFamily: 'Poppins-Medium',
             }}>
             Dereck Griffin
           </Text>
@@ -69,7 +69,7 @@ const Profile = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: '400'
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {'  '}
                 Edit Profile
@@ -97,7 +97,7 @@ const Profile = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: '400'
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {'  '}
                 Verify Profile
@@ -125,7 +125,7 @@ const Profile = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: '400'
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {'  '}
                 View Payments
@@ -153,7 +153,7 @@ const Profile = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: '400'
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {'  '}
                 Change Payment Preference
@@ -181,7 +181,7 @@ const Profile = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: '400'
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {'  '}
                 Settings
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontWeight: '400',
+    fontFamily: 'Poppins-Medium',
     marginLeft: 55,
   },
   details: {
