@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     color: 'black',
-    fontWeight: '500',
+    fontFamily: 'Poppins-SemiBold',
     marginLeft: 65,
   },
   messagesContainer: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   senderName: {
     fontSize: 18,
-    fontWeight: '600',
+    fontFamily: 'Poppins-Medium',
     marginBottom: 4,
   },
   messageSnippet: {
