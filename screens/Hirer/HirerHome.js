@@ -32,7 +32,7 @@ const HirerHome = ({navigation}) => {
           <Text
             style={{
               fontSize: 24,
-              fontWeight: '600',
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Hello, Cindy
           </Text>
@@ -59,7 +59,7 @@ const HirerHome = ({navigation}) => {
           <Text
             style={{
               fontSize: 18,
-              fontWeight: '400',
+              fontFamily: 'Poppins-Medium',
             }}>
             {' '}
             Accra, Ghana{' '}
@@ -75,7 +75,7 @@ const HirerHome = ({navigation}) => {
         }}>
         <Text
           style={{
-            fontWeight: '500',
+            fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
             marginTop: 25,
             marginBottom: 10,
@@ -93,7 +93,7 @@ const HirerHome = ({navigation}) => {
         }}>
         <Text
           style={{
-            fontWeight: '500',
+            fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
             marginBottom: 10,
             marginTop: 20,

@@ -4,9 +4,7 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import NavigationBar from '../../components/navigationBar';
 import SearchButton from '../../components/searchButton';
@@ -15,7 +13,7 @@ import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
-const Home = ({navigation}) => {
+const GoferHome = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -34,7 +32,7 @@ const Home = ({navigation}) => {
           <Text
             style={{
               fontSize: 24,
-              fontWeight: '600',
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Hello, Naa
           </Text>
@@ -61,7 +59,7 @@ const Home = ({navigation}) => {
           <Text
             style={{
               fontSize: 18,
-              fontWeight: '400',
+              fontFamily: 'Poppins-Medium',
             }}>
             {' '}
             Accra, Ghana{' '}
@@ -77,7 +75,7 @@ const Home = ({navigation}) => {
         }}>
         <Text
           style={{
-            fontWeight: '500',
+            fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
             marginTop: 25,
             marginBottom: 10,
@@ -95,7 +93,7 @@ const Home = ({navigation}) => {
         }}>
         <Text
           style={{
-            fontWeight: '500',
+            fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
             marginBottom: 10,
             marginTop: 20,
@@ -114,8 +112,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
   },
 });
 
-export default Home;
+export default GoferHome;
