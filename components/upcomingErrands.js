@@ -26,7 +26,7 @@ const UpcomingErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: 600,
+                fontFamily: 'Poppins-SemiBold',
               }}>
               Monday, 20th August
             </Text>
@@ -34,7 +34,7 @@ const UpcomingErrands = ({navigation}) => {
               style={{
                 fontSize: 18,
                 color: '#26AD5C',
-                fontWeight: 600,
+                fontFamily: 'Poppins-SemiBold',
               }}>
               {' '}
               6:00am
@@ -80,7 +80,7 @@ const UpcomingErrands = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 18,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                   }}>
                   Wash my clothes
                 </Text>
@@ -94,7 +94,7 @@ const UpcomingErrands = ({navigation}) => {
                   <Text
                     style={{
                       fontSize: 14,
-                      fontWeight: 400,
+                      fontFamily: 'Poppins-Medium',
                     }}>
                     {' '}
                     Mile 7, Achimota
@@ -109,7 +109,7 @@ const UpcomingErrands = ({navigation}) => {
                   <Text
                     style={{
                       fontSize: 14,
-                      fontWeight: 600,
+                      fontFamily: 'Poppins-Medium',
                       color: '#00B2FF',
                     }}>
                     GH₵
@@ -117,7 +117,7 @@ const UpcomingErrands = ({navigation}) => {
                   <Text
                     style={{
                       fontSize: 14,
-                      fontWeight: 600,
+                      fontFamily: 'Poppins-Medium',
                       marginLeft: 5,
                       marginRight: 20,
                       color: '#00B2FF',
@@ -133,7 +133,7 @@ const UpcomingErrands = ({navigation}) => {
                     <Text
                       style={{
                         fontSize: 14,
-                        fontWeight: 600,
+                        fontFamily: 'Poppins-Medium',
                         marginLeft: 5,
                         color: 'gray',
                       }}>
@@ -161,7 +161,7 @@ const UpcomingErrands = ({navigation}) => {
                       <Text
                         style={{
                           color: '#FF7373',
-                          fontWeight: 500,
+                          fontFamily: 'Poppins-Medium',
                         }}>
                         Cancel
                       </Text>
@@ -184,7 +184,7 @@ const UpcomingErrands = ({navigation}) => {
                       <Text
                         style={{
                           color: '#26AD5C',
-                          fontWeight: 500,
+                          fontFamily: 'Poppins-Medium',
                         }}>
                         Start
                       </Text>
