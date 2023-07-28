@@ -39,7 +39,7 @@ const ResetPassword  = ({navigation}) => {
           borderColor: 'black', 
           justifyContent: 'center', 
           alignItems: 'center',  
-          fontWeight: '500',       
+          fontFamily: 'Poppins-Medium',      
           marginTop: 50,
           marginHorizontal: 40,
           }}

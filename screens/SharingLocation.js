@@ -58,7 +58,7 @@ const SharingLocation = ({ navigation }) => {
                 borderColor: 'black',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontWeight: '500',
+                fontFamily: 'Poppins-Medium',
               }}>
               <Text
                 style={{
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '400',
+    fontFamily: 'Poppins-SemiBold',
   },
   mapContainer: {
     height: 600,

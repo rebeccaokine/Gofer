@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Medium',
   },
   imageContainer: {
     marginTop: 20,
