@@ -18,7 +18,7 @@ const Onboarding4 = ({navigation}) => {
           fontFamily:"Poppins-Bold", 
           textAlign: 'left',
           color: 'black',
-          paddingBottom: 20,
+          paddingBottom: 10,
           }}
           >
          Connect and Get Things Done
@@ -27,11 +27,10 @@ const Onboarding4 = ({navigation}) => {
         <Text
          style={{
           fontSize: 18,
-         
           fontFamily:"Poppins-Regular", 
           textAlign: 'left',
           color: 'black',
-          paddingBottom: 20,
+          paddingBottom: 15,
           }}        
         > 
          Gofer connects you with a community of helpers. Sign up or Login to access a network of reliable Gofers. 
@@ -52,7 +51,7 @@ const Onboarding4 = ({navigation}) => {
           justifyContent: 'center', 
           alignItems: 'center',  
           marginBottom: 10,       
-         
+          fontFamily: 'Poppins-Regular',
           }}
           >
           <Text 
@@ -78,7 +77,7 @@ const Onboarding4 = ({navigation}) => {
           borderColor: 'black', 
           justifyContent: 'center', 
           alignItems: 'center',    
-               
+          fontFamily: 'Poppins-Regular',
           }}
           >
           <Text 
@@ -99,7 +98,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
   },
   image: {
     flex: 1,
