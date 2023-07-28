@@ -52,7 +52,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-SemiBold',
                 }}>
                 Hirer Name
               </Text>
@@ -64,7 +64,7 @@ const ErrandDetails = ({ navigation }) => {
                   style={{
                     color: '#00B2FF',
                     fontSize: 18,
-                    fontWeight: 600,
+                    fontFamily: 'Poppins-Medium',
                   }}>
                   View Profile
                 </Text>
@@ -74,7 +74,7 @@ const ErrandDetails = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 24,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Regular',
               }}>
               Dereck Owusu
             </Text>
@@ -85,7 +85,7 @@ const ErrandDetails = ({ navigation }) => {
               style={{
                 fontSize: 20,
                 color: 'grey',
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Description
             </Text>
@@ -93,7 +93,7 @@ const ErrandDetails = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 22,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Regular',
               }}>
               I need help cleaning my house. You will be cleaning two
               bedrooms and a kitchen
@@ -111,7 +111,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 Date
               </Text>
@@ -119,7 +119,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 12/11/21
               </Text>
@@ -129,7 +129,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 Time
               </Text>
@@ -137,7 +137,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 3:00pm
               </Text>
@@ -147,7 +147,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 Price
               </Text>
@@ -155,7 +155,7 @@ const ErrandDetails = ({ navigation }) => {
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 ₵ 200
               </Text>
@@ -176,7 +176,7 @@ const ErrandDetails = ({ navigation }) => {
                   borderColor: 'black',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  fontWeight: '500',
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 <Text
                   style={{
