@@ -36,7 +36,7 @@ const BookingConfirmation = ({ navigation }) => {
               fontSize: 32,
               color: 'black',
               textAlign: 'center',
-              fontWeight: 600,
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Confirmation
           </Text>
@@ -52,7 +52,7 @@ const BookingConfirmation = ({ navigation }) => {
         <Text
           style={{
             fontSize: 28,
-            fontWeight: 'bold',
+            fontFamily: 'Poppins-Bold',
             fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
@@ -64,7 +64,7 @@ const BookingConfirmation = ({ navigation }) => {
         <Text
           style={{
             fontSize: 20,
-            fontWeight: 500,
+            fontFamily: 'Poppins-Medium',
             fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
@@ -88,7 +88,7 @@ const BookingConfirmation = ({ navigation }) => {
               borderColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              fontWeight: 700,
+              fontFamily: 'Poppins-Medium',
             }}>
             <Text
               style={{
