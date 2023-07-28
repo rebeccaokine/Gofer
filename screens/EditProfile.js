@@ -68,7 +68,7 @@ const Profile = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-SemiBold',
                 }}>
                 Name
               </Text>
@@ -77,7 +77,7 @@ const Profile = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 24,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Dereck Griffin
             </Text>
@@ -87,7 +87,7 @@ const Profile = ({ navigation }) => {
               style={{
                 fontSize: 20,
                 color: 'grey',
-                fontWeight: 600,
+                fontFamily: 'Poppins-SemiBold',
               }}>
               Email
             </Text>
@@ -95,7 +95,7 @@ const Profile = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 22,
-                fontWeight: '400',
+                fontFamily: 'Poppins-Medium',
               }}>
               dereckgriffin@gmail.com
             </Text>
@@ -111,15 +111,15 @@ const Profile = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: '400',
+                  fontFamily: 'Poppins-SemiBold',
                 }}>
-                Date
+                Phone Number
               </Text>
               <Text
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontWeight: '400',
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 0245637389
               </Text>
@@ -139,7 +139,7 @@ const Profile = ({ navigation }) => {
                 borderColor: 'black',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontWeight: '500',
+                fontFamily: 'Poppins-Medium',
                 marginTop: 100,
               }}>
               <Text
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontWeight: '400',
+    fontFamily: 'Poppins-SemiBold',
     marginLeft: 55,
   },
   hirerInformation: {
