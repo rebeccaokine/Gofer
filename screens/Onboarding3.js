@@ -14,7 +14,7 @@ const Onboarding3 = ({navigation}) => {
         <Text 
         style={{
           fontSize: 28,
-          fontWeight: "bold", 
+         
           fontFamily:"Poppins", 
           textAlign: 'left',
           color: 'black',
@@ -28,7 +28,7 @@ const Onboarding3 = ({navigation}) => {
         <Text
          style={{
           fontSize: 18,
-          fontWeight: '400', 
+          
           fontFamily:"Poppins", 
           textAlign: 'left',
           color: 'black',
@@ -52,7 +52,7 @@ const Onboarding3 = ({navigation}) => {
           borderColor: 'black', 
           justifyContent: 'center', 
           alignItems: 'center',    
-          fontWeight: '500',        
+                  
           }}
           >
           <Text 

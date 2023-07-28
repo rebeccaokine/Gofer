@@ -21,8 +21,7 @@ const Onboarding1 = ({ navigation }) => {
         <Text
           style={{
             fontSize: 28,
-            fontWeight: 'bold',
-            fontFamily: 'Poppins',
+            fontFamily: 'Poppins-Bold',
             textAlign: 'left',
             color: 'black',
             paddingBottom: 20,
@@ -33,8 +32,7 @@ const Onboarding1 = ({ navigation }) => {
         <Text
           style={{
             fontSize: 18,
-            fontWeight: '400',
-            fontFamily: 'Poppins',
+            fontFamily: 'Poppins-Regular',
             textAlign: 'left',
             color: 'black',
             paddingBottom: 60,
@@ -57,7 +55,7 @@ const Onboarding1 = ({ navigation }) => {
               borderColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              fontWeight: '500',
+              fontFamily: 'Poppins-Regular',
             }}>
             <Text
               style={{
@@ -76,7 +74,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
   },
   image: {
     flex: 1,

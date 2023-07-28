@@ -14,8 +14,8 @@ const Onboarding4 = ({navigation}) => {
         <Text 
         style={{
           fontSize: 28,
-          fontWeight: "bold", 
-          fontFamily:"Poppins", 
+          
+          fontFamily:"Poppins-Bold", 
           textAlign: 'left',
           color: 'black',
           paddingBottom: 20,
@@ -27,8 +27,8 @@ const Onboarding4 = ({navigation}) => {
         <Text
          style={{
           fontSize: 18,
-          fontWeight: '400', 
-          fontFamily:"Poppins", 
+         
+          fontFamily:"Poppins-Regular", 
           textAlign: 'left',
           color: 'black',
           paddingBottom: 20,
@@ -52,7 +52,7 @@ const Onboarding4 = ({navigation}) => {
           justifyContent: 'center', 
           alignItems: 'center',  
           marginBottom: 10,       
-          fontWeight: '500',   
+         
           }}
           >
           <Text 
@@ -78,7 +78,7 @@ const Onboarding4 = ({navigation}) => {
           borderColor: 'black', 
           justifyContent: 'center', 
           alignItems: 'center',    
-          fontWeight: '500',        
+               
           }}
           >
           <Text 

@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
         <Text
           style={{
             fontSize: 32,
-            fontWeight: '500',
+            
             marginHorizontal: 30,
             marginTop: 40,
             marginBottom: 30,
@@ -88,7 +88,7 @@ const Login = ({ navigation }) => {
           flexDirection: 'row',
           marginHorizontal: 50,
           alignSelf: 'flex-end',
-          fontWeight: '500',
+          
         }}>
       <Pressable
           onPress={() => {
@@ -115,7 +115,7 @@ const Login = ({ navigation }) => {
           borderColor: 'black',
           justifyContent: 'center',
           alignItems: 'center',
-          fontWeight: '500',
+          
           marginTop: 10,
           marginHorizontal: 40,
         }}>
@@ -158,7 +158,7 @@ const Login = ({ navigation }) => {
           color: 'gray',
           marginTop: 60,
           textAlign: 'center',
-          fontWeight: '500',
+          
         }}>
         Or connect with
       </Text>
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F8EBD3',
     fontFamily: 'Poppins',
-    fontWeight: '500',
+    
   },
   toggleContainer: {
     flexDirection: 'row',
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 24,
-    fontWeight: '500',
+    
   },
   activeButton: {
     backgroundColor: 'black',
