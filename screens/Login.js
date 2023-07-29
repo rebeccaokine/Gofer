@@ -88,7 +88,6 @@ const Login = ({ navigation }) => {
           flexDirection: 'row',
           marginHorizontal: 50,
           alignSelf: 'flex-end',
-          
         }}>
       <Pressable
           onPress={() => {
@@ -99,6 +98,7 @@ const Login = ({ navigation }) => {
              fontSize: 16,
             textAlign: 'center',
             marginTop: 10,
+            fontFamily: 'Poppins-Regular',
             }}>
            {' '} Forgot Password?
           </Text>
@@ -115,7 +115,7 @@ const Login = ({ navigation }) => {
           borderColor: 'black',
           justifyContent: 'center',
           alignItems: 'center',
-          
+          fontFamily: 'Poppins-Medium',
           marginTop: 10,
           marginHorizontal: 40,
         }}>
@@ -134,6 +134,7 @@ const Login = ({ navigation }) => {
             color: 'gray',
             textAlign: 'center',
             marginTop: 20,
+            fontFamily: 'Poppins-Regular',
           }}>
           Don't have an account?
         </Text>
@@ -146,6 +147,7 @@ const Login = ({ navigation }) => {
              fontSize: 16,
             textAlign: 'center',
             marginTop: 20,
+            fontFamily: 'Poppins-Regular',
             }}>
            {' '} Sign Up
           </Text>
@@ -158,7 +160,7 @@ const Login = ({ navigation }) => {
           color: 'gray',
           marginTop: 60,
           textAlign: 'center',
-          
+          fontFamily: 'Poppins-Regular',
         }}>
         Or connect with
       </Text>
@@ -258,7 +260,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 24,
-    
   },
   activeButton: {
     backgroundColor: 'black',

@@ -69,10 +69,10 @@ const Signup = ({ navigation }) => {
         <Text
           style={{
             fontSize: 32,
-            fontWeight: '500',
+            fontFamily: 'Poppins-SemiBold',
             marginHorizontal: 30,
             marginTop: 40,
-            marginBottom: 30,
+            marginBottom: 20,
             textAlign: 'center',
           }}>
           Sign Up
@@ -97,9 +97,10 @@ const Signup = ({ navigation }) => {
           }}>
           <Text
             style={{
-             fontSize: 16,
+            fontSize: 16,
             textAlign: 'center',
             marginTop: 10,
+            fontFamily: 'Poppins-Regular',
             }}>
            {' '} Forgot Password?
           </Text>
@@ -116,7 +117,7 @@ const Signup = ({ navigation }) => {
           borderColor: 'black',
           justifyContent: 'center',
           alignItems: 'center',
-          fontWeight: '800',
+          fontFamily: 'Poppins-Medium',
           marginTop: 10,
           marginHorizontal: 40,
         }}>
@@ -135,6 +136,7 @@ const Signup = ({ navigation }) => {
             color: 'gray',
             textAlign: 'center',
             marginTop: 20,
+            fontFamily: 'Poppins-Regular',
           }}>
           Already have an account?
         </Text>
@@ -147,6 +149,7 @@ const Signup = ({ navigation }) => {
              fontSize: 16,
             textAlign: 'center',
             marginTop: 20,
+            fontFamily: 'Poppins-Regular',
             }}>
            {' '} Login
           </Text>
@@ -157,8 +160,9 @@ const Signup = ({ navigation }) => {
         style={{
           fontSize: 16,
           color: 'gray',
-          marginTop: 60,
+          marginTop: 35,
           textAlign: 'center',
+          fontFamily: 'Poppins-Regular',
         }}>
         Or connect with
       </Text>
@@ -167,7 +171,7 @@ const Signup = ({ navigation }) => {
         style={{
           flexDirection: 'row',
           marginHorizontal: 40,
-          marginTop: 15,
+          marginTop: 10,
           justifyContent: 'center',
         }}>
         <TouchableOpacity
@@ -233,9 +237,7 @@ const Signup = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
-    fontWeight: '500',   
+    backgroundColor: '#F8EBD3',  
   },
   toggleContainer: {
     flexDirection: 'row',
@@ -260,7 +262,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 24,
-    fontWeight: '500',
   },
   activeButton: {
     backgroundColor: 'black',
