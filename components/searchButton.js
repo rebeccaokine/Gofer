@@ -29,7 +29,7 @@ const SearchButton = ({ placeholder }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: 5,
     fontFamily: 'Poppins',
     position: 'relative',
   },

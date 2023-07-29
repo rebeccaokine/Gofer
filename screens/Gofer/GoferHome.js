@@ -19,7 +19,7 @@ const GoferHome = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 40,
           marginHorizontal: 20,
         }}>
 
@@ -77,8 +77,8 @@ const GoferHome = ({navigation}) => {
           style={{
             fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
-            marginTop: 25,
-            marginBottom: 10,
+            marginTop: 15,
+            marginBottom: 5,
           }}>
           {' '}
           Categories{' '}
@@ -95,8 +95,8 @@ const GoferHome = ({navigation}) => {
           style={{
             fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
-            marginBottom: 10,
-            marginTop: 20,
+            marginBottom: 15,
+            marginTop: 10,
           }}>
           Suggested for you
         </Text>
