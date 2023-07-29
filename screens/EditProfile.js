@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
     marginLeft: 55,
+    marginVertical: 20,
   },
   hirerInformation: {
     flex: 1,

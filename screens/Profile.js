@@ -219,6 +219,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'Poppins-Medium',
     marginLeft: 55,
+    marginVertical: 20,
   },
   details: {
     flex: 1,
