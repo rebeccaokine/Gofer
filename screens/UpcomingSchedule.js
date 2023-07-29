@@ -17,7 +17,7 @@ const UpcomingSchedule = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 40,
           marginHorizontal: 20,
         }}>
         <View

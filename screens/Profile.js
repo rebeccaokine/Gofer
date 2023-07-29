@@ -92,7 +92,7 @@ const Profile = ({ navigation }) => {
           <View style={{ flexDirection: 'column' }}>
             <Pressable
               onPress={() => {
-                navigation.navigate('Login');
+                navigation.navigate('VerifyProfile');
               }}>
               <Text
                 style={{

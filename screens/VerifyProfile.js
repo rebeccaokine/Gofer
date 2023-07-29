@@ -38,7 +38,7 @@ const Profile = ({ navigation }) => {
         <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Onboarding2');
+                navigation.navigate('ScanID');
               }}
               style={{
                 flex: 1,
@@ -50,13 +50,13 @@ const Profile = ({ navigation }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontWeight: '500',
-                marginTop: 100,
+                marginTop: 70,
               }}>
               <Text
                 style={{
                   fontSize: 24,
                 }}>
-                Save
+                Continue
               </Text>
             </TouchableOpacity>
           </View>
@@ -72,24 +72,22 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginVertical: 20,
+    marginVertical: 40,
     marginHorizontal: 30,
-
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   backButton: {
-    marginRight: 40,
+    marginRight: 30,
   },
   title: {
     fontSize: 32,
     color: 'black',
     fontWeight: '400',
-    marginLeft: 5,
   },
   details: {
     flex: 1,
