@@ -18,7 +18,7 @@ const Suggested = ({navigation}) => {
           style={{
             flexDirection: 'column',
             width: 200,
-            height: 240,
+            height: 250,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -35,7 +35,7 @@ const Suggested = ({navigation}) => {
               borderRadius: 15,
               backgroundColor: 'rgba(0, 178, 255, 0.50)',
               marginHorizontal: 9,
-              marginTop: 15,
+              marginTop: 20,
               marginBottom: 5,
             }}>
             <Image
@@ -60,7 +60,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -78,7 +77,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -125,7 +123,7 @@ const Suggested = ({navigation}) => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: 15,
+                paddingBottom: 20,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
@@ -133,7 +131,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                   marginRight: 10,
@@ -151,7 +148,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                 }}>
@@ -169,7 +165,7 @@ const Suggested = ({navigation}) => {
           style={{
             flexDirection: 'column',
             width: 200,
-            height: 240,
+            height: 250,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -187,7 +183,7 @@ const Suggested = ({navigation}) => {
               borderRadius: 15,
               backgroundColor: 'rgba(0, 178, 255, 0.50)',
               marginHorizontal: 9,
-              marginTop: 15,
+              marginTop: 20,
               marginBottom: 5,
             }}>
             <Image
@@ -212,7 +208,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -220,7 +215,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontFamily: 'Poppins-Medium',
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -230,7 +225,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -277,7 +271,7 @@ const Suggested = ({navigation}) => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: 15,
+                paddingBottom: 20,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
@@ -285,7 +279,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                   marginRight: 10,
@@ -303,7 +296,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                 }}>
@@ -314,13 +306,14 @@ const Suggested = ({navigation}) => {
             </View>
           </View>
         </View>
+
 
         {/**third view */}
         <View
           style={{
             flexDirection: 'column',
             width: 200,
-            height: 240,
+            height: 250,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -338,7 +331,7 @@ const Suggested = ({navigation}) => {
               borderRadius: 15,
               backgroundColor: 'rgba(0, 178, 255, 0.50)',
               marginHorizontal: 9,
-              marginTop: 15,
+              marginTop: 20,
               marginBottom: 5,
             }}>
             <Image
@@ -363,7 +356,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -371,7 +363,7 @@ const Suggested = ({navigation}) => {
               <Text
                 style={{
                   fontSize: 14,
-                  fontFamily: 'Poppins-Medium',
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
                 Mile 7, Achimota
@@ -381,7 +373,6 @@ const Suggested = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 4,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -428,7 +419,7 @@ const Suggested = ({navigation}) => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: 15,
+                paddingBottom: 20,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
@@ -436,7 +427,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                   marginRight: 10,
@@ -454,7 +444,6 @@ const Suggested = ({navigation}) => {
                   borderWidth: 2,
                   borderRadius: 15,
                   backgroundColor: 'white',
-                  marginTop: 5,
                   paddingHorizontal: 20,
                   paddingVertical: 5,
                 }}>
@@ -465,6 +454,7 @@ const Suggested = ({navigation}) => {
             </View>
           </View>
         </View>
+
         {/**end of cards */}
       </View>
     </ScrollView>

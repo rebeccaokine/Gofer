@@ -95,7 +95,7 @@ const GoferHome = ({navigation}) => {
           style={{
             fontFamily: 'Poppins-SemiBold',
             fontSize: 22,
-            marginBottom: 15,
+            marginBottom: 10,
             marginTop: 10,
           }}>
           Suggested for you
