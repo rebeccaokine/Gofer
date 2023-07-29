@@ -72,7 +72,7 @@ const Signup = ({ navigation }) => {
             fontFamily: 'Poppins-SemiBold',
             marginHorizontal: 30,
             marginTop: 40,
-            marginBottom: 20,
+            marginBottom: 10,
             textAlign: 'center',
           }}>
           Sign Up
