@@ -103,7 +103,7 @@ const ErrandHistory = () => {
               <View
                 style={{
                   flexDirection: 'row',
-                  marginTop: 4,
+                  marginTop: 5,
                 }}>
                 <Text
                   style={{
