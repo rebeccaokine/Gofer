@@ -44,7 +44,7 @@ const UpcomingErrands = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                width: 360,
+                width: 350,
                 height: 150,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -76,6 +76,7 @@ const UpcomingErrands = ({navigation}) => {
                   alignItems: 'left',
                   justifyContent: 'center',
                   marginRight: 10,
+                  marginTop: 4,
                 }}>
                 <Text
                   style={{
@@ -103,6 +104,7 @@ const UpcomingErrands = ({navigation}) => {
                 <View
                   style={{
                     flexDirection: 'row',
+                    marginTop: 2,
                   }}>
                   <Text
                     style={{
@@ -143,7 +145,7 @@ const UpcomingErrands = ({navigation}) => {
                 <View
                   style={{
                     flexDirection: 'row',
-                    marginTop: 10,
+                    marginTop: 4,
                   }}>
                   <TouchableOpacity
                     style={{
