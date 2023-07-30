@@ -43,7 +43,7 @@ const ErrandHistory = () => {
           <View
             style={{
               flexDirection: 'row',
-              width: 340,
+              width: 350,
               height: 130,
               alignItems: 'center',
               justifyContent: 'center',
@@ -54,7 +54,7 @@ const ErrandHistory = () => {
             }}>
             <View
               style={{
-                width: 140,
+                width: 130,
                 height: 110,
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -80,7 +80,6 @@ const ErrandHistory = () => {
                 style={{
                   fontSize: 20,
                   fontFamily: 'Poppins-Medium',
-                  marginBottom: 5,
                 }}>
                 Wash my clothes
               </Text>
