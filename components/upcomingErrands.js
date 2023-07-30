@@ -44,7 +44,7 @@ const UpcomingErrands = ({navigation}) => {
             <View
               style={{
                 flexDirection: 'row',
-                width: 340,
+                width: 360,
                 height: 150,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -88,7 +88,6 @@ const UpcomingErrands = ({navigation}) => {
                 <View
                   style={{
                     flexDirection: 'row',
-                    marginTop: 4,
                   }}>
                   <Octicons name="location" size={18} color="black" />
                   <Text
@@ -104,7 +103,6 @@ const UpcomingErrands = ({navigation}) => {
                 <View
                   style={{
                     flexDirection: 'row',
-                    marginTop: 4,
                   }}>
                   <Text
                     style={{
