@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontWeight: '400',
+    fontFamily: 'Poppins-SemiBold',
     marginLeft: 15,
   },
   hirerInformation: {
