@@ -64,7 +64,7 @@ const VerificationFeedback = ({ navigation }) => {
         <Text
           style={{
             fontSize: 20,
-            fontWeight: 500,
+            fontFamily: 'Poppins-Medium',
             fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
@@ -88,7 +88,7 @@ const VerificationFeedback = ({ navigation }) => {
               borderColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              fontWeight: 700,
+              fontFamily: 'Poppins-Medium',
               marginHorizontal: 10,
             }}>
             <Text
