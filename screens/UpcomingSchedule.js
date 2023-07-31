@@ -39,7 +39,7 @@ const UpcomingSchedule = ({navigation}) => {
               fontSize: 32,
               color: 'black',
               marginBottom: 30,
-              fontWeight: '400',
+              fontFamily: 'Poppins-SemiBold',
               marginLeft: 35,
             }}>
             Schedule
