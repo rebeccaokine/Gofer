@@ -27,7 +27,7 @@ const Profile = ({ navigation }) => {
         </View>
 
         <View>
-          <Text style={{fontSize: 24, fontWeight: '400'}}>
+          <Text style={{fontSize: 24, fontFamily: 'Poppins-Medium'}}>
             Confirm your identity. Take a photo of your Ghana Card. Make sure
             your profile name and picture match with the name on your card
           </Text>
@@ -49,7 +49,7 @@ const Profile = ({ navigation }) => {
                 borderColor: 'black',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontWeight: '500',
+                fontFamily: 'Poppins-Medium',
                 marginTop: 70,
               }}>
               <Text
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontWeight: '400',
+    fontFamily: 'Poppins-SemiBold',
   },
   details: {
     flex: 1,
