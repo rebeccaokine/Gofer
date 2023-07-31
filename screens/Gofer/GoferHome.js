@@ -34,7 +34,7 @@ const GoferHome = ({navigation}) => {
               fontSize: 24,
               fontFamily: 'Poppins-SemiBold',
             }}>
-            Hello, Naa
+            Hello, Rebecca
           </Text>
 
           <TouchableOpacity
