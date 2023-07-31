@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginTop: 5,
-    fontFamily: 'Poppins',
     position: 'relative',
   },
   textInput: {

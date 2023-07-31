@@ -50,7 +50,6 @@ const CompleteTask = ({ navigation }) => {
           style={{
             fontSize: 28,
             fontFamily: 'Poppins-Bold',
-            fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
             paddingTop: 20,
