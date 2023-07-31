@@ -53,7 +53,6 @@ const VerificationFeedback = ({ navigation }) => {
           style={{
             fontSize: 28,
             fontFamily: 'Poppins-SemiBold',
-            fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
             paddingTop: 20,
@@ -65,7 +64,6 @@ const VerificationFeedback = ({ navigation }) => {
           style={{
             fontSize: 20,
             fontFamily: 'Poppins-Medium',
-            fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
             paddingTop: 10,
@@ -111,7 +109,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    fontFamily: 'Poppins',
   },
   image: {
     flex: 1,
