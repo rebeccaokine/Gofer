@@ -36,7 +36,7 @@ const VerificationFeedback = ({ navigation }) => {
               fontSize: 26,
               color: 'black',
               textAlign: 'center',
-              fontWeight: 600,
+              fontFamily: 'Poppins-SemiBold',
             }}>
             Profile Under Review
           </Text>
