@@ -35,7 +35,7 @@ const StartErrand = ({ navigation }) => {
                 marginTop: 5,
                 marginBottom: 30,
                 fontSize: 22,
-                fontWeight: 600,
+                fontFamily: 'Poppins-SemiBold',
               }}>
               You are about to start Home Cleaning at East Legon Boundary Road.
             </Text>
@@ -72,7 +72,7 @@ const StartErrand = ({ navigation }) => {
                 borderColor: 'black',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontWeight: '500',
+                fontFamily: 'Poppins-Medium',
               }}>
               <Text
                 style={{
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '400',
+    fontFamily: 'Poppins-SemiBold',
     marginLeft: 15,
   },
   mapContainer: {
