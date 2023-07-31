@@ -48,7 +48,7 @@ const ViewHirerProfile = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: 600,
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 Name
               </Text>
@@ -57,7 +57,7 @@ const ViewHirerProfile = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 24,
-                fontWeight: 600,
+                fontFamily: 'Poppins-Regular',
               }}>
               Dereck Griffin
             </Text>
@@ -67,7 +67,7 @@ const ViewHirerProfile = ({ navigation }) => {
               style={{
                 fontSize: 20,
                 color: 'grey',
-                fontWeight: 600,
+                fontFamily: 'Poppins-Medium',
               }}>
               Email
             </Text>
@@ -75,7 +75,7 @@ const ViewHirerProfile = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 22,
-                fontWeight: '400',
+                fontFamily: 'Poppins-Regular',
               }}>
               dereckgriffin@gmail.com
             </Text>
