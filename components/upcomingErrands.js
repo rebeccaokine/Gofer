@@ -26,7 +26,7 @@ const UpcomingErrands = ({navigation}) => {
             <Text
               style={{
                 fontSize: 18,
-                fontFamily: 'Poppins-SemiBold',
+                fontFamily: 'Poppins-Medium',
               }}>
               Monday, 20th August
             </Text>
@@ -34,7 +34,7 @@ const UpcomingErrands = ({navigation}) => {
               style={{
                 fontSize: 18,
                 color: '#26AD5C',
-                fontFamily: 'Poppins-SemiBold',
+                fontFamily: 'Poppins-Medium',
               }}>
               {' '}
               6:00am
