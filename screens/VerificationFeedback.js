@@ -52,7 +52,7 @@ const VerificationFeedback = ({ navigation }) => {
         <Text
           style={{
             fontSize: 28,
-            fontWeight: 'bold',
+            fontFamily: 'Poppins-SemiBold',
             fontFamily: 'Poppins',
             textAlign: 'center',
             color: 'black',
