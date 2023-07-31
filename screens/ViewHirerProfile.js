@@ -91,7 +91,7 @@ const ViewHirerProfile = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   color: 'grey',
-                  fontWeight: '400',
+                  fontFamily: 'Poppins-Medium',
                 }}>
                 Date
               </Text>
@@ -99,7 +99,7 @@ const ViewHirerProfile = ({ navigation }) => {
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontWeight: '400',
+                  fontFamily: 'Poppins-Regular',
                 }}>
                 0245637389
               </Text>
