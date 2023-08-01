@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import * as firebase from 'firebase';
+import * as Facebook from 'expo-facebook'; // Import Facebook library
+import * as Google from 'expo-google-app-auth'; // Import Google library
+import * as AppleAuthentication from 'expo-apple-authentication'; // Import Apple Authentication library
 import {
   View,
   Text,
@@ -23,12 +27,25 @@ const Login = ({ navigation }) => {
     }
   };
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const handleLogin = () => {
-    if (activeOption === 'gofer') {
-      navigation.navigate('GoferHome');
-    } else {
-      navigation.navigate('HirerHome');
-    }
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Login successful, navigate to the appropriate screen
+        if (activeOption === 'gofer') {
+          navigation.navigate('GoferHome');
+        } else {
+          navigation.navigate('HirerHome');
+        }
+      })
+      .catch((error) => {
+        // Handle login errors (invalid credentials, network error, etc.)
+        console.log(error);
+      });
   };
 
   return (
