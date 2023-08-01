@@ -36,8 +36,24 @@ import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
+import * as firebase from 'firebase';
+import 'firebase/auth';
 
 export default function App() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyCoTiHaUtOLEJ4QHK1AN0Jlqn3B0_pMSc4",
+    authDomain: "gofer-9f589.firebaseapp.com",
+    projectId: "gofer-9f589",
+    storageBucket: "gofer-9f589.appspot.com",
+    messagingSenderId: "347637832247",
+    appId: "1:347637832247:web:182c256572e9224826bdb2",
+    measurementId: "G-REZDTYXL1S"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  
   const MainNavigator = createStackNavigator();
   
   const loadFonts = async () => {
