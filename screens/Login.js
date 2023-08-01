@@ -48,6 +48,108 @@ const Login = ({ navigation }) => {
       });
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await Google.logInAsync({
+        androidClientId: 'YOUR_ANDROID_CLIENT_ID',
+        iosClientId: 'YOUR_IOS_CLIENT_ID',
+        scopes: ['profile', 'email'],
+      });
+
+      if (result.type === 'success') {
+        const credential = firebase.auth.GoogleAuthProvider.credential(
+          result.idToken,
+          result.accessToken
+        );
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .then((userCredential) => {
+            // Login successful, navigate to the appropriate screen
+            if (activeOption === 'gofer') {
+              navigation.navigate('GoferHome');
+            } else {
+              navigation.navigate('HirerHome');
+            }
+          })
+          .catch((error) => {
+            // Handle login errors
+            console.log(error);
+          });
+      }
+    } catch (e) {
+      console.log('Google Login Error:', e);
+    }
+  };
+
+  const handleAppleLogin = async () => {
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [AppleAuthentication.AppleAuthenticationScope.FULL_NAME, AppleAuthentication.AppleAuthenticationScope.EMAIL],
+      });
+
+      if (credential) {
+        const { identityToken, email, user } = credential;
+
+        const provider = new firebase.auth.OAuthProvider('apple.com');
+        const appleCredential = provider.credential({
+          idToken: identityToken,
+        });
+
+        firebase
+          .auth()
+          .signInWithCredential(appleCredential)
+          .then((userCredential) => {
+            // Login successful, navigate to the appropriate screen
+            if (activeOption === 'gofer') {
+              navigation.navigate('GoferHome');
+            } else {
+              navigation.navigate('HirerHome');
+            }
+          })
+          .catch((error) => {
+            // Handle login errors
+            console.log(error);
+          });
+      }
+    } catch (e) {
+      console.log('Apple Login Error:', e);
+    }
+  };
+
+  const handleFacebookLogin = async () => {
+    try {
+      await Facebook.initializeAsync({
+        appId: 'YOUR_FACEBOOK_APP_ID',
+      });
+
+      const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile', 'email'],
+      });
+
+      if (type === 'success') {
+        const credential = firebase.auth.FacebookAuthProvider.credential(token);
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .then((userCredential) => {
+            // Login successful, navigate to the appropriate screen
+            if (activeOption === 'gofer') {
+              navigation.navigate('GoferHome');
+            } else {
+              navigation.navigate('HirerHome');
+            }
+          })
+          .catch((error) => {
+            // Handle login errors
+            console.log(error);
+          });
+      }
+    } catch ({ message }) {
+      console.log(`Facebook Login Error: ${message}`);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.toggleContainer}>
