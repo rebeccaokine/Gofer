@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 const SearchButton = ({ placeholder }) => {
@@ -10,20 +10,27 @@ const SearchButton = ({ placeholder }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        placeholder={placeholder}
-        value={text}
-        onChangeText={handleChangeText}
-      />
-      <Feather 
-      name="search" 
-      size={24} 
-      color="black" 
-      style={styles.icon} />
-    </View>
-  );
+    return (
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}
+      >
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <TextInput
+            style={styles.textInput}
+            placeholder={placeholder}
+            value={text}
+            onChangeText={handleChangeText}
+          />
+          <Feather
+            name="search"
+            size={24}
+            color="black"
+            style={styles.icon}
+          />
+        </ScrollView>
+      </KeyboardAvoidingView>
+    );
 };
 
 const styles = StyleSheet.create({
