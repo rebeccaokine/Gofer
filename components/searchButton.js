@@ -10,7 +10,6 @@ const SearchButton = ({ placeholder }) => {
   };
 
   return (
-    return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}
