@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  StyleSheet,
-  Pressable
-} from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
@@ -31,35 +24,22 @@ const Signup = ({ navigation }) => {
     }
   };
 
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.toggleContainer}>
         <TouchableOpacity
-          style={[
-            styles.button,
-            activeOption === 'gofer' && styles.activeButton,
-          ]}
-          onPress={handleToggle}>
-          <Text
-            style={[
-              styles.buttonText,
-              activeOption === 'gofer' && styles.activeButtonText,
-            ]}>
+          style={[styles.button, activeOption === 'gofer' && styles.activeButton]}
+          onPress={handleToggle}
+        >
+          <Text style={[styles.buttonText, activeOption === 'gofer' && styles.activeButtonText]}>
             Gofer
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[
-            styles.button,
-            activeOption === 'hirer' && styles.activeButton,
-          ]}
-          onPress={handleToggle}>
-          <Text
-            style={[
-              styles.buttonText,
-              activeOption === 'hirer' && styles.activeButtonText,
-            ]}>
+          style={[styles.button, activeOption === 'hirer' && styles.activeButton]}
+          onPress={handleToggle}
+        >
+          <Text style={[styles.buttonText, activeOption === 'hirer' && styles.activeButtonText]}>
             Hirer
           </Text>
         </TouchableOpacity>
@@ -72,43 +52,22 @@ const Signup = ({ navigation }) => {
             fontFamily: 'Poppins-SemiBold',
             marginHorizontal: 30,
             marginTop: 40,
-            marginBottom: 10,
+            marginBottom: 30,
             textAlign: 'center',
-          }}>
-          Sign Up
+          }}
+        >
+          Signup
         </Text>
       </View>
 
       <View>
-        <FormTextInput placeholder="Fullname" />
+        <FormTextInput placeholder="Name" />
         <FormTextInput placeholder="Email" />
         <PasswordInput placeholder="Password" />
       </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          marginHorizontal: 50,
-          alignSelf: 'flex-end',
-        }}>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('ForgotPassword');
-          }}>
-          <Text
-            style={{
-            fontSize: 16,
-            textAlign: 'center',
-            marginTop: 10,
-            fontFamily: 'Poppins-Regular',
-            }}>
-           {' '} Forgot Password?
-          </Text>
-        </Pressable>
-      </View>
-
       <TouchableOpacity
-      onPress={handleSignup}
+        onPress={handleSignup}
         style={{
           padding: 15,
           backgroundColor: '#F8EBD3',
@@ -120,13 +79,9 @@ const Signup = ({ navigation }) => {
           fontFamily: 'Poppins-Medium',
           marginTop: 10,
           marginHorizontal: 40,
-        }}>
-        <Text
-          style={{
-            fontSize: 20,
-          }}>
-          Sign Up
-        </Text>
+        }}
+      >
+        <Text style={{ fontSize: 20 }}>Signup</Text>
       </TouchableOpacity>
 
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -137,21 +92,25 @@ const Signup = ({ navigation }) => {
             textAlign: 'center',
             marginTop: 20,
             fontFamily: 'Poppins-Regular',
-          }}>
+          }}
+        >
           Already have an account?
         </Text>
         <Pressable
           onPress={() => {
             navigation.navigate('Login');
-          }}>
+          }}
+        >
           <Text
             style={{
-             fontSize: 16,
-            textAlign: 'center',
-            marginTop: 20,
-            fontFamily: 'Poppins-Regular',
-            }}>
-           {' '} Login
+              fontSize: 16,
+              textAlign: 'center',
+              marginTop: 20,
+              fontFamily: 'Poppins-Regular',
+            }}
+          >
+            {' '}
+            Login
           </Text>
         </Pressable>
       </View>
@@ -160,10 +119,11 @@ const Signup = ({ navigation }) => {
         style={{
           fontSize: 16,
           color: 'gray',
-          marginTop: 35,
+          marginTop: 60,
           textAlign: 'center',
           fontFamily: 'Poppins-Regular',
-        }}>
+        }}
+      >
         Or connect with
       </Text>
 
@@ -171,9 +131,10 @@ const Signup = ({ navigation }) => {
         style={{
           flexDirection: 'row',
           marginHorizontal: 40,
-          marginTop: 10,
+          marginTop: 15,
           justifyContent: 'center',
-        }}>
+        }}
+      >
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Onboarding2');
@@ -189,7 +150,8 @@ const Signup = ({ navigation }) => {
             width: 60,
             height: 60,
             marginRight: 10,
-          }}>
+          }}
+        >
           <AntDesign name="google" size={42} color="black" />
         </TouchableOpacity>
 
@@ -208,7 +170,8 @@ const Signup = ({ navigation }) => {
             width: 60,
             height: 60,
             marginRight: 10,
-          }}>
+          }}
+        >
           <FontAwesome name="apple" size={42} color="black" />
         </TouchableOpacity>
 
@@ -226,7 +189,8 @@ const Signup = ({ navigation }) => {
             alignItems: 'center',
             width: 60,
             height: 60,
-          }}>
+          }}
+        >
           <FontAwesome name="facebook" size={42} color="black" />
         </TouchableOpacity>
       </View>
@@ -237,7 +201,7 @@ const Signup = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',  
+    backgroundColor: '#F8EBD3',
   },
   toggleContainer: {
     flexDirection: 'row',
