@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import * as firebase from 'firebase';
-import * as Facebook from 'expo-facebook'; // Import Facebook library
-import * as Google from 'expo-google-app-auth'; // Import Google library
-import * as AppleAuthentication from 'expo-apple-authentication'; // Import Apple Authentication library
 import {
   View,
   Text,
