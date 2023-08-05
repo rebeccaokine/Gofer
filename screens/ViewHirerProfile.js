@@ -119,13 +119,14 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginVertical: 20,
-    marginHorizontal: 20,
+    marginVertical: 40,
+    marginHorizontal: 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
+    marginHorizontal: 20,
   },
   backButton: {
     marginRight: 40,
@@ -133,13 +134,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontFamily: 'Poppins-SemiBold',
-    marginLeft: 15,
+    fontFamily: 'Poppins-Medium',
+    marginLeft: 5,
   },
   hirerInformation: {
     flex: 1,
     marginTop: 20,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   image: {
     alignSelf: 'center',

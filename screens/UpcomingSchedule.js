@@ -26,7 +26,7 @@ const UpcomingSchedule = ({navigation}) => {
           }}>
           <TouchableOpacity
             onPress={() => {
-            navigation.navigate('Home');
+            navigation.navigate('GoferHome');
           }}
             style={{
               marginRight: 40,

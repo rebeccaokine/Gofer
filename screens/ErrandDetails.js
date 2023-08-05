@@ -80,7 +80,7 @@ const ErrandDetails = ({ navigation }) => {
             </Text>
           </View>
           {/**DESCRIPTION*/}
-          <View style={{ marginTop: 20 }}>
+          <View style={{ marginTop: 10 }}>
             <Text
               style={{
                 fontSize: 20,
@@ -102,7 +102,7 @@ const ErrandDetails = ({ navigation }) => {
           {/**DATE and TIME*/}
           <View
             style={{
-              marginTop: 20,
+              marginTop: 10,
               flexDirection: 'row',
               justifyContent:'space-between',
             }}>
@@ -168,7 +168,7 @@ const ErrandDetails = ({ navigation }) => {
                   navigation.navigate('BookingConfirmation');
                 }}
                 style={{
-                  marginTop: 40,
+                  marginTop: 10,
                   padding: 10,
                   backgroundColor: '#F8EBD3',
                   borderRadius: 30,
@@ -177,6 +177,7 @@ const ErrandDetails = ({ navigation }) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   fontFamily: 'Poppins-Medium',
+                  marginHorizontal: 20,
                 }}>
                 <Text
                   style={{
@@ -199,13 +200,14 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginVertical: 20,
-    marginHorizontal: 20,
+    marginVertical: 40,
+    marginHorizontal: 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
+    marginHorizontal: 20,
   },
   backButton: {
     marginRight: 40,
@@ -218,8 +220,9 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: 230,
-    borderRadius: 10,
+    borderRadius: 15,
     overflow: 'hidden',
+    marginHorizontal: 20,
   },
   map: {
     flex: 1,
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
   hirerInformation: {
     flex: 1,
     marginTop: 30,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
 });
 

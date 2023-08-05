@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   hirerInformation: {
     flex: 1,
     marginTop: 20,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   image: {
     alignSelf: 'center',

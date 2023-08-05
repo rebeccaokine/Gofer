@@ -69,23 +69,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
-    padding: 20,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
-    marginHorizontal: 20,
-    marginVertical: 20,
+    marginHorizontal: 30,
+    marginVertical: 40,
   },
   backButton: {
     marginRight: 10,
   },
   title: {
-    fontSize: 26,
+    fontSize: 32,
     color: 'black',
-    fontFamily: 'Poppins-SemiBold',
-    marginLeft: 65,
+    fontFamily: 'Poppins-Medium',
+    marginLeft: 40,
   },
   messagesContainer: {
     flex: 1,
