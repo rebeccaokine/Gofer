@@ -164,12 +164,13 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     marginVertical: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
+    marginHorizontal: 20,
   },
   backButton: {
     marginRight: 40,
@@ -177,8 +178,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontFamily: 'Poppins-SemiBold',
-    marginLeft: 55,
+    fontFamily: 'Poppins-Medium',
+    marginLeft: 45,
     marginVertical: 20,
   },
   hirerInformation: {
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
   overlay: {
   position: 'absolute',
   top: 0,
-  left: 100,
+  left: 110,
   width: 150,
   height: 150,
   backgroundColor: 'rgba(0, 0, 0, 0.5)', 
