@@ -17,7 +17,7 @@ const HomeCleaning = ({ navigation }) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 40,
           marginHorizontal: 20,
         }}>
         <View
@@ -29,7 +29,7 @@ const HomeCleaning = ({ navigation }) => {
               navigation.navigate('GoferHome');
             }}
             style={{
-              marginRight: 40,
+              marginRight: 25,
             }}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
@@ -37,7 +37,7 @@ const HomeCleaning = ({ navigation }) => {
             style={{
               fontSize: 32,
               color: 'black',
-              marginBottom: 30,
+              marginBottom: 20,
               textAlign: 'center',
               fontFamily: 'Poppins-SemiBold',
             }}>
