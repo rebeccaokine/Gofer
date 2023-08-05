@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     fontFamily: 'Poppins-Medium',
-    marginLeft: 55,
+    marginLeft: 45,
     marginVertical: 20,
   },
   details: {

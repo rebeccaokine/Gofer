@@ -39,7 +39,7 @@ const HomeCleaning = ({ navigation }) => {
               color: 'black',
               marginBottom: 20,
               textAlign: 'center',
-              fontFamily: 'Poppins-SemiBold',
+              fontFamily: 'Poppins-Medium',
             }}>
             Home Cleaning
           </Text>

@@ -39,8 +39,8 @@ const UpcomingSchedule = ({navigation}) => {
               fontSize: 32,
               color: 'black',
               marginBottom: 30,
-              fontFamily: 'Poppins-SemiBold',
-              marginLeft: 35,
+              fontFamily: 'Poppins-Medium',
+              marginLeft: 30,
             }}>
             Schedule
           </Text>
