@@ -15,7 +15,7 @@ const RateHirer = ({ navigation }) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 40,
           marginHorizontal: 20,
         }}>
         <View
@@ -37,7 +37,7 @@ const RateHirer = ({ navigation }) => {
               color: 'black',
               marginLeft: 30,
               textAlign: 'center',
-              fontFamily: 'Poppins-SemiBold',
+              fontFamily: 'Poppins-Medium',
             }}>
             Rate Hirer
           </Text>
@@ -139,7 +139,8 @@ const RateHirer = ({ navigation }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontFamily: 'Poppins-Medium',
-                marginTop: 200,
+                marginTop: 140,
+                marginHorizontal: 20,
               }}>
               <Text
                 style={{
