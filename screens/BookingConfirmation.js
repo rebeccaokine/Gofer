@@ -21,6 +21,7 @@ const BookingConfirmation = ({ navigation }) => {
         <View
           style={{
             flexDirection: 'row',
+            marginHorizontal: 10,
           }}>
          <TouchableOpacity
             onPress={() => {
@@ -36,7 +37,7 @@ const BookingConfirmation = ({ navigation }) => {
               fontSize: 32,
               color: 'black',
               textAlign: 'center',
-              fontFamily: 'Poppins-SemiBold',
+              fontFamily: 'Poppins-Medium',
             }}>
             Confirmation
           </Text>

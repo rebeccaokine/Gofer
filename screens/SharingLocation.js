@@ -50,7 +50,7 @@ const SharingLocation = ({ navigation }) => {
                 navigation.navigate('CompleteTask');
               }}
               style={{
-                marginTop: 30,
+                marginTop: 12,
                 padding: 10,
                 backgroundColor: '#F8EBD3',
                 borderRadius: 30,
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginVertical: 20,
+    marginVertical: 40,
+    marginHorizontal: 10,
   },
   header: {
     flexDirection: 'row',
@@ -90,11 +91,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   backButton: {
-    marginRight: 40,
+    marginRight: 20,
   },
   title: {
     fontSize: 32,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Poppins-Medium',
   },
   mapContainer: {
     height: 600,

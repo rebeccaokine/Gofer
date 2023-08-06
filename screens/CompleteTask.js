@@ -21,10 +21,11 @@ const CompleteTask = ({ navigation }) => {
         <View
           style={{
             flexDirection: 'row',
+            marginHorizontal: 10,
           }}>
           <TouchableOpacity
             style={{
-              marginRight: 40,
+              marginRight: 25,
             }}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
@@ -32,8 +33,7 @@ const CompleteTask = ({ navigation }) => {
             style={{
               fontSize: 32,
               color: 'black',
-              textAlign: 'center',
-              fontFamily: 'Poppins-SemiBold',
+              fontFamily: 'Poppins-Medium',
             }}>
             Complete Task
           </Text>

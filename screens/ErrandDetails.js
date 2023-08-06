@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: 230,
-    borderRadius: 15,
+    borderRadius: 10,
     overflow: 'hidden',
     marginHorizontal: 20,
   },
