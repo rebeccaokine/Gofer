@@ -36,16 +36,13 @@ import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthContext } from './components/AuthContext';
 
 
 export default function App() {
  
   const MainNavigator = createStackNavigator();
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [userToken, setUserToken] = useState(null);
   
   const loadFonts = async () => {
     await useFonts({
@@ -74,19 +71,9 @@ export default function App() {
 
   const authContext = React.useMemo(() => ({
     signIn: async (email, password) => {
-      const auth = getAuth();
       try {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password); // Use auth here
         setUserToken('actual-user-token');
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    signOut: async () => {
-      const auth = getAuth();
-      try {
-        await signOut(auth);
-        setUserToken(null);
       } catch (error) {
         console.error(error);
       }
@@ -102,12 +89,14 @@ export default function App() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoading(false); // Set isLoading to false once authentication check is done
       if (user) {
-        setUserToken('dummy-token'); // Replace 'dummy-token' with the actual user token
+        setUserToken('actual-user-token');
       } else {
         setUserToken(null);
       }
     });
+    
   
     // Clean up the observer when the component unmounts
     return () => unsubscribe();
