@@ -4,9 +4,12 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
+import firebase from '../firebaseConfig';
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleToggle = () => {
     if (activeOption === 'gofer') {
@@ -17,11 +20,21 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    if (activeOption === 'gofer') {
-      navigation.navigate('GoferHome');
-    } else {
-      navigation.navigate('HirerHome');
-    }
+    const auth = getAuth(app); // Import getAuth from firebase/auth
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Authentication successful, navigate to the appropriate screen
+        if (activeOption === 'gofer') {
+          navigation.navigate('GoferHome');
+        } else {
+          navigation.navigate('HirerHome');
+        }
+      })
+      .catch((error) => {
+        // Handle login errors
+        console.log(error);
+      });
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { TextInput, StyleSheet, KeyboardAvoidingView, Platform, } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 const SearchButton = ({ placeholder }) => {
@@ -10,25 +10,19 @@ const SearchButton = ({ placeholder }) => {
   };
 
   return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'android' ? 'padding' : 'height'}
-        style={styles.container}
-      >
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={placeholder}
-            value={text}
-            onChangeText={handleChangeText}
-          />
-          <Feather
-            name="search"
-            size={24}
-            color="black"
-            style={styles.icon}
-          />
-        </ScrollView>
-      </KeyboardAvoidingView>
+    <KeyboardAvoidingView
+    behavior={Platform.OS === 'android' ? 'padding' : 'height'}
+    style={styles.container}
+  >
+    <TextInput
+      style={styles.textInput}
+      placeholder={placeholder}
+      value={text}
+      onChangeText={handleChangeText}
+      keyboardShouldPersistTaps="handled"
+    />
+    <Feather name="search" size={24} color="black" style={styles.icon} />
+    </KeyboardAvoidingView>
     );
 };
 

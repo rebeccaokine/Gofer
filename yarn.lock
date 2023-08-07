@@ -1630,7 +1630,7 @@
   resolved "https://registry.yarnpkg.com/@firebase/auth-types/-/auth-types-0.12.0.tgz#f28e1b68ac3b208ad02a15854c585be6da3e8e79"
   integrity sha512-pPwaZt+SPOshK8xNoiQlK5XIrS97kFYc3Rc7xmy373QsOJ9MmqXxLaYssP5Kcds4wd2qK//amx/c+A8O2fVeZA==
 
-"@firebase/auth@1.1.0":
+"@firebase/auth@1.1.0", "@firebase/auth@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@firebase/auth/-/auth-1.1.0.tgz#106cad08f977245e641642ac9b7c3a2dae46400d"
   integrity sha512-5RJQMXG0p/tSvtqpfM8jA+heELjVCgHHASq3F7NglAa/CWUGCAE4g2F4YDPW5stDkvtKKRez0WYAWnbcuQ5P4w==
