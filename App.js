@@ -36,8 +36,7 @@ import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
-import { AuthContext } from './components/AuthContext';
+
 
 
 export default function App() {
@@ -69,42 +68,8 @@ export default function App() {
 
   loadFonts(); // Call the font loading function
 
-  const authContext = React.useMemo(() => ({
-    signIn: async (email, password) => {
-      try {
-        await signInWithEmailAndPassword(auth, email, password); // Use auth here
-        setUserToken('actual-user-token');
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  }), []);
-  
-
-  if (isLoading) {
-    return <SplashScreen />;
-  }
-
-  const auth = getAuth();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoading(false); // Set isLoading to false once authentication check is done
-      if (user) {
-        setUserToken('actual-user-token');
-      } else {
-        setUserToken(null);
-      }
-    });
-    
-  
-    // Clean up the observer when the component unmounts
-    return () => unsubscribe();
-  }, []);
-
 
   return (
-    <AuthContext.Provider value={authContext}>
     <View style ={{flex: 1}}>
       <StatusBar style="auto" />
       <NavigationContainer>
@@ -147,6 +112,5 @@ export default function App() {
       </NavigationContainer> 
       
     </View>
-    </AuthContext.Provider>
   );
 }
