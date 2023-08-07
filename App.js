@@ -37,8 +37,6 @@ import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
 
-
-
 export default function App() {
  
   const MainNavigator = createStackNavigator();
