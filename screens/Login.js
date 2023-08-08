@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-import firebase from '../firebaseConfig';
+
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
