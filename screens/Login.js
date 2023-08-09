@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Import Firebase auth functions
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    const auth = getAuth(app); // Import getAuth from firebase/auth
+    const auth = getAuth(); // Initialize Firebase auth instance
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -74,8 +74,8 @@ const Login = ({ navigation }) => {
       </View>
 
       <View>
-        <FormTextInput placeholder="Email" />
-        <PasswordInput placeholder="Password" />
+      <FormTextInput placeholder="Email" onChangeText={setEmail} />
+      <PasswordInput placeholder="Password" onChangeText={setPassword} />
       </View>
 
       <View style={{ flexDirection: 'row', marginHorizontal: 50, alignSelf: 'flex-end' }}>

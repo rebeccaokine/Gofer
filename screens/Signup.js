@@ -4,9 +4,13 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 const Signup = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleToggle = () => {
     if (activeOption === 'gofer') {
@@ -16,11 +20,21 @@ const Signup = ({ navigation }) => {
     }
   };
 
-  const handleSignup = () => {
-    if (activeOption === 'gofer') {
-      navigation.navigate('GoferHome');
-    } else {
-      navigation.navigate('HirerHome');
+  const handleSignup = async () => {
+    console.log('Email:', email);
+    const auth = getAuth(); // Initialize Firebase auth instance
+  
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // User account creation successful, you can now navigate to the appropriate screen
+      if (activeOption === 'gofer') {
+        navigation.navigate('GoferHome');
+      } else {
+        navigation.navigate('HirerHome');
+      }
+    } catch (error) {
+      // Handle signup errors
+      console.log(error);
     }
   };
 
@@ -61,9 +75,21 @@ const Signup = ({ navigation }) => {
       </View>
 
       <View>
-        <FormTextInput placeholder="Name" />
-        <FormTextInput placeholder="Email" />
-        <PasswordInput placeholder="Password" />
+        <FormTextInput
+          placeholder="Fullname"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
+        <FormTextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <PasswordInput
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
       </View>
 
       <TouchableOpacity
@@ -119,7 +145,7 @@ const Signup = ({ navigation }) => {
         style={{
           fontSize: 16,
           color: 'gray',
-          marginTop: 60,
+          marginTop: 40,
           textAlign: 'center',
           fontFamily: 'Poppins-Regular',
         }}
