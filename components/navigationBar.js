@@ -18,36 +18,31 @@ const Navigationbar = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'Home' && styles.activeTab]}
-        onPress={() => navigateToScreen('GoferHome')}
-      >
-        <Foundation name="home" size={30} color={activeTab === 'Home' ? 'black' : '#00B2FF'} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'UpcomingSchedule' && styles.activeTab]}
-        onPress={() => navigateToScreen('UpcomingSchedule')}
-      >
-        <FontAwesome name="list-ul" size={24}  color={activeTab === 'UpcomingSchedule' ? 'black' : '#00B2FF' } />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'AddErrand' && styles.activeTab]}
-        onPress={() => navigateToScreen('AddErrand')}
-      >
-        <FontAwesome name="plus" size={30} color={activeTab === 'AddErrand' ? 'black' : '#00B2FF'} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'Profile' && styles.activeTab]}
-        onPress={() => navigateToScreen('Profile')}
-      >
-       <Ionicons name="person" size={26} color={activeTab === 'Profile' ? 'black' : '#00B2FF'} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'Messages' && styles.activeTab]}
-        onPress={() => navigateToScreen('Messages')}
-      >
-        <MaterialCommunityIcons name="message-processing" size={24} color={activeTab === 'Messages' ? 'black' : '#00B2FF'} />
-      </TouchableOpacity>
+    <TouchableOpacity
+      style={[styles.tab, activeTab === 'Home' && styles.activeTab]}
+      onPress={() => navigateToScreen('GoferHome')}
+    >
+      <Foundation name="home" size={30} color={activeTab === 'Home' ? '#00B2FF' : 'black'} />
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={[styles.tab, activeTab === 'UpcomingSchedule' && styles.activeTab]}
+      onPress={() => navigateToScreen('UpcomingSchedule')}
+    >
+      <FontAwesome name="list-ul" size={24} color={activeTab === 'UpcomingSchedule' ? '#00B2FF' : 'black'} />
+    </TouchableOpacity>
+    
+    <TouchableOpacity
+      style={[styles.tab, activeTab === 'Profile' && styles.activeTab]}
+      onPress={() => navigateToScreen('Profile')}
+    >
+     <Ionicons name="person" size={26} color={activeTab === 'Profile' ? '#00B2FF' : 'black'} />
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={[styles.tab, activeTab === 'Messages' && styles.activeTab]}
+      onPress={() => navigateToScreen('Messages')}
+    >
+      <MaterialCommunityIcons name="message-processing" size={24} color={activeTab === 'Messages' ? '#00B2FF' : 'black'} />
+    </TouchableOpacity>
     </View>
   );
 };
@@ -60,7 +55,7 @@ const styles = {
     borderRadius: 30,
     borderWidth: 2,
     borderColor: 'black',
-    marginHorizontal: 40,
+    marginHorizontal: 60,
     marginBottom: 10,
     position: 'fixed',
     bottom: 0,

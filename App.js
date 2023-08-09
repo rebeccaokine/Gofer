@@ -46,10 +46,10 @@ export default function App() {
   const [ user, setUser ] = useState();
   
   // Handle user state changes
-  function onAuthStateChanges(user){
-    setUser(user);
+  function onAuthStateChanges(authUser) {
+    setUser(authUser);
     if (initializing) setInitializing(false);
-  }
+  } 
 
   useEffect(()=> {
     const subscriber =firebase.auth().onAuthStateChanged(onAuthStateChanges);

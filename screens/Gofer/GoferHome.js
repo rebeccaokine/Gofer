@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -12,8 +12,27 @@ import Categories from '../../components/categories';
 import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const GoferHome = ({navigation}) => {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is logged in, set the user's name
+        console.log("User Display Name:", user.displayName);
+        setUserName(user.displayName);
+      }
+    });
+
+    return () => {
+      // Unsubscribe when the component is unmounted
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -34,7 +53,7 @@ const GoferHome = ({navigation}) => {
               fontSize: 24,
               fontFamily: 'Poppins-SemiBold',
             }}>
-            Hello, Rebecca
+            Hello, {userName}
           </Text>
 
           <TouchableOpacity
