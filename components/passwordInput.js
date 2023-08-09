@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-const PasswordInput = ({ placeholder }) => {
-  const [password, setPassword] = useState('');
-
-  const handlePasswordChange = (text) => {
-    setPassword(text);
-  };
+const PasswordInput = ({ placeholder, value, onChangeText }) => {
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        value={password}
-        onChangeText={handlePasswordChange}
+        value={value}
+        onChangeText={onChangeText}
         secureTextEntry={true}
         placeholder={placeholder}
       />
