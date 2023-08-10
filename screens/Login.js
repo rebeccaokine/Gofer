@@ -4,7 +4,10 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Import Firebase auth functions
+import { getAuth, signInWithEmailAndPassword, signInWithCredential } from 'firebase/auth'; // Import Firebase auth functions
+import * as GoogleSignIn, GoogleSigninButton,  statusCodes, from '@react-native-google-signin/google-signin'; // Import Google Sign-In
+import * as Facebook from 'expo-facebook'; // Import Facebook Sign-In
+import * as AppleAuthentication from 'expo-apple-authentication'; // Import Apple Sign-In
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -62,6 +65,76 @@ const Login = ({ navigation }) => {
           console.log(error);
         }
       });
+  };
+
+  const handleGoogleSignup = async () => {
+    try {
+      await GoogleSignIn.configure({
+        // Configure your Google Sign-In settings
+      });
+      
+      const { idToken } = await GoogleSignIn.signIn();
+      const googleCredential = GoogleAuthProvider.credential(idToken);
+
+      const auth = getAuth();
+      const userCredential = await signInWithCredential(auth, googleCredential);
+
+      if (activeOption === 'gofer') {
+        navigation.navigate('GoferHome');
+      } else {
+        navigation.navigate('HirerHome');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleFacebookSignup = async () => {
+    try {
+      await Facebook.initializeAsync({
+        // Initialize Facebook SDK
+      });
+
+      const { token } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile', 'email'],
+      });
+
+      if (token) {
+        const facebookCredential = FacebookAuthProvider.credential(token);
+        const auth = getAuth();
+        const userCredential = await signInWithCredential(auth, facebookCredential);
+
+        if (activeOption === 'gofer') {
+          navigation.navigate('GoferHome');
+        } else {
+          navigation.navigate('HirerHome');
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAppleSignup = async () => {
+    try {
+      const { identityToken } = await AppleAuthentication.signInAsync({
+        requestedScopes: [AppleAuthentication.AppleAuthenticationScope.FULL_NAME, AppleAuthentication.AppleAuthenticationScope.EMAIL],
+      });
+
+      if (identityToken) {
+        const appleCredential = AppleAuthProvider.credential(identityToken);
+        const auth = getAuth();
+        const userCredential = await signInWithCredential(auth, appleCredential);
+
+        if (activeOption === 'gofer') {
+          navigation.navigate('GoferHome');
+        } else {
+          navigation.navigate('HirerHome');
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -196,9 +269,7 @@ const Login = ({ navigation }) => {
         }}
       >
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+         onPress={handleGoogleSignup}
           style={{
             padding: 4,
             backgroundColor: '#F8EBD3',
@@ -216,9 +287,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+          onPress={handleAppleSignup}
           style={{
             padding: 6,
             backgroundColor: '#F8EBD3',
@@ -236,9 +305,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+          onPress={handleFacebookSignup}
           style={{
             padding: 10,
             backgroundColor: '#F8EBD3',
