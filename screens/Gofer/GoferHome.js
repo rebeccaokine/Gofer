@@ -15,7 +15,7 @@ import { Octicons } from '@expo/vector-icons';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const GoferHome = ({navigation}) => {
-  const [userName, setUserName] = useState('Rebecca');
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const auth = getAuth();

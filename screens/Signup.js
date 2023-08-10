@@ -11,6 +11,9 @@ const Signup = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleToggle = () => {
     if (activeOption === 'gofer') {
@@ -21,24 +24,52 @@ const Signup = ({ navigation }) => {
   };
 
   const handleSignup = async () => {
+    // Clear previous errors
+    setNameError('');
+    setEmailError('');
+    setPasswordError('');
+
+    // Validate user input
+    if (!name) {
+      setNameError('Please enter your full name');
+      return;
+    }
+
+    if (!email) {
+      setEmailError('Please enter email');
+      return;
+    }
+
+    if (!password) {
+      setPasswordError('Please enter password');
+      return;
+    }
+
     const auth = getAuth(); // Initialize Firebase auth instance
   
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        // Set the display name for the user
-    await updateProfile(userCredential.user, {
-      displayName: name, // Set the user's name from the input
-    });
+      // Set the display name for the user
+      await updateProfile(userCredential.user, {
+        displayName: name, // Set the user's name from the input
+      });
 
       // User account creation successful, you can now navigate to the appropriate screen
       if (activeOption === 'gofer') {
-        navigation.navigate('GoferHome');
+        navigation.navigate('GoferHome', { displayName: name });
       } else {
         navigation.navigate('HirerHome');
       }
     } catch (error) {
-      // Handle signup errors
-      console.log(error);
+      if (error.code === 'auth/invalid-email') {
+        setEmailError('Please enter a valid email address.');
+      } else if (error.code === 'auth/weak-password') {
+        setPasswordError('Password should be at least 6 characters long.');
+      } else if (error.code === 'auth/email-already-in-use') {
+        setEmailError('The email address is already in use by another account.');
+      } else {
+        console.log(error);
+      }
     }
   };
 
@@ -83,16 +114,19 @@ const Signup = ({ navigation }) => {
           placeholder="Fullname"
           value={name}
           onChangeText={(text) => setName(text)}
+          error={nameError}
         />
         <FormTextInput
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
+          error={emailError}
         />
         <PasswordInput
           placeholder="Password"
           value={password}
           onChangeText={(text) => setPassword(text)}
+          error={passwordError}
         />
       </View>
 

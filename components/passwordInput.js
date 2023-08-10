@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
 
-const PasswordInput = ({ placeholder, value, onChangeText }) => {
-
+const PasswordInput = ({ placeholder, value, onChangeText, error }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, error && styles.containerError]}>
       <TextInput
-        style={styles.input}
+        style={[styles.input, error && styles.inputError]}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={true}
         placeholder={placeholder}
       />
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };
@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     marginHorizontal: 40,
+  },
+  containerError: {
+    borderColor: 'red',
+    borderRadius: 30,
   },
   input: {
     borderWidth: 2,
@@ -31,6 +35,15 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     fontFamily: 'Poppins-Medium',
     color: 'gray',
+  },
+  inputError: {
+    borderColor: 'red',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
+    marginTop: 5,
+    marginLeft: 15,
   },
 });
 

@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 
-const FormTextInput = ({ placeholder,  value, onChangeText }) => {
- 
+const FormTextInput = ({ placeholder, value, onChangeText, error }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, error ? styles.containerError : null]}>
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, error ? styles.textInputError : null]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
       />
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };
@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 40,
     fontFamily: 'Poppins-Medium',
+  },
+  containerError: {
+    borderColor: 'red',
+    borderRadius: 30,
   },
   textInput: {
     borderWidth: 2,
@@ -31,6 +35,16 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     color: 'gray',
   },
+  textInputError: {
+    borderColor: 'red',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
+    marginTop: 5,
+    marginLeft: 15,
+  },
 });
 
 export default FormTextInput;
+

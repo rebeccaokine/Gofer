@@ -30,12 +30,12 @@ const Login = ({ navigation }) => {
  
      // Validate email and password
      if (!email) {
-       setEmailError('Please enter a valid email.');
+       setEmailError('Please enter email');
        return;
      }
  
      if (!password) {
-       setPasswordError('Please enter a valid password.');
+       setPasswordError('Please enter password');
        return;
      }
  
@@ -44,8 +44,7 @@ const Login = ({ navigation }) => {
       .then((userCredential) => {
          // Fetch the currently signed-in user
         const user = auth.currentUser;
-        const displayName = user.displayName;
-
+        
         // Authentication successful, navigate to the appropriate screen
         if (activeOption === 'gofer') {
           navigation.navigate('GoferHome');
@@ -55,7 +54,13 @@ const Login = ({ navigation }) => {
       })
       .catch((error) => {
         // Handle login errors
-        console.log(error);
+        if (error.code === 'auth/invalid-email') {
+          setEmailError('Please enter a valid email.');
+        } else if (error.code === 'auth/wrong-password') {
+          setPasswordError('Please enter a valid password.');
+        } else {
+          console.log(error);
+        }
       });
   };
 
@@ -96,10 +101,8 @@ const Login = ({ navigation }) => {
       </View>
 
       <View>
-       <FormTextInput placeholder="Email" onChangeText={setEmail} />
-       {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-       <PasswordInput placeholder="Password" onChangeText={setPassword} />
-       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+       <FormTextInput placeholder="Email" onChangeText={setEmail} error={emailError} />
+       <PasswordInput placeholder="Password" onChangeText={setPassword} error={passwordError} />
       </View>
 
 
@@ -289,12 +292,7 @@ const styles = StyleSheet.create({
   },
   activeButtonText: {
     color: 'white',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 32,
-   
-  },
+  }
 });
 
 export default Login;
