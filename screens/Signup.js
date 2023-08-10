@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 
 const Signup = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -21,7 +21,6 @@ const Signup = ({ navigation }) => {
   };
 
   const handleSignup = async () => {
-    console.log('Email:', email); //Remove later
     const auth = getAuth(); // Initialize Firebase auth instance
   
     try {

@@ -10,6 +10,8 @@ const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleToggle = () => {
     if (activeOption === 'gofer') {
@@ -20,10 +22,30 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = () => {
+    console.log('Email:', email);
+    console.log('Password:', password);
+     // Clear previous errors
+     setEmailError('');
+     setPasswordError('');
+ 
+     // Validate email and password
+     if (!email) {
+       setEmailError('Please enter a valid email.');
+       return;
+     }
+ 
+     if (!password) {
+       setPasswordError('Please enter a valid password.');
+       return;
+     }
+ 
     const auth = getAuth(); // Initialize Firebase auth instance
-
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+         // Fetch the currently signed-in user
+        const user = auth.currentUser;
+        const displayName = user.displayName;
+
         // Authentication successful, navigate to the appropriate screen
         if (activeOption === 'gofer') {
           navigation.navigate('GoferHome');
@@ -74,9 +96,12 @@ const Login = ({ navigation }) => {
       </View>
 
       <View>
-      <FormTextInput placeholder="Email" onChangeText={setEmail} />
-      <PasswordInput placeholder="Password" onChangeText={setPassword} />
+       <FormTextInput placeholder="Email" onChangeText={setEmail} />
+       {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+       <PasswordInput placeholder="Password" onChangeText={setPassword} />
+       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
       </View>
+
 
       <View style={{ flexDirection: 'row', marginHorizontal: 50, alignSelf: 'flex-end' }}>
         <Pressable
@@ -264,6 +289,11 @@ const styles = StyleSheet.create({
   },
   activeButtonText: {
     color: 'white',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 32,
+   
   },
 });
 
