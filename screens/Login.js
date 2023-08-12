@@ -65,15 +65,80 @@ const Login = ({ navigation }) => {
           console.log(error);
         }
       });
+
+      const handleGoogleSignup = async () => {
+        try {
+          await GoogleSignIn.configure({
+            // Configure your Google Sign-In settings
+          });
+          
+          const { idToken } = await GoogleSignIn.signIn();
+          const googleCredential = GoogleAuthProvider.credential(idToken);
+    
+          const auth = getAuth();
+          const userCredential = await signInWithCredential(auth, googleCredential);
+    
+          if (activeOption === 'gofer') {
+            navigation.navigate('GoferHome');
+          } else {
+            navigation.navigate('HirerHome');
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      const handleFacebookSignup = async () => {
+        try {
+          await Facebook.initializeAsync({
+            // Initialize Facebook SDK
+          });
+    
+          const { token } = await Facebook.logInWithReadPermissionsAsync({
+            permissions: ['public_profile', 'email'],
+          });
+    
+          if (token) {
+            const facebookCredential = FacebookAuthProvider.credential(token);
+            const auth = getAuth();
+            const userCredential = await signInWithCredential(auth, facebookCredential);
+    
+            if (activeOption === 'gofer') {
+              navigation.navigate('GoferHome');
+            } else {
+              navigation.navigate('HirerHome');
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+
+      const handleAppleSignup = async () => {
+        try {
+          const { identityToken } = await AppleAuthentication.signInAsync({
+            requestedScopes: [AppleAuthentication.AppleAuthenticationScope.FULL_NAME, AppleAuthentication.AppleAuthenticationScope.EMAIL],
+          });
+    
+          if (identityToken) {
+            const appleCredential = AppleAuthProvider.credential(identityToken);
+            const auth = getAuth();
+            const userCredential = await signInWithCredential(auth, appleCredential);
+    
+            if (activeOption === 'gofer') {
+              navigation.navigate('GoferHome');
+            } else {
+              navigation.navigate('HirerHome');
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
   };
 
   
-
-
-
-
-
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.toggleContainer}>
@@ -206,9 +271,7 @@ const Login = ({ navigation }) => {
         }}
       >
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+          onPress={handleGoogleSignup}
           style={{
             padding: 4,
             backgroundColor: '#F8EBD3',
@@ -226,9 +289,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+           onPress={handleAppleSignup}
           style={{
             padding: 6,
             backgroundColor: '#F8EBD3',
@@ -246,9 +307,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Onboarding2');
-          }}
+          onPress={handleFacebookSignup}
           style={{
             padding: 10,
             backgroundColor: '#F8EBD3',
