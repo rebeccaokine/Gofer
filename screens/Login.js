@@ -197,7 +197,9 @@ const Login = ({ navigation }) => {
         }}
       >
         <TouchableOpacity
-          onPress={handleGoogleLogin}
+          onPress={() => {
+            navigation.navigate('Onboarding2');
+          }}
           style={{
             padding: 4,
             backgroundColor: '#F8EBD3',
@@ -215,7 +217,9 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-           onPress={handleAppleLogin}
+           onPress={() => {
+            navigation.navigate('Onboarding2');
+          }}
           style={{
             padding: 6,
             backgroundColor: '#F8EBD3',
@@ -233,7 +237,9 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={handleFacebookLogin}
+          onPress={() => {
+            navigation.navigate('Onboarding2');
+          }}
           style={{
             padding: 10,
             backgroundColor: '#F8EBD3',
