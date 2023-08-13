@@ -54,7 +54,6 @@ const Signup = ({ navigation }) => {
         displayName: name, // Set the user's name from the input
       });
 
-      // User account creation successful, you can now navigate to the appropriate screen
       if (activeOption === 'gofer') {
         navigation.navigate('GoferHome', { displayName: name });
       } else {
