@@ -8,11 +8,12 @@ import {
   StyleSheet,
 } from 'react-native';
 
-
+// This component displays categories and allows navigation to specific screens
 const Categories = ({ navigation }) => {
   return (
     <ScrollView showsHorizontalScrollIndicator={false} horizontal>
       <View style={styles.container}>
+        {/* Category: Home Cleaning */}
         <TouchableOpacity
           style={styles.categoryItem}
           onPress={() => {
@@ -25,6 +26,7 @@ const Categories = ({ navigation }) => {
           <Text style={styles.categoryTitle}>Home Cleaning</Text>
         </TouchableOpacity>
 
+        {/* Category: Laundry */}
         <TouchableOpacity style={styles.categoryItem}>
           <Image
             source={require('../assets/laundry-machine.png')}
@@ -33,6 +35,7 @@ const Categories = ({ navigation }) => {
           <Text style={styles.categoryTitle}>Laundry</Text>
         </TouchableOpacity>
 
+        {/* Category: Babysitting */}
         <TouchableOpacity style={styles.categoryItem}>
           <Image
             source={require('../assets/babysitting.png')}

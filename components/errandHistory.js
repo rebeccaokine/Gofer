@@ -13,8 +13,9 @@ const ErrandHistory = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} vertical>
       <View style={styles.container}>
-        {/**first view */}
+        {/* Start of the first view */}
         <View >
+          {/* Date and Status */}
           <View
             style={{
               flexDirection: 'row',
@@ -39,106 +40,112 @@ const ErrandHistory = () => {
               Completed
             </Text>
           </View>
+          {/* Main content */}
           <View style={{alignItems: 'center'}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              width: 350,
-              height: 130,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderWidth: 2,
-              borderRadius: 20,
-              backgroundColor: 'white',
-              marginBottom: 10,
-            }}>
             <View
               style={{
-                width: 130,
-                height: 110,
-                flexDirection: 'column',
+                flexDirection: 'row',
+                width: 350,
+                height: 130,
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderWidth: 2,
-                borderRadius: 15,
-                backgroundColor: 'rgba(0, 178, 255, 0.50)',
-                marginRight: 15,
+                borderRadius: 20,
+                backgroundColor: 'white',
+                marginBottom: 10,
               }}>
-              <Image
-                source={require('../assets/laundry-machine.png')}
-                style={styles.image}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'column',
-                alignItems: 'left',
-                justifyContent: 'center',
-                marginRight: 10,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: 'Poppins-Medium',
-                }}>
-                Wash my clothes
-              </Text>
-
+              {/* Image */}
               <View
                 style={{
-                  flexDirection: 'row',
-                  marginTop: 4,
+                  width: 130,
+                  height: 110,
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderWidth: 2,
+                  borderRadius: 15,
+                  backgroundColor: 'rgba(0, 178, 255, 0.50)',
+                  marginRight: 15,
                 }}>
-                <Octicons name="location" size={20} color="black" />
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 400,
-                  }}>
-                  {' '}
-                  Mile 7, Achimota
-                </Text>
+                <Image
+                  source={require('../assets/laundry-machine.png')}
+                  style={styles.image}
+                />
               </View>
-
+              {/* Text Content */}
               <View
                 style={{
-                  flexDirection: 'row',
-                  marginTop: 5,
+                  flexDirection: 'column',
+                  alignItems: 'left',
+                  justifyContent: 'center',
+                  marginRight: 10,
                 }}>
+                {/* Task Title */}
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 20,
                     fontFamily: 'Poppins-Medium',
-                    color: '#00B2FF',
                   }}>
-                  GH₵
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontFamily: 'Poppins-Medium',
-                    marginLeft: 5,
-                    marginRight: 20,
-                    color: '#00B2FF',
-                  }}>
-                  200
+                  Wash my clothes
                 </Text>
 
+                {/* Location */}
                 <View
                   style={{
                     flexDirection: 'row',
+                    marginTop: 4,
                   }}>
-                  <AntDesign name="star" size={20} color="#FFA800" />
+                  <Octicons name="location" size={20} color="black" />
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: '400',
+                    }}>
+                    {' '}
+                    Mile 7, Achimota
+                  </Text>
+                </View>
+
+                {/* Price and Rating */}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    marginTop: 5,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontFamily: 'Poppins-Medium',
+                      color: '#00B2FF',
+                    }}>
+                    GH₵
+                  </Text>
                   <Text
                     style={{
                       fontSize: 16,
                       fontFamily: 'Poppins-Medium',
                       marginLeft: 5,
-                      color: 'gray',
+                      marginRight: 20,
+                      color: '#00B2FF',
                     }}>
-                    (3.2)
+                    200
                   </Text>
-                </View>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                    }}>
+                    <AntDesign name="star" size={20} color="#FFA800" />
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontFamily: 'Poppins-Medium',
+                        marginLeft: 5,
+                        color: 'gray',
+                      }}>
+                      (3.2)
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
