@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import {  Foundation , MaterialCommunityIcons, Ionicons, FontAwesome} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const Navigationbar = () => {
+const HirerNavbar = () => {
   const navigation = useNavigation();
   const [activeTab, setActiveTab] = useState('Home');
 
@@ -77,4 +77,4 @@ const styles = {
   },
 };
 
-export default Navigationbar;
+export default HirerNavbar;

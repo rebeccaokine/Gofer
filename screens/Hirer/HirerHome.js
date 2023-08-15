@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import NavigationBar from '../../components/navigationBar';
+import HirerNavbar from '../../components/hirernavbar';
 import SearchButton from '../../components/searchButton';
 import UpcomingErrands from '../../components/upcomingErrands';
 import ErrandHistory from '../../components/errandHistory';
@@ -19,7 +19,7 @@ const HirerHome = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 40,
           marginHorizontal: 20,
         }}>
 
@@ -103,7 +103,7 @@ const HirerHome = ({navigation}) => {
          <UpcomingErrands  navigation={navigation}/>
       </View>
 
-      <NavigationBar/>
+      <HirerNavbar/>
     </SafeAreaView>
   );
 };

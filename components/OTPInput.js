@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: 'black',
     backgroundColor: 'white',
     borderRadius: 8,
     padding: 10,
     fontSize: 16,
-    width: 50,
+    width: 60,
     textAlign: 'center',
   },
 });
