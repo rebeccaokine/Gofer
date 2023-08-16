@@ -100,7 +100,7 @@ const HirerHome = ({navigation}) => {
           }}>
          Upcoming Task
         </Text>
-         <UpcomingErrands  navigation={navigation}/>
+         <UpcomingErrands navigation={navigation}/>
       </View>
 
       <HirerNavbar/>
