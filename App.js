@@ -36,26 +36,10 @@ import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
-import {firebase} from './firebaseConfig';
 
 export default function App() {
  
   const MainNavigator = createStackNavigator();
-
-  const [ initializing, setInitializing ] = useState(true);
-  const [ user, setUser ] = useState();
-  
-  // Handle user state changes
-  function onAuthStateChanges(authUser) {
-    setUser(authUser);
-    if (initializing) setInitializing(false);
-  } 
-
-  useEffect(()=> {
-    const subscriber =firebase.auth().onAuthStateChanged(onAuthStateChanges);
-    return subscriber;
-  }, []);
-
 
   const loadFonts = async () => {
     useFonts({
@@ -82,7 +66,6 @@ export default function App() {
 
   loadFonts(); // Call the font loading function
 
-  if (initializing) return null;
 
   return (
     <View style={{ flex: 1 }}>
