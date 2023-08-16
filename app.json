@@ -2,7 +2,6 @@
   "expo": {
     "name": "gofer",
     "slug": "snack-749c6c12-ffab-4755-a99a-0424d5a38176",
-    "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
