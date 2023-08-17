@@ -4,7 +4,6 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Import Firebase auth functions
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -22,49 +21,30 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-     // Clear previous errors
-     setEmailError('');
-     setPasswordError('');
- 
-     // Validate email and password
-     if (!email) {
-       setEmailError('Please enter email');
-       return;
-     }
- 
-     if (!password) {
-       setPasswordError('Please enter password');
-       return;
-     }
- 
-    const auth = getAuth(); // Initialize Firebase auth instance
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-         // Fetch the currently signed-in user
-        const user = auth.currentUser;
-        
-        // Authentication successful, navigate to the appropriate screen
-        if (activeOption === 'gofer') {
-          navigation.navigate('GoferHome');
-        } else {
-          navigation.navigate('HirerHome');
-        }
-      })
-      .catch((error) => {
-        // Handle login errors
-        if (error.code === 'auth/invalid-email') {
-          setEmailError('Please enter a valid email.');
-        } else if (error.code === 'auth/wrong-password') {
-          setPasswordError('Please enter a valid password.');
-        } else {
-          console.log(error);
-        }
-      });
+    // Clear previous errors
+    setEmailError('');
+    setPasswordError('');
+
+    // Validate email and password
+    if (!email) {
+      setEmailError('Please enter email');
+      return;
+    }
+
+    if (!password) {
+      setPasswordError('Please enter password');
+      return;
+    }
+
+    // Handle login functionality 
+    if (activeOption === 'gofer') {
+      navigation.navigate('GoferHome');
+    } else {
+      navigation.navigate('HirerHome');
+    }
+  
   };
 
-  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.toggleContainer}>
@@ -102,10 +82,9 @@ const Login = ({ navigation }) => {
       </View>
 
       <View>
-       <FormTextInput placeholder="Email" onChangeText={setEmail} error={emailError} />
-       <PasswordInput placeholder="Password" onChangeText={setPassword} error={passwordError} />
+        <FormTextInput placeholder="Email" onChangeText={setEmail} error={emailError} />
+        <PasswordInput placeholder="Password" onChangeText={setPassword} error={passwordError} />
       </View>
-
 
       <View style={{ flexDirection: 'row', marginHorizontal: 50, alignSelf: 'flex-end' }}>
         <Pressable
@@ -217,7 +196,7 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-           onPress={() => {
+          onPress={() => {
             navigation.navigate('Onboarding2');
           }}
           style={{
