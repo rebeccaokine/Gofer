@@ -38,7 +38,6 @@ import ChatScreen  from './screens/ChatScreen';
 import { useFonts } from 'expo-font';
 
 export default function App() {
- 
   const MainNavigator = createStackNavigator();
 
   const loadFonts = async () => {
@@ -71,47 +70,41 @@ export default function App() {
     <View style={{ flex: 1 }}>
         <StatusBar style="auto" />
         <NavigationContainer>
-            <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-                {user ? (
-                    <>
-                        <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
-                        <MainNavigator.Screen name="HirerHome" component={HirerHome}/>    
-                        <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
-                        <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
-                        <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
-                        <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
-                        <MainNavigator.Screen name="RateHirer" component={RateHirer}/>
-                        <MainNavigator.Screen name="Categories" component={Categories}/>
-                        <MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>
-                        <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
-                        <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
-                        <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
-                        <MainNavigator.Screen name="StartErrand" component={StartErrand} />
-                        <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
-                        <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
-                        <MainNavigator.Screen name="Profile" component={Profile} />
-                        <MainNavigator.Screen name="EditProfile" component={EditProfile} />
-                        <MainNavigator.Screen name="VerifyProfile" component={VerifyProfile} />
-                        <MainNavigator.Screen name="ScanID" component={ScanID} />
-                        <MainNavigator.Screen name="VerificationFeedback " component={VerificationFeedback } />
-                        <MainNavigator.Screen name="Messages" component={Messages} />
-                        <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
-                    </>
-                ) : (
-                    <>
-                        <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
-                        <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
-                        <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
-                        <MainNavigator.Screen name="Onboarding3" component={Onboarding3} />
-                        <MainNavigator.Screen name="Onboarding4" component={Onboarding4} />
-                        <MainNavigator.Screen name="Login" component={Login} />
-                        <MainNavigator.Screen name="Signup" component={Signup} />
-                        <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
-                        <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
-                        <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/>
-                    </>
-                )}
-            </MainNavigator.Navigator>
+          <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
+          <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
+            <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
+            <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
+            <MainNavigator.Screen name="Onboarding3" component={Onboarding3} />
+            <MainNavigator.Screen name="Onboarding4" component={Onboarding4} />
+            <MainNavigator.Screen name="Login" component={Login} />
+            <MainNavigator.Screen name="Signup" component={Signup} />
+            <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
+            <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
+            <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
+            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+            <MainNavigator.Screen name="HirerHome" component={HirerHome}/>    
+            <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
+            <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
+            <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
+            <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
+            <MainNavigator.Screen name="RateHirer" component={RateHirer}/>
+            <MainNavigator.Screen name="Categories" component={Categories}/>
+            <MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>
+            <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
+            <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
+            <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
+            <MainNavigator.Screen name="StartErrand" component={StartErrand} />
+            <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
+            <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
+            <MainNavigator.Screen name="Profile" component={Profile} />
+            <MainNavigator.Screen name="EditProfile" component={EditProfile} />
+            <MainNavigator.Screen name="VerifyProfile" component={VerifyProfile} />
+            <MainNavigator.Screen name="ScanID" component={ScanID} />
+            <MainNavigator.Screen name="VerificationFeedback " component={VerificationFeedback } />
+            <MainNavigator.Screen name="Messages" component={Messages} />
+            <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
+               
+          </MainNavigator.Navigator>
         </NavigationContainer>
     </View>
 );  
