@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
   Text,
+  TextInput,
   StyleSheet,
   TouchableOpacity,
   Image,
@@ -11,8 +12,12 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
-const Profile = ({ navigation }) => {
-   const openGallery = async () => {
+const EditProfile = ({ navigation }) => {
+  const [name, setName] = useState('Dereck Griffin');
+  const [email, setEmail] = useState('dereckgriffin@gmail.com');
+  const [phoneNumber, setPhoneNumber] = useState('0245637389');
+
+  const openGallery = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status === 'granted') {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -22,13 +27,17 @@ const Profile = ({ navigation }) => {
         quality: 1,
       });
 
-      if (!result.cancelled) {
+      if (!result.canceled) {
         // Handle the selected image here
         console.log(result.uri);
       }
     }
   };
 
+  const handleSave = () => {
+    // Handle saving the edited profile here
+    console.log('Saving changes...');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +51,7 @@ const Profile = ({ navigation }) => {
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Profile</Text>
+          <Text style={styles.title}>Edit Profile</Text>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -53,34 +62,31 @@ const Profile = ({ navigation }) => {
             />
           </View>
           <View style={styles.overlay}>
-            <TouchableOpacity style={styles.cameraicon } onPress={openGallery}>
+            <TouchableOpacity style={styles.cameraicon} onPress={openGallery}>
               <Feather name="camera" size={64} color="black" />
             </TouchableOpacity>
           </View>
         </View>
 
         <View style={styles.hirerInformation}>
-          {/**NAME */}
           <View>
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  fontFamily: 'Poppins-SemiBold',
-                }}>
-                Name
-              </Text>
-            </View>
             <Text
+              style={{
+                fontSize: 20,
+                color: 'grey',
+                fontFamily: 'Poppins-SemiBold',
+              }}>
+              Name
+            </Text>
+            <TextInput
               style={{
                 marginTop: 5,
                 fontSize: 24,
                 fontFamily: 'Poppins-Medium',
-              }}>
-              Dereck Griffin
-            </Text>
+              }}
+              value={name}
+              onChangeText={setName}
+            />
           </View>
           <View style={{ marginTop: 20 }}>
             <Text
@@ -91,14 +97,15 @@ const Profile = ({ navigation }) => {
               }}>
               Email
             </Text>
-            <Text
+            <TextInput
               style={{
                 marginTop: 5,
                 fontSize: 22,
                 fontFamily: 'Poppins-Medium',
-              }}>
-              dereckgriffin@gmail.com
-            </Text>
+              }}
+              value={email}
+              onChangeText={setEmail}
+            />
           </View>
           <View
             style={{
@@ -115,21 +122,20 @@ const Profile = ({ navigation }) => {
                 }}>
                 Phone Number
               </Text>
-              <Text
+              <TextInput
                 style={{
                   marginTop: 5,
                   fontSize: 22,
                   fontFamily: 'Poppins-Medium',
-                }}>
-                0245637389
-              </Text>
+                }}
+                value={phoneNumber}
+                onChangeText={setPhoneNumber}
+              />
             </View>
           </View>
           <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Onboarding2');
-              }}
+              onPress={handleSave}
               style={{
                 flex: 1,
                 padding: 10,
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     fontFamily: 'Poppins-Medium',
-    marginLeft: 45,
+    marginLeft: 15,
     marginVertical: 20,
   },
   hirerInformation: {
@@ -201,14 +207,14 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -35 }, { translateY: -35 }],
   },
   overlay: {
-  position: 'absolute',
-  top: 0,
-  left: 110,
-  width: 150,
-  height: 150,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', 
-  borderRadius: 110,
-},
+    position: 'absolute',
+    top: 0,
+    left: 110,
+    width: 150,
+    height: 150,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 110,
+  },
 });
 
-export default Profile;
+export default EditProfile;
