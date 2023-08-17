@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   categoryItem: {
-    width: 150,
-    height: 180,
+    width: 170,
+    height: 190,
     borderWidth: 2,
     borderRadius: 15,
     backgroundColor: 'rgba(0, 178, 255, 0.50)',
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
     marginTop: 10,
   },
   categoryTitle: {
     marginTop: 10,
     fontSize: 18,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
   },
 });
 

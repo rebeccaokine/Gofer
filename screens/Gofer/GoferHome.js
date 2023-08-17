@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import NavigationBar from '../../components/navigationBar';
-import SearchButton from '../../components/searchButton';
 import Categories from '../../components/categories';
 import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,7 +38,7 @@ const GoferHome = ({ navigation }) => {
 
         <View style={styles.locationContainer}>
           <Octicons name="location" size={20} color="black" />
-          <Text style={styles.locationText}>Accra, Ghana</Text>
+          <Text style={styles.locationText}> Accra, Ghana</Text>
         </View>
 
       </View>
