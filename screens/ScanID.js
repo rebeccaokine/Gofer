@@ -9,7 +9,7 @@ const ScanID = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(status === 'granted');
     })();
   }, []);
@@ -29,9 +29,9 @@ const ScanID = ({ navigation }) => {
       exif: true,
     });
 
-    if (!result.cancelled) {
-      setSelectedImage(result.uri);
-      navigation.navigate('VerificationFeedback', { imageUri: result.uri });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
+      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
     }
   };
 
@@ -51,9 +51,9 @@ const ScanID = ({ navigation }) => {
       exif: true,
     });
 
-    if (!result.cancelled) {
-      setSelectedImage(result.uri);
-      navigation.navigate('VerificationFeedback', { imageUri: result.uri });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
+      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
     }
   };
 
