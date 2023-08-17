@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Poppins-Medium',
     marginLeft: 80,
+    marginVertical: 40,
   },
   chatContainer: {
     paddingVertical: 10,
