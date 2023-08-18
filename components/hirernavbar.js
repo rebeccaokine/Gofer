@@ -32,7 +32,7 @@ const HirerNavbar = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.tab, activeTab === 'Profile' && styles.activeTab]}
-        onPress={() => navigateToScreen('Profile')}
+        onPress={() => navigateToScreen('HirerProfile')}
       >
        <Ionicons name="person" size={26} color={activeTab === 'Profile' ? 'black' : '#00B2FF'} />
       </TouchableOpacity>
