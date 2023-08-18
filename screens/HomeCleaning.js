@@ -5,7 +5,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import NavigationBar from '../components/navigationBar';
 import HomeCleaningErrands from '../components/homeCleaningErrands';
@@ -46,7 +45,6 @@ const HomeCleaning = ({ navigation }) => {
         </View>
         <HomeCleaningErrands navigation={navigation} />
       </View>
-
       <NavigationBar />
     </SafeAreaView>
   );

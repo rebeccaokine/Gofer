@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import NavigationBar from '../components/navigationBar';
 import { AntDesign } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
@@ -13,6 +7,12 @@ import * as Location from 'expo-location';
 
 const StartErrand = ({ navigation }) => {
   const [userLocation, setUserLocation] = useState(null);
+  const [mapRegion, setMapRegion] = useState({
+    latitude: 5.6037,
+    longitude: -0.187,
+    latitudeDelta: 0.02,
+    longitudeDelta: 0.02,
+  });
 
   useEffect(() => {
     getLocationAsync();
@@ -23,7 +23,28 @@ const StartErrand = ({ navigation }) => {
     if (status === 'granted') {
       const location = await Location.getCurrentPositionAsync({});
       setUserLocation(location.coords);
+      setMapRegion({
+        ...mapRegion,
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
     }
+  };
+
+  const zoomIn = () => {
+    setMapRegion({
+      ...mapRegion,
+      latitudeDelta: mapRegion.latitudeDelta / 2,
+      longitudeDelta: mapRegion.longitudeDelta / 2,
+    });
+  };
+
+  const zoomOut = () => {
+    setMapRegion({
+      ...mapRegion,
+      latitudeDelta: mapRegion.latitudeDelta * 2,
+      longitudeDelta: mapRegion.longitudeDelta * 2,
+    });
   };
 
   return (
@@ -56,33 +77,27 @@ const StartErrand = ({ navigation }) => {
           </View>
 
           <View style={styles.mapContainer}>
-             <MapView
-            style={styles.map}
-            initialRegion={
-              userLocation
-                ? {
-                    latitude: userLocation.latitude,
-                    longitude: userLocation.longitude,
-                    latitudeDelta: 0.015,
-                    longitudeDelta: 0.015,
-                  }
-                : {
-                    latitude: 5.6037,
-                    longitude: -0.187,
-                    latitudeDelta: 0.015,
-                    longitudeDelta: 0.015,
-                  }
-            }>
-            <Marker
-              coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
-              title="Start Location"
-              description="Your errand starting point"
-              pinColor="#00B2FF"
-            />
-          </MapView>
+            <MapView
+              style={styles.map}
+              region={mapRegion}>
+              <Marker
+                coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
+                title="Start Location"
+                description="Your errand starting point"
+                pinColor="#00B2FF"
+              />
+            </MapView>
+            <View style={styles.zoomButtons}>
+              <TouchableOpacity onPress={zoomOut} style={styles.zoomButton}>
+                <AntDesign name="minuscircle" size={24} color="black" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={zoomIn} style={styles.zoomButton}>
+                <AntDesign name="pluscircle" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
           </View>
 
-          <View style={{marginHorizontal: 40}}>
+          <View style={{ marginHorizontal: 40 }}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('SharingLocation');
@@ -137,7 +152,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   mapContainer: {
-    height: 230,
+    height: 280,
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -149,6 +164,20 @@ const styles = StyleSheet.create({
   details: {
     flex: 1,
     marginHorizontal: 10,
+  },
+  zoomButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 40,
+    bottom: 50
+  },
+  zoomButton: {
+    backgroundColor: '#F8EBD3',
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: 'black',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
 });
 

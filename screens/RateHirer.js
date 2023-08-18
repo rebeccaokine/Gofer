@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
@@ -10,40 +10,35 @@ import {
 import { AntDesign } from '@expo/vector-icons';
 
 const RateHirer = ({ navigation }) => {
+  const [rating, setRating] = useState(0);
+
+  const submitFeedback = () => {
+    console.log('User rating:', rating);
+    // Here you can perform actions based on the user's rating, like sending it to a server.
+
+    // Redirect back to the home screen
+    navigation.navigate('GoferHome');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          marginVertical: 40,
-          marginHorizontal: 20,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
+      <View style={styles.contentContainer}>
+        <View style={styles.header}>
           <TouchableOpacity
-           onPress={() => {
-            navigation.navigate('GoferHome');
-          }}
-            style={{
-              marginRight: 40,
-            }}>
+            onPress={() => {
+              navigation.navigate('GoferHome');
+            }}
+            style={styles.backButton}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
-          <Text
-            style={{
-              fontSize: 32,
-              color: 'black',
-              marginLeft: 30,
-              textAlign: 'center',
-              fontFamily: 'Poppins-Medium',
-            }}>
-            Rate Hirer
-          </Text>
+
+          <Text style={styles.title}>Rate Hirer</Text>
         </View>
 
-        <Image source={require('../assets/avatar.jpeg')} style={styles.image} />
+        <Image
+          source={require('../assets/avatar.jpeg')}
+          style={styles.image}
+        />
 
         <View style={{ marginTop: 30 }}>
           <Text
@@ -62,73 +57,51 @@ const RateHirer = ({ navigation }) => {
               justifyContent: 'center',
               marginTop: 10,
             }}>
-            <TouchableOpacity>
-              <AntDesign
-                name="star"
-                size={40}
-                color="#FFA800"
-                style={{ marginRight: 10 }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <AntDesign
-                name="star"
-                size={40}
-                color="#FFA800"
-                style={{ marginRight: 10 }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <AntDesign
-                name="star"
-                size={40}
-                color="#FFA800"
-                style={{ marginRight: 10 }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <AntDesign
-                name="star"
-                size={40}
-                color="#FFA800"
-                style={{ marginRight: 10 }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <AntDesign name="star" size={40} color="#ABA6A6" />
-            </TouchableOpacity>
+            {[1, 2, 3, 4, 5].map((starIndex) => (
+              <TouchableOpacity
+                key={starIndex}
+                onPress={() => setRating(starIndex)}
+              >
+                <AntDesign
+                  name="star"
+                  size={40}
+                  color={rating >= starIndex ? '#FFA800' : '#ABA6A6'}
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+            ))}
           </View>
 
-          <View style={styles.bottomSpace}>
-            <Text
-              style={{
-                fontSize: 28,
-                fontFamily: 'Poppins-Medium',
-                textAlign: 'center',
-                color: 'black',
-                paddingTop: 20,
-              }}>
-              All Done
-            </Text>
+          {rating > 0 && (
+            <View style={styles.feedbackContainer}>
+              <Text
+                style={{
+                  fontSize: 28,
+                  fontFamily: 'Poppins-Medium',
+                  textAlign: 'center',
+                  color: 'black',
+                  paddingTop: 20,
+                }}>
+                All Done
+              </Text>
 
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Poppins-Regular',
-                textAlign: 'center',
-                color: 'black',
-                paddingTop: 10,
-                paddingBottom: 60,
-              }}>
-              Thanks for your feedback
-            </Text>
-          </View>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: 'Poppins-Regular',
+                  textAlign: 'center',
+                  color: 'black',
+                  paddingTop: 10,
+                  paddingBottom: 60,
+                }}>
+                Thanks for your feedback
+              </Text>
+            </View>
+          )}
 
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('GoferHome');
-              }}
+              onPress={submitFeedback}
               style={{
                 flex: 1,
                 padding: 10,
@@ -161,6 +134,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F8EBD3',
   },
+  contentContainer: {
+    flex: 1,
+    marginVertical: 40,
+    marginHorizontal: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  backButton: {
+    marginRight: 40,
+  },
+  title: {
+    fontSize: 32,
+    fontFamily: 'Poppins-Medium',
+    marginLeft: 30,
+    color: 'black',
+  },
   image: {
     alignSelf: 'center',
     width: 220,
@@ -169,9 +161,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 20,
   },
-  bottomSpace: {
-    flex: 2,
-    marginHorizontal: 30,
+  feedbackContainer: {
+    marginTop: 30,
   },
 });
 
