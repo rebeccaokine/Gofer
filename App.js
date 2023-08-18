@@ -35,6 +35,7 @@ import ScanID  from './screens/ScanID';
 import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
+import Payment from "./screens/Hirer/Payment";
 import { useFonts } from 'expo-font';
 
 export default function App() {
@@ -71,7 +72,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+          <MainNavigator.Screen name="Payment" component={Payment}/>
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -82,7 +83,7 @@ export default function App() {
             <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
-           
+            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
             <MainNavigator.Screen name="HirerHome" component={HirerHome}/>    
             <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
