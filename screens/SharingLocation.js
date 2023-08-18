@@ -1,15 +1,24 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
 
 const SharingLocation = ({ navigation }) => {
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    getLocationAsync();
+  }, []);
+
+  const getLocationAsync = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status === 'granted') {
+      const location = await Location.getCurrentPositionAsync({});
+      setUserLocation(location.coords);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
@@ -26,25 +35,34 @@ const SharingLocation = ({ navigation }) => {
         </View>
 
         <View style={styles.details}>
-          
           <View style={styles.mapContainer}>
             <MapView
               style={styles.map}
-              initialRegion={{
-                latitude: 5.6037,
-                longitude: -0.187,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}>
+              initialRegion={
+                userLocation
+                  ? {
+                      latitude: userLocation.latitude,
+                      longitude: userLocation.longitude,
+                      latitudeDelta: 0.02,
+                      longitudeDelta: 0.02,
+                    }
+                  : {
+                      latitude: 5.6037,
+                      longitude: -0.187,
+                      latitudeDelta: 0.02,
+                      longitudeDelta: 0.02,
+                    }
+              }>
               <Marker
-                coordinate={{ latitude: 5.6037, longitude: -0.187 }}
-                title="Accra"
-                description="Capital city of Ghana"
+                coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
+                title="Current Location"
+                description="Your current location"
+                pinColor="#00B2FF"
               />
             </MapView>
           </View>
 
-          <View style={{marginHorizontal: 40}}>
+          <View style={{ marginHorizontal: 40 }}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('CompleteTask');
@@ -64,7 +82,7 @@ const SharingLocation = ({ navigation }) => {
                 style={{
                   fontSize: 24,
                 }}>
-               Complete Task
+                Complete Task
               </Text>
             </TouchableOpacity>
           </View>

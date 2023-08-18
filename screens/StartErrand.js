@@ -63,21 +63,21 @@ const StartErrand = ({ navigation }) => {
                 ? {
                     latitude: userLocation.latitude,
                     longitude: userLocation.longitude,
-                    latitudeDelta: 0.02,
-                    longitudeDelta: 0.02,
+                    latitudeDelta: 0.015,
+                    longitudeDelta: 0.015,
                   }
                 : {
                     latitude: 5.6037,
                     longitude: -0.187,
-                    latitudeDelta: 0.02,
-                    longitudeDelta: 0.02,
+                    latitudeDelta: 0.015,
+                    longitudeDelta: 0.015,
                   }
             }>
             <Marker
               coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
               title="Start Location"
               description="Your errand starting point"
-              pinColor="blue"
+              pinColor="#00B2FF"
             />
           </MapView>
           </View>
