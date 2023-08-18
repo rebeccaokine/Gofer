@@ -20,15 +20,9 @@ const HirerNavbar = () => {
     <View style={styles.container}>
       <TouchableOpacity
         style={[styles.tab, activeTab === 'Home' && styles.activeTab]}
-        onPress={() => navigateToScreen('GoferHome')}
+        onPress={() => navigateToScreen('HirerHome')}
       >
         <Foundation name="home" size={30} color={activeTab === 'Home' ? 'black' : '#00B2FF'} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.tab, activeTab === 'UpcomingSchedule' && styles.activeTab]}
-        onPress={() => navigateToScreen('UpcomingSchedule')}
-      >
-        <FontAwesome name="list-ul" size={24}  color={activeTab === 'UpcomingSchedule' ? 'black' : '#00B2FF' } />
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.tab, activeTab === 'AddErrand' && styles.activeTab]}
@@ -60,7 +54,7 @@ const styles = {
     borderRadius: 30,
     borderWidth: 2,
     borderColor: 'black',
-    marginHorizontal: 40,
+    marginHorizontal: 60,
     marginBottom: 10,
     position: 'fixed',
     bottom: 0,
