@@ -71,7 +71,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="StartErrand" component={StartErrand} />
+          <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -82,7 +82,7 @@ export default function App() {
             <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
-            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+           
             <MainNavigator.Screen name="HirerHome" component={HirerHome}/>    
             <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
@@ -94,7 +94,7 @@ export default function App() {
             <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
             <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
             <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
-           
+            <MainNavigator.Screen name="StartErrand" component={StartErrand} />
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
             <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />

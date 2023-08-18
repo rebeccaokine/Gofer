@@ -43,6 +43,42 @@ const Categories = ({ navigation }) => {
           />
           <Text style={styles.categoryTitle}>Babysitting</Text>
         </TouchableOpacity>
+
+        {/* Category: Pet Care */}
+        <TouchableOpacity style={styles.categoryItem}>
+          <Image
+            source={require('../assets/animal-care.png')}
+            style={styles.image}
+          />
+          <Text style={styles.categoryTitle}>Pet Care</Text>
+        </TouchableOpacity>
+
+        {/* Category: Cooking */}
+        <TouchableOpacity style={styles.categoryItem}>
+          <Image
+            source={require('../assets/cooking.png')}
+            style={styles.image}
+          />
+          <Text style={styles.categoryTitle}>Cooking</Text>
+        </TouchableOpacity>
+
+        {/* Category: Grocery */}
+        <TouchableOpacity style={styles.categoryItem}>
+          <Image
+            source={require('../assets/grocery.png')}
+            style={styles.image}
+          />
+        <Text style={styles.categoryTitle}>Grocery  Shopping</Text>
+        </TouchableOpacity>
+
+        {/* Category: Delivery */}
+        <TouchableOpacity style={styles.categoryItem}>
+          <Image
+            source={require('../assets/delivery.png')}
+            style={styles.image}
+          />
+          <Text style={styles.categoryTitle}>Delivery</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
