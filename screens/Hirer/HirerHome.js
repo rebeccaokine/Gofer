@@ -48,15 +48,17 @@ const HirerHome = ({ navigation }) => {
         </View>
 
       </View>
+      <View style={styles.suggestedContainer}>
+        <Text style={styles.suggestedHeader}>Upcoming Errands</Text>
+        <UpcomingHirerErrands />
+      </View>
+
       <View style={styles.categoriesContainer}>
         <Text style={styles.categoriesHeader}>Ongoing Errands</Text>
         <OngoingErrands />
       </View>
 
-      <View style={styles.suggestedContainer}>
-        <Text style={styles.suggestedHeader}>Upcoming Errands</Text>
-        <UpcomingHirerErrands />
-      </View>
+      
 
       <HirerNavbar />
     </SafeAreaView>
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
   },
   categoriesContainer: {
-    flex: 14,
+    flex: 15,
     marginLeft: 20,
   },
   categoriesHeader: {
@@ -106,7 +108,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
     marginBottom: 10,
-    marginTop: 10,
   },
 });
 
