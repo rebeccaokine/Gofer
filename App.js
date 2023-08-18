@@ -39,6 +39,7 @@ import VerificationFeedback  from './screens/VerificationFeedback';
 import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import Payment from "./screens/Hirer/Payment";
+import AddErrand from "./screens/Hirer/AddErrand";
 import { useFonts } from 'expo-font';
 
 export default function App() {
@@ -75,7 +76,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-         
+          <MainNavigator.Screen name="AddErrand" component={AddErrand}/>   
           <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />

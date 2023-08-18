@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const RateHirer = ({ navigation }) => {
   const [rating, setRating] = useState(0);
@@ -35,19 +36,25 @@ const RateHirer = ({ navigation }) => {
           <Text style={styles.title}>Rate Hirer</Text>
         </View>
 
+        <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10,paddingBottom:5,borderBottomWidth: 0.5, borderBottomColor: 'gray'}}>
+          <MaterialCommunityIcons name="cash" size={42} color="black" />
+          <Text style={{fontSize: 24, fontFamily: 'Poppins-Regular',}}>{" "}Cash{"                           "}₵200</Text>
+        </View>
+        
+
         <Image
           source={require('../assets/avatar.jpeg')}
           style={styles.image}
         />
 
-        <View style={{ marginTop: 30 }}>
+        <View style={{ marginTop: 5 }}>
           <Text
             style={{
               textAlign: 'center',
               fontFamily: 'Poppins-Regular',
-              fontSize: 26,
+              fontSize: 24,
             }}>
-            How was working with Stan?
+            How was your hirer?
           </Text>
 
           <View
@@ -150,15 +157,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontFamily: 'Poppins-Medium',
-    marginLeft: 30,
+    marginLeft: 25,
     color: 'black',
   },
   image: {
     alignSelf: 'center',
-    width: 220,
-    height: 220,
+    width: 120,
+    height: 120,
     borderRadius: 110,
-    marginTop: 40,
+    marginTop: 110,
     marginBottom: 20,
   },
   feedbackContainer: {
