@@ -68,7 +68,7 @@ const Categories = ({ navigation }) => {
             source={require('../assets/grocery.png')}
             style={styles.image}
           />
-        <Text style={styles.categoryTitle}>Grocery  Shopping</Text>
+        <Text style={styles.categoryTitle}> Grocery  Shopping</Text>
         </TouchableOpacity>
 
         {/* Category: Delivery */}
