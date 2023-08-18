@@ -26,6 +26,8 @@ import ErrandDetails from './screens/ErrandDetails';
 import BookingConfirmation from './screens/BookingConfirmation';
 import StartErrand from './screens/StartErrand';
 import UpcomingErrands  from './components/upcomingErrands';
+import UpcomingHirerErrands  from './components/upcomingHirerErrands';
+import OngoingErrands from './components/ongoingErrands';
 import SharingLocation  from './screens/SharingLocation';
 import ViewHirerProfile  from './screens/ViewHirerProfile';
 import Profile  from './screens/Profile';
@@ -73,8 +75,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="HirerProfile" component={HirerProfile} />
-          <MainNavigator.Screen name="Payment" component={Payment}/>
+         
           <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
@@ -98,11 +99,14 @@ export default function App() {
             <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
             <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
             <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
+            <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
+            <MainNavigator.Screen name="OngoingErrands" component={OngoingErrands}/>
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
             <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />
-            
+            <MainNavigator.Screen name="HirerProfile" component={HirerProfile} />
+            <MainNavigator.Screen name="Payment" component={Payment}/>
             <MainNavigator.Screen name="EditProfile" component={EditProfile} />
             <MainNavigator.Screen name="VerifyProfile" component={VerifyProfile} />
             <MainNavigator.Screen name="ScanID" component={ScanID} />
