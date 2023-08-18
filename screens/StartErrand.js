@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-
 } from 'react-native';
 import NavigationBar from '../components/navigationBar';
 import { AntDesign } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
 
 const StartErrand = ({ navigation }) => {
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    getLocationAsync();
+  }, []);
+
+  const getLocationAsync = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status === 'granted') {
+      const location = await Location.getCurrentPositionAsync({});
+      setUserLocation(location.coords);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
@@ -42,20 +56,30 @@ const StartErrand = ({ navigation }) => {
           </View>
 
           <View style={styles.mapContainer}>
-            <MapView
-              style={styles.map}
-              initialRegion={{
-                latitude: 5.6037,
-                longitude: -0.187,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}>
-              <Marker
-                coordinate={{ latitude: 5.6037, longitude: -0.187 }}
-                title="Accra"
-                description="Capital city of Ghana"
-              />
-            </MapView>
+             <MapView
+            style={styles.map}
+            initialRegion={
+              userLocation
+                ? {
+                    latitude: userLocation.latitude,
+                    longitude: userLocation.longitude,
+                    latitudeDelta: 0.02,
+                    longitudeDelta: 0.02,
+                  }
+                : {
+                    latitude: 5.6037,
+                    longitude: -0.187,
+                    latitudeDelta: 0.02,
+                    longitudeDelta: 0.02,
+                  }
+            }>
+            <Marker
+              coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
+              title="Start Location"
+              description="Your errand starting point"
+              pinColor="blue"
+            />
+          </MapView>
           </View>
 
           <View style={{marginHorizontal: 40}}>
