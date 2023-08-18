@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import HirerNavbar from '../../components/hirernavbar';
-
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
+import UpcomingHirerErrands from '../../components/upcomingHirerErrands';
+import OngoingErrands from '../../components/ongoingErrands';
 
 const HirerHome = ({ navigation }) => {
   const [userName, setUserName] = useState('');
@@ -49,12 +50,12 @@ const HirerHome = ({ navigation }) => {
       </View>
       <View style={styles.categoriesContainer}>
         <Text style={styles.categoriesHeader}>Ongoing Errands</Text>
-        
+        <OngoingErrands />
       </View>
 
       <View style={styles.suggestedContainer}>
         <Text style={styles.suggestedHeader}>Upcoming Errands</Text>
-        
+        <UpcomingHirerErrands />
       </View>
 
       <HirerNavbar />
@@ -95,11 +96,10 @@ const styles = StyleSheet.create({
   categoriesHeader: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
-    marginTop: 15,
     marginBottom: 5,
   },
   suggestedContainer: {
-    flex: 18,
+    flex: 12,
     marginLeft: 20,
   },
   suggestedHeader: {
