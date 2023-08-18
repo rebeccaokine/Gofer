@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,103 +7,57 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import HirerNavbar from '../../components/hirernavbar';
-import SearchButton from '../../components/searchButton';
-import UpcomingErrands from '../../components/upcomingErrands';
-import ErrandHistory from '../../components/errandHistory';
+
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
-const HirerHome = ({navigation}) => {
+const HirerHome = ({ navigation }) => {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    // Simulating Firebase auth state change
+    const fakeUser = { displayName: 'Rebecca Okine' };
+
+    // User is logged in, set the user's name
+    setUserName(fakeUser.displayName);
+
+    // Unsubscribe when the component is unmounted
+    return () => {
+      // Cleanup if needed
+    };
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          marginVertical: 40,
-          marginHorizontal: 20,
-        }}>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}>
-          <Text
-            style={{
-              fontSize: 24,
-              fontFamily: 'Poppins-SemiBold',
-            }}>
-            Hello, Cindy
-          </Text>
-
+      <View style={styles.mainContainer}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Hello, {userName}</Text>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Onboarding2');
             }}
-            style={{
-            }}>
-            <Ionicons
-              name="notifications-circle-outline"
-              size={37}
-              color="black"
-            />
+          >
+            <Ionicons name="notifications-circle-outline" size={37} color="black" />
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
+        <View style={styles.locationContainer}>
           <Octicons name="location" size={20} color="black" />
-          <Text
-            style={{
-              fontSize: 18,
-              fontFamily: 'Poppins-Medium',
-            }}>
-            {' '}
-            Accra, Ghana{' '}
-          </Text>
+          <Text style={styles.locationText}> Accra, Ghana</Text>
         </View>
 
-        <SearchButton placeholder="Find an errand" />
       </View>
-      <View
-        style={{
-          flex: 3,
-          marginLeft: 20,
-        }}>
-        <Text
-          style={{
-            fontFamily: 'Poppins-SemiBold',
-            fontSize: 22,
-            marginTop: 25,
-            marginBottom: 10,
-          }}>
-          {' '}
-          Ongoing Task{' '}
-        </Text>
-         <ErrandHistory  navigation={navigation} />
+      <View style={styles.categoriesContainer}>
+        <Text style={styles.categoriesHeader}>Ongoing Errands</Text>
+        
       </View>
 
-      <View
-        style={{
-          flex: 4,
-          marginLeft: 20,
-        }}>
-        <Text
-          style={{
-            fontFamily: 'Poppins-SemiBold',
-            fontSize: 22,
-            marginBottom: 10,
-            marginTop: 20,
-          }}>
-         Upcoming Task
-        </Text>
-         <UpcomingErrands navigation={navigation}/>
+      <View style={styles.suggestedContainer}>
+        <Text style={styles.suggestedHeader}>Upcoming Errands</Text>
+        
       </View>
 
-      <HirerNavbar/>
+      <HirerNavbar />
     </SafeAreaView>
   );
 };
@@ -112,6 +66,47 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8EBD3',
+  },
+  mainContainer: {
+    flex: 2,
+    marginVertical: 40,
+    marginHorizontal: 20,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 24,
+    fontFamily: 'Poppins-SemiBold',
+  },
+  locationContainer: {
+    flexDirection: 'row',
+  },
+  locationText: {
+    fontSize: 18,
+    fontFamily: 'Poppins-Medium',
+  },
+  categoriesContainer: {
+    flex: 14,
+    marginLeft: 20,
+  },
+  categoriesHeader: {
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 22,
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  suggestedContainer: {
+    flex: 18,
+    marginLeft: 20,
+  },
+  suggestedHeader: {
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 22,
+    marginBottom: 10,
+    marginTop: 10,
   },
 });
 
