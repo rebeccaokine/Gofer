@@ -76,8 +76,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="AddErrand" component={AddErrand}/>   
-          <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
+          <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -89,7 +88,7 @@ export default function App() {
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
             <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
-            
+            <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
             <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
             <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
@@ -103,8 +102,9 @@ export default function App() {
             <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
             <MainNavigator.Screen name="OngoingErrands" component={OngoingErrands}/>
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
+            <MainNavigator.Screen name="AddErrand" component={AddErrand}/>   
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
-            <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
+            
             <MainNavigator.Screen name="Profile" component={Profile} />
             <MainNavigator.Screen name="HirerProfile" component={HirerProfile} />
             <MainNavigator.Screen name="Payment" component={Payment}/>
