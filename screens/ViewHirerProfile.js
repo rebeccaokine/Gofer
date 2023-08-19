@@ -38,6 +38,28 @@ const ViewHirerProfile = ({ navigation }) => {
             />
           </View>
         </View>
+        <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Messages');
+              }}
+              style={{
+                padding: 5,
+                backgroundColor: '#F8EBD3',
+                borderRadius: 30,
+                borderWidth: 2,
+                borderColor: 'black',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontFamily: 'Poppins-Medium',
+                marginHorizontal: 120,
+              }}>
+              <Text
+                style={{
+                  fontSize: 20,
+                }}>
+                Message
+              </Text>
+        </TouchableOpacity>
 
         <View style={styles.hirerInformation}>
           {/**NAME */}
