@@ -4,6 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
+import axios from 'axios'; 
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -24,25 +25,55 @@ const Login = ({ navigation }) => {
     // Clear previous errors
     setEmailError('');
     setPasswordError('');
-
+  
     // Validate email and password
     if (!email) {
       setEmailError('Please enter email');
       return;
     }
-
+  
     if (!password) {
       setPasswordError('Please enter password');
       return;
     }
-
-    // Handle login functionality 
-    if (activeOption === 'gofer') {
-      navigation.navigate('GoferHome');
-    } else {
-      navigation.navigate('HirerHome');
-    }
   
+    // Determine the login endpoint based on the active user type
+    const loginEndpoint = activeOption === 'gofer' ? 'gofers/login' : 'hirers/login';
+  
+    // Make API request to the appropriate login endpoint
+    axios
+      .post(`http://localhost:3000/${loginEndpoint}`, {
+        email: email,
+        password: password,
+      })
+      .then(response => {
+        // Backend returns a token upon successful login
+        const token = response.data.token;
+    
+        // Navigate to the appropriate screen based on the user type
+        if (activeOption === 'gofer') {
+          navigation.navigate('GoferHome');
+        } else {
+          navigation.navigate('HirerHome');
+        }
+      })
+      .catch(error => {
+        if (error.response && error.response.data) {
+          if (error.response.data.message === 'Passwords does not match') {
+            // Passwords do not match error handling
+            setPasswordError('Incorrect password');
+          } else if (error.response.data.message === 'Email not found') {
+            // Email not found error handling
+            setEmailError('Email not found');
+          } else {
+            console.error('Login error:', error.response.data.message);
+            // Handle other types of errors
+          }
+        } else {
+          console.error('Unexpected error:', error);
+          // Handle unexpected errors
+        }
+      });
   };
 
   return (
@@ -155,6 +186,7 @@ const Login = ({ navigation }) => {
         </Pressable>
       </View>
 
+      {/* Add later
       <Text
         style={{
           fontSize: 16,
@@ -233,7 +265,7 @@ const Login = ({ navigation }) => {
         >
           <FontAwesome name="facebook" size={42} color="black" />
         </TouchableOpacity>
-      </View>
+      </View>*/}
     </SafeAreaView>
   );
 };
