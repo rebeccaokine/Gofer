@@ -30,7 +30,7 @@ const Signup = ({ navigation }) => {
 
     // Validate user input
     if (!name) {
-      setNameError('Please enter your full name');
+      setNameError('Please enter your first name');
       return;
     }
 
@@ -45,6 +45,11 @@ const Signup = ({ navigation }) => {
     }
 
     // Handle signup functionality here
+    if (activeOption === 'gofer') {
+      navigation.navigate('GoferHome');
+    } else {
+      navigation.navigate('HirerHome');
+    }
   };
 
   return (
@@ -85,7 +90,7 @@ const Signup = ({ navigation }) => {
 
       <View>
         <FormTextInput
-          placeholder="Fullname"
+          placeholder="Firstname"
           value={name}
           onChangeText={(text) => setName(text)}
           error={nameError}
@@ -105,9 +110,7 @@ const Signup = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-       onPress={() => {
-        navigation.navigate('GoferHome');
-      }}
+        onPress={handleSignup}
         style={{
           padding: 15,
           backgroundColor: '#F8EBD3',
@@ -154,7 +157,8 @@ const Signup = ({ navigation }) => {
           </Text>
         </Pressable>
       </View>
-
+     
+     {/*Add later
       <Text
         style={{
           fontSize: 16,
@@ -233,7 +237,7 @@ const Signup = ({ navigation }) => {
         >
           <FontAwesome name="facebook" size={42} color="black" />
         </TouchableOpacity>
-      </View>
+        </View>*/}
     </SafeAreaView>
   );
 };
