@@ -16,9 +16,7 @@ const Profile = ({ navigation }) => {
       <View style={styles.contentContainer}>
         <View style={styles.header}>
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('GoferHome');
-            }}
+          onPress={() => navigation.goBack()}
             style={styles.backButton}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
