@@ -29,7 +29,7 @@ const EditProfile = ({ navigation }) => {
 
       if (!result.canceled) {
         // Handle the selected image here
-        console.log(result.uri);
+        console.log(result.assets);
       }
     }
   };
