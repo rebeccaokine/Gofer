@@ -11,7 +11,7 @@ const GoferHome = ({ navigation }) => {
 
   useEffect(() => {
     // Simulating Firebase auth state change
-    const fakeUser = { displayName: 'Rebecca Okine' };
+    const fakeUser = { displayName: 'Rebecca ' };
 
     // User is logged in, set the user's name
     setUserName(fakeUser.displayName);
