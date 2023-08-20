@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-picker/picker": "^2.5.0",
+    "@react-native-picker/picker": "2.4.10",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native": "6.1.7",
     "@react-navigation/native-stack": "*",
     "@react-navigation/stack": "*",
+    "axios": "^1.4.0",
     "expo": "~49.0.5",
     "expo-camera": "~13.4.2",
     "expo-constants": "~14.4.2",
