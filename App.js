@@ -76,7 +76,7 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
+          
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -104,7 +104,7 @@ export default function App() {
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
             <MainNavigator.Screen name="AddErrand" component={AddErrand}/>   
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
-            
+            <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />
             <MainNavigator.Screen name="HirerProfile" component={HirerProfile} />
             <MainNavigator.Screen name="Payment" component={Payment}/>
