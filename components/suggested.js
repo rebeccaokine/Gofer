@@ -124,6 +124,7 @@ const Suggested = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 paddingBottom: 20,
+                marginTop: 5,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
@@ -272,6 +273,7 @@ const Suggested = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 paddingBottom: 20,
+                marginTop: 5,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
@@ -420,6 +422,7 @@ const Suggested = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 paddingBottom: 20,
+                marginTop: 5,
               }}>
               <TouchableOpacity
                onPress={()=>{navigation.navigate("ErrandDetails")}}
