@@ -6,21 +6,21 @@ import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
-const GoferHome = ({ navigation }) => {
+const GoferHome = ({ navigation, route }) => {
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    // Simulating Firebase auth state change
-    const fakeUser = { displayName: 'Rebecca ' };
+    // Retrieve the displayName from navigation parameters
+    const displayName = route.params?.displayName || '';
 
-    // User is logged in, set the user's name
-    setUserName(fakeUser.displayName);
+    // Set the retrieved displayName as the user's name
+    setUserName(displayName);
 
     // Unsubscribe when the component is unmounted
     return () => {
       // Cleanup if needed
     };
-  }, []);
+  }, [route.params?.displayName]);
 
   return (
     <SafeAreaView style={styles.container}>
