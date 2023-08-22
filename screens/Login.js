@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
-import axios from 'axios'; 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -22,56 +22,45 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    // Clear previous errors
-    setEmailError('');
-    setPasswordError('');
-  
-    // Validate email and password
-    if (!email) {
-      setEmailError('Please enter email');
-      return;
-    }
-  
-    if (!password) {
-      setPasswordError('Please enter password');
-      return;
-    }
-  
-    // Determine the login endpoint based on the active user type
-    const loginEndpoint = activeOption === 'gofer' ? 'gofers/login' : 'hirers/login';
-  
-    // Make API request to the appropriate login endpoint
-    axios
-      .post(`http://localhost:3000/${loginEndpoint}`, {
-        email: email,
-        password: password,
-      })
-      .then(response => {
-        // Backend returns a token upon successful login
-        const token = response.data.token;
-    
-        // Navigate to the appropriate screen based on the user type
+    console.log('Email:', email);
+    console.log('Password:', password);
+     // Clear previous errors
+     setEmailError('');
+     setPasswordError('');
+ 
+     // Validate email and password
+     if (!email) {
+       setEmailError('Please enter email');
+       return;
+     }
+ 
+     if (!password) {
+       setPasswordError('Please enter password');
+       return;
+     }
+ 
+    const auth = getAuth(); // Initialize Firebase auth instance
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+         // Fetch the currently signed-in user
+        const user = auth.currentUser;
+        
+        // Authentication successful, navigate to the appropriate screen
         if (activeOption === 'gofer') {
-          navigation.navigate('GoferHome');
+          const displayName = user.displayName;
+          navigation.navigate('GoferHome',  { displayName });
         } else {
           navigation.navigate('HirerHome');
         }
       })
-      .catch(error => {
-        if (error.response && error.response.data) {
-          if (error.response.data.message === 'Passwords does not match') {
-            // Passwords do not match error handling
-            setPasswordError('Incorrect password');
-          } else if (error.response.data.message === 'Email not found') {
-            // Email not found error handling
-            setEmailError('Email not found');
-          } else {
-            console.error('Login error:', error.response.data.message);
-            // Handle other types of errors
-          }
+      .catch((error) => {
+        // Handle login errors
+        if (error.code === 'auth/invalid-email') {
+          setEmailError('Please enter a valid email.');
+        } else if (error.code === 'auth/wrong-password') {
+          setPasswordError('Please enter a valid password.');
         } else {
-          console.error('Unexpected error:', error);
-          // Handle unexpected errors
+          console.log(error);
         }
       });
   };
