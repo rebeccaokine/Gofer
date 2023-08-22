@@ -4,6 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 
 const Signup = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -22,7 +23,7 @@ const Signup = ({ navigation }) => {
     }
   };
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     // Clear previous errors
     setNameError('');
     setEmailError('');
@@ -44,11 +45,32 @@ const Signup = ({ navigation }) => {
       return;
     }
 
-    // Handle signup functionality here
-    if (activeOption === 'gofer') {
-      navigation.navigate('GoferHome');
-    } else {
-      navigation.navigate('HirerHome');
+    const auth = getAuth(); // Initialize Firebase auth instance
+  
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Set the display name for the user
+      const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: name, // Set the user's name from the input
+      });
+      
+      // Signup successful, navigate to the appropriate screen
+      if (activeOption === 'gofer') {
+        navigation.navigate('GoferHome',  { displayName: name });
+      } else {
+        navigation.navigate('HirerHome');
+      }
+    } catch (error) {
+      if (error.code === 'auth/invalid-email') {
+        setEmailError('Please enter a valid email address.');
+      } else if (error.code === 'auth/weak-password') {
+        setPasswordError('Password should be at least 6 characters long.');
+      } else if (error.code === 'auth/email-already-in-use') {
+        setEmailError('The email address is already in use by another account.');
+      } else {
+        console.log(error);
+      }
     }
   };
 
