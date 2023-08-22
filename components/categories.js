@@ -39,7 +39,7 @@ const Categories = ({ navigation }) => {
             key={category.id}
             style={styles.categoryItem}
             onPress={() => {
-              navigation.navigate('CategoryScreen', { category });
+              navigation.navigate('${category.name}Screen', { category });
             }}
           >
             <Image source={{ uri: category.image }} style={styles.image} />
