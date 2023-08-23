@@ -115,7 +115,7 @@ const ViewHirerProfile = ({ navigation }) => {
                   color: 'grey',
                   fontFamily: 'Poppins-Medium',
                 }}>
-                Date
+                Phone Number
               </Text>
               <Text
                 style={{
