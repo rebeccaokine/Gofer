@@ -31,9 +31,9 @@ const Messages = ({ navigation }) => {
    
   ];
 
-  const handlePressMessage = (message) => {
-    // navigate to a chat screen
-    navigation.navigate('ChatScreen', { message: message });
+  const handlePressMessage = () => {
+    // navigate to ChatScreen without passing any data
+    navigation.navigate('ChatScreen');
   };
 
   return (
