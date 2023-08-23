@@ -40,8 +40,10 @@ import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import Payment from "./screens/Hirer/Payment";
 import AddErrand from "./screens/Hirer/AddErrand";
+import Category1 from "./screens/Category1";
 import { useFonts } from 'expo-font';
 import {firebase} from './firebaseConfig';
+
 
 export default function App() {
 
@@ -93,6 +95,7 @@ export default function App() {
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
           <MainNavigator.Screen name="AddErrand" component={AddErrand}/>
+          <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
           <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
@@ -106,20 +109,22 @@ export default function App() {
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
            
             <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
-            <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
+            
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
             <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
             <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
             <MainNavigator.Screen name="RateHirer" component={RateHirer}/>
             <MainNavigator.Screen name="Categories" component={Categories}/>
-            <MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>
+            <MainNavigator.Screen name="Category1" component={Category1}/>
+            {/** NO LONGER IN USE<MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>*/}
+            <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
             <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
             <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
             <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
             <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
             <MainNavigator.Screen name="OngoingErrands" component={OngoingErrands}/>
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
-               
+            
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
             <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />
@@ -129,8 +134,10 @@ export default function App() {
             <MainNavigator.Screen name="ScanID" component={ScanID} />
             <MainNavigator.Screen name="VerificationFeedback " component={VerificationFeedback } />
             <MainNavigator.Screen name="Messages" component={Messages} />
-            <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
+            
             <MainNavigator.Screen name="Payment" component={Payment}/>
+            
+          
           </MainNavigator.Navigator>
         </NavigationContainer>
     </View>
