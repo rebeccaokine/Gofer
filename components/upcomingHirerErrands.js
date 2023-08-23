@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   ScrollView,
@@ -6,92 +6,64 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import { firebase } from '../firebaseConfig';
 
-// This component displays upcoming errands on the hirer's screen and allows navigation to specific screens
-const UpcomingHirerErrands = ({ navigation }) => {
+const UpcomingHirerErrands = ({ }) => {
+  const [upcomingErrands, setUpcomingErrands] = useState([]);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+
+    // Fetch errand data from the "createErrand" collection
+    db.collection('createErrand')
+      .get()
+      .then((querySnapshot) => {
+        const errands = [];
+        querySnapshot.forEach((doc) => {
+          const errandData = doc.data();
+          errands.push({
+            id: doc.id,
+            category: errandData.category,
+            title: errandData.title,
+            dateTime: errandData.dateTime.toDate(), // Convert Firestore Timestamp to JavaScript Date
+          });
+        });
+        setUpcomingErrands(errands);
+      })
+      .catch((error) => {
+        console.error('Error fetching errands:', error);
+      });
+  }, []);
+
+
+  const categoryImageMappings = {
+    'Home Cleaning': require('../assets/cleaning.png'),
+    'Laundry': require('../assets/laundry-machine.png'),
+    'Cooking': require('../assets/cooking.png'),
+    'Baby Sitting': require('../assets/babysitting.png'),
+    'Delivery': require('../assets/delivery.png'),  
+    'Pet Care': require('../assets/animal-care.png'),
+    'Groceries': require('../assets/grocery.png'),
+  };
+
   return (
     <ScrollView showsHorizontalScrollIndicator={false} horizontal>
       <View style={styles.container}>
-        {/* Category: Home Cleaning */}
-        <View
-          style={styles.categoryItem}
-          onPress={() => {
-            navigation.navigate('HomeCleaning');
-          }}>
-          <Image
-            source={require('../assets/cleaning.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Clean living room </Text>
-          <Text style={styles.categoryTitle}>Home Cleaning</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Laundry */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/laundry-machine.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Wash clothes </Text>
-          <Text style={styles.categoryTitle}>Laundry</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Babysitting */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/babysitting.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Watch kids </Text>
-          <Text style={styles.categoryTitle}>Babysitting</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Pet Care */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/animal-care.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Watch my dog </Text>
-          <Text style={styles.categoryTitle}>Pet Care</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Cooking */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/cooking.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Meal Prep </Text>
-          <Text style={styles.categoryTitle}>Cooking</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Grocery */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/grocery.png')}
-            style={styles.image}
-          />
-        <Text style={styles.shortDescription}>Buy Tomatoes </Text>
-        <Text style={styles.categoryTitle}> Grocery  Shopping</Text>
-        <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
-
-        {/* Category: Delivery */}
-        <View style={styles.categoryItem}>
-          <Image
-            source={require('../assets/delivery.png')}
-            style={styles.image}
-          />
-          <Text style={styles.shortDescription}>Deliver packages </Text>
-          <Text style={styles.categoryTitle}>Delivery</Text>
-          <Text style={styles.dateTime}>08 Aug  3:00 PM</Text>
-        </View>
+        {upcomingErrands.map((errand) => (
+          <View style={styles.categoryItem} key={errand.id}>
+            <Image source={categoryImageMappings[errand.category]} style={styles.image} />
+            <Text style={styles.shortDescription}>{errand.title}</Text>
+            <Text style={styles.categoryTitle}>{errand.category}</Text>
+            <Text style={styles.dateTime}>
+              {errand.dateTime.toLocaleDateString(undefined, {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+              })}
+            </Text>
+          </View>
+        ))}
       </View>
     </ScrollView>
   );
@@ -119,11 +91,6 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
-  },
-  category: {
-    fontSize: 14,
-    fontFamily: 'Poppins-Medium',
-    color: 'gray',
   },
   shortDescription: {
     marginTop: 10,
