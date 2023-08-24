@@ -5,23 +5,57 @@ import Categories from '../../components/categories';
 import Suggested from '../../components/suggested';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
+import * as Location from 'expo-location';
+import axios from 'axios';
 
 const GoferHome = ({ navigation, route }) => {
   const [userName, setUserName] = useState('');
+  const [userLocation, setUserLocation] = useState(null);
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
-    // Retrieve the displayName from navigation parameters
     const displayName = route.params?.displayName || '';
-
-    // Set the retrieved displayName as the user's name
     setUserName(displayName);
 
-    // Unsubscribe when the component is unmounted
+    const requestLocationPermission = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status === 'granted') {
+        const location = await Location.getCurrentPositionAsync({});
+        setUserLocation(location);
+
+        const apiKey = 'AIzaSyCoTiHaUtOLEJ4QHK1AN0Jlqn3B0_pMSc4'; 
+
+        const response = await axios.get(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=${apiKey}`
+        );
+       
+        if (response.data.results.length > 0) {
+          const addressComponents = response.data.results[0].address_components;
+          const cityComponent = addressComponents.find(
+            (component) => component.types.includes('locality')
+          );
+          const countryComponent = addressComponents.find(
+            (component) => component.types.includes('country')
+          );
+          
+          const city = cityComponent ? cityComponent.long_name : '';
+          const country = countryComponent ? countryComponent.long_name : '';
+          
+          setAddress(`${city}, ${country}`);
+        }
+      } else {
+        console.error('Error requesting location permission');
+      }
+    };
+
+    requestLocationPermission();
+
     return () => {
-      // Cleanup if needed
     };
   }, [route.params?.displayName]);
 
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainContainer}>
@@ -38,7 +72,7 @@ const GoferHome = ({ navigation, route }) => {
 
         <View style={styles.locationContainer}>
           <Octicons name="location" size={20} color="black" />
-          <Text style={styles.locationText}> Accra, Ghana</Text>
+          <Text style={styles.locationText}> {address}</Text>
         </View>
 
       </View>
@@ -101,7 +135,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 25,
   },
 });
 
