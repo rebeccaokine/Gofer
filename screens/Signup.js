@@ -5,6 +5,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
+import 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const Signup = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -28,38 +30,57 @@ const Signup = ({ navigation }) => {
     setNameError('');
     setEmailError('');
     setPasswordError('');
-
+  
     // Validate user input
     if (!name) {
-      setNameError('Please enter your first name');
+      setNameError('Please enter your full name');
       return;
     }
-
+  
     if (!email) {
       setEmailError('Please enter email');
       return;
     }
-
+  
     if (!password) {
       setPasswordError('Please enter password');
       return;
     }
-
+  
     const auth = getAuth(); // Initialize Firebase auth instance
   
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Set the display name for the user
+      // Set the display name for the user (using the provided full name)
       const user = userCredential.user;
       await updateProfile(user, {
-        displayName: name, // Set the user's name from the input
+        displayName: name.split, // Set the user's full name as the display name
       });
-      
+  
+      // Additional information to store
+      const username = name; // Use the user's input as the username
+      const firstName = name.split(' ')[0]; // Extract the first name
+      const role = activeOption === 'gofer' ? 'gofer' : 'hirer'; // Set role based on activeOption
+  
+      // Initialize Firebase Firestore instance
+      const db = getFirestore();
+  
+      // Add user information to Firestore
+      try {
+        await addDoc(collection(db, 'users'), {
+          username,
+          email,
+          role,
+        });
+      } catch (error) {
+        console.error('Error adding document: ', error);
+      }
+  
       // Signup successful, navigate to the appropriate screen
       if (activeOption === 'gofer') {
-        navigation.navigate('GoferHome',  { displayName: name });
+        navigation.navigate('GoferHome', { displayName: firstName }); // Pass only first name to GoferHome
       } else {
-        navigation.navigate('HirerHome');
+        navigation.navigate('HirerHome', { displayName: firstName }); // Pass only first name to HirerHome
       }
     } catch (error) {
       if (error.code === 'auth/invalid-email') {
@@ -73,6 +94,8 @@ const Signup = ({ navigation }) => {
       }
     }
   };
+  
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -112,7 +135,7 @@ const Signup = ({ navigation }) => {
 
       <View>
         <FormTextInput
-          placeholder="Firstname"
+          placeholder="Fullname"
           value={name}
           onChangeText={(text) => setName(text)}
           error={nameError}

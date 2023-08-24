@@ -4,7 +4,10 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import FormTextInput from '../components/formTextInput';
 import PasswordInput from '../components/passwordInput';
+import 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
 
 const Login = ({ navigation }) => {
   const [activeOption, setActiveOption] = useState('gofer');
@@ -24,33 +27,53 @@ const Login = ({ navigation }) => {
   const handleLogin = () => {
     console.log('Email:', email);
     console.log('Password:', password);
-     // Clear previous errors
-     setEmailError('');
-     setPasswordError('');
- 
-     // Validate email and password
-     if (!email) {
-       setEmailError('Please enter email');
-       return;
-     }
- 
-     if (!password) {
-       setPasswordError('Please enter password');
-       return;
-     }
- 
+    // Clear previous errors
+    setEmailError('');
+    setPasswordError('');
+  
+    // Validate email and password
+    if (!email) {
+      setEmailError('Please enter email');
+      return;
+    }
+  
+    if (!password) {
+      setPasswordError('Please enter password');
+      return;
+    }
+  
     const auth = getAuth(); // Initialize Firebase auth instance
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-         // Fetch the currently signed-in user
-        const user = auth.currentUser;
-        
+      .then(async (userCredential) => {
+        // Fetch the currently signed-in user
+        const user = userCredential.user;
+  
         // Authentication successful, navigate to the appropriate screen
+        const displayName = user.displayName;
+  
+        // Additional information to store
+        const username = displayName; // Use full display name
+        const firstName = displayName.split(' ')[0]; // Extract first name
+        const role = activeOption === 'gofer' ? 'gofer' : 'hirer'; // Set role based on activeOption
+  
+        // Initialize Firebase Firestore instance
+        const db = getFirestore();
+  
+        // Add user information to Firestore
+        try {
+          await addDoc(collection(db, 'users'), {
+            username, // Store the username
+            email,
+            role,
+          });
+        } catch (error) {
+          console.error('Error adding document: ', error);
+        }
+  
         if (activeOption === 'gofer') {
-          const displayName = user.displayName;
-          navigation.navigate('GoferHome',  { displayName });
+          navigation.navigate('GoferHome', { displayName: firstName }); // Pass only first name to GoferHome
         } else {
-          navigation.navigate('HirerHome');
+          navigation.navigate('HirerHome', { displayName: firstName }); // Pass only first name to HirerHome
         }
       })
       .catch((error) => {
@@ -64,6 +87,8 @@ const Login = ({ navigation }) => {
         }
       });
   };
+  
+  
 
   return (
     <SafeAreaView style={styles.container}>
