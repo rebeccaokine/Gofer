@@ -39,7 +39,7 @@ const Categories = ({ navigation }) => {
             key={category.id}
             style={styles.categoryItem}
             onPress={() => {
-              navigation.navigate('${category.name}Screen', { category });
+              navigation.navigate('CategoryScreen', { category });
             }}
           >
             <Image source={{ uri: category.image }} style={styles.image} />
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   categoryItem: {
-    width: 170,
-    height: 190,
+    width: 200,
+    height: 240,
     borderWidth: 2,
     borderRadius: 15,
     backgroundColor: 'rgba(0, 178, 255, 0.50)',
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   image: {
-    width: 110,
-    height: 110,
+    width: 120,
+    height: 120,
     marginTop: 10,
   },
   categoryTitle: {
-    marginTop: 10,
-    fontSize: 18,
+    marginTop: 20,
+    fontSize: 20,
     fontFamily: 'Poppins-Medium',
   },
 });
