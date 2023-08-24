@@ -17,8 +17,8 @@ const Suggested = ({navigation}) => {
         <View
           style={{
             flexDirection: 'column',
-            width: 200,
-            height: 250,
+            width: 220,
+            height: 290,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -27,8 +27,8 @@ const Suggested = ({navigation}) => {
           }}>
           <View
             style={{
-              width: 180,
-              height: 120,
+              width: 200,
+              height: 140,
               alignItems: 'center',
               justifyContent: 'center',
               borderWidth: 2,
@@ -45,13 +45,13 @@ const Suggested = ({navigation}) => {
           </View>
           <View
             style={{
-              marginHorizontal: 12,
+              marginHorizontal: 10,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
@@ -66,7 +66,7 @@ const Suggested = ({navigation}) => {
               <Octicons name="location" size={18} color="black" />
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
@@ -82,7 +82,7 @@ const Suggested = ({navigation}) => {
               }}>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
@@ -90,7 +90,7 @@ const Suggested = ({navigation}) => {
               </Text>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
@@ -108,7 +108,7 @@ const Suggested = ({navigation}) => {
                 <AntDesign name="star" size={18} color="#FFA800" />
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
@@ -165,8 +165,8 @@ const Suggested = ({navigation}) => {
         <View
           style={{
             flexDirection: 'column',
-            width: 200,
-            height: 250,
+            width: 220,
+            height: 290,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -176,8 +176,8 @@ const Suggested = ({navigation}) => {
           }}>
           <View
             style={{
-              width: 180,
-              height: 120,
+              width: 200,
+              height: 140,
               alignItems: 'center',
               justifyContent: 'center',
               borderWidth: 2,
@@ -194,13 +194,13 @@ const Suggested = ({navigation}) => {
           </View>
           <View
             style={{
-              marginHorizontal: 12,
+              marginHorizontal: 10,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
@@ -215,7 +215,7 @@ const Suggested = ({navigation}) => {
               <Octicons name="location" size={18} color="black" />
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
@@ -231,7 +231,7 @@ const Suggested = ({navigation}) => {
               }}>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
@@ -239,7 +239,7 @@ const Suggested = ({navigation}) => {
               </Text>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
@@ -257,7 +257,7 @@ const Suggested = ({navigation}) => {
                 <AntDesign name="star" size={18} color="#FFA800" />
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
@@ -309,13 +309,12 @@ const Suggested = ({navigation}) => {
           </View>
         </View>
 
-
         {/**third view */}
         <View
           style={{
             flexDirection: 'column',
-            width: 200,
-            height: 250,
+            width: 220,
+            height: 290,
             alignItems: 'center',
             justifyContent: 'center',
             borderWidth: 2,
@@ -325,8 +324,8 @@ const Suggested = ({navigation}) => {
           }}>
           <View
             style={{
-              width: 180,
-              height: 120,
+              width: 200,
+              height: 140,
               alignItems: 'center',
               justifyContent: 'center',
               borderWidth: 2,
@@ -343,13 +342,13 @@ const Suggested = ({navigation}) => {
           </View>
           <View
             style={{
-              marginHorizontal: 12,
+              marginHorizontal: 10,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: 'Poppins-Medium',
               }}>
               Wash my clothes
@@ -364,7 +363,7 @@ const Suggested = ({navigation}) => {
               <Octicons name="location" size={18} color="black" />
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Regular',
                 }}>
                 {' '}
@@ -380,7 +379,7 @@ const Suggested = ({navigation}) => {
               }}>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   color: '#00B2FF',
                 }}>
@@ -388,7 +387,7 @@ const Suggested = ({navigation}) => {
               </Text>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'Poppins-Medium',
                   marginLeft: 5,
                   marginRight: 20,
@@ -406,7 +405,7 @@ const Suggested = ({navigation}) => {
                 <AntDesign name="star" size={18} color="#FFA800" />
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     fontFamily: 'Poppins-Medium',
                     marginLeft: 5,
                     color: 'gray',
@@ -469,8 +468,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
   },
 });
 
