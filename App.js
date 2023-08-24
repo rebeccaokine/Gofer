@@ -44,9 +44,7 @@ import Category1 from "./screens/Category1";
 import { useFonts } from 'expo-font';
 import {firebase} from './firebaseConfig';
 
-
 export default function App() {
-
   const MainNavigator = createStackNavigator();
 
   const [ initializing, setInitializing ] = useState(true);
@@ -95,8 +93,7 @@ export default function App() {
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
           <MainNavigator.Screen name="AddErrand" component={AddErrand}/>
-          <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
-          <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+          <MainNavigator.Screen name="HirerHome" component={HirerHome}/> 
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
@@ -107,9 +104,8 @@ export default function App() {
             <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
-           
-            <MainNavigator.Screen name="HirerHome" component={HirerHome}/>   
-            
+            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+              
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
             <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
             <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
@@ -124,7 +120,7 @@ export default function App() {
             <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
             <MainNavigator.Screen name="OngoingErrands" component={OngoingErrands}/>
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
-            
+           
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
             <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />
@@ -132,9 +128,9 @@ export default function App() {
             <MainNavigator.Screen name="EditProfile" component={EditProfile} />
             <MainNavigator.Screen name="VerifyProfile" component={VerifyProfile} />
             <MainNavigator.Screen name="ScanID" component={ScanID} />
-            <MainNavigator.Screen name="VerificationFeedback " component={VerificationFeedback } />
+            <MainNavigator.Screen name="VerificationFeedback" component={VerificationFeedback } />
             <MainNavigator.Screen name="Messages" component={Messages} />
-            
+            <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
             <MainNavigator.Screen name="Payment" component={Payment}/>
             
           

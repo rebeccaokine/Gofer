@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera } from 'expo-camera';
+import { getStorage, ref, uploadString } from 'firebase/storage';
+import { firebase } from '../firebaseConfig';
 
 const ScanID = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -30,8 +32,21 @@ const ScanID = ({ navigation }) => {
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
-      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
+      setSelectedImage(result.assets[0].uri);
+      
+      const imageRef = ref(firebase.storage(), 'images/' + result.assets[0].uri);
+      
+      try {
+        // Upload the image
+        await uploadString(imageRef, result.assets[0].base64, 'base64');
+        console.log('Image uploaded successfully');
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+      
+      navigation.navigate('VerificationFeedback', {
+        imageUri: result.assets[0].uri,
+      });
     }
   };
 
@@ -52,9 +67,22 @@ const ScanID = ({ navigation }) => {
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
-      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
-    }
+      setSelectedImage(result.assets[0].uri);
+      
+      const imageRef = ref(firebase.storage(), 'images/' + result.assets[0].uri);
+      
+      try {
+        // Upload the image
+        await uploadString(imageRef, result.assets[0].base64, 'base64');
+        console.log('Image uploaded successfully');
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+      
+      navigation.navigate('VerificationFeedback', {
+        imageUri: result.assets[0].uri,
+      });
+    }       
   };
 
   return (

@@ -15,7 +15,7 @@ const VerificationFeedback = ({ navigation }) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 50,
           marginHorizontal: 20,
         }}>
         <View
@@ -33,6 +33,7 @@ const VerificationFeedback = ({ navigation }) => {
           </TouchableOpacity>
           <Text
             style={{
+              
               fontSize: 26,
               color: 'black',
               textAlign: 'center',
@@ -69,7 +70,7 @@ const VerificationFeedback = ({ navigation }) => {
             paddingTop: 10,
             paddingBottom: 60,
           }}>
-          As soon as your details are verified, you’ll receive a blue checkmark on your profile
+          As soon as your details are verified, you will receive a blue checkmark on your profile
         </Text>
 
         <View style={{ flexDirection: 'row' }}>

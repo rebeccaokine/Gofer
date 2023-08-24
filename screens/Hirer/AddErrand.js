@@ -6,7 +6,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Alert } from "react-native";
 import { firebase } from '../../firebaseConfig';
-import "firebase/firestore"; // Import Firestore module
+import "firebase/firestore"; 
 
 const AddErrand = ({ navigation }) => {
   const [category, setCategory] = useState("Home Cleaning");
