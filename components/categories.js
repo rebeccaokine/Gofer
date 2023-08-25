@@ -17,7 +17,7 @@ const Categories = ({ navigation }) => {
     // Fetch categories from Firestore
     async function fetchCategories() {
       const db = getFirestore();
-      const categoriesRef = collection(db, 'categories'); // Use the correct collection name
+      const categoriesRef = collection(db, 'categories'); // Get a reference to the "categories" collection
       const categoriesSnapshot = await getDocs(categoriesRef);
       const categoriesData = categoriesSnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -39,7 +39,7 @@ const Categories = ({ navigation }) => {
             key={category.id}
             style={styles.categoryItem}
             onPress={() => {
-              navigation.navigate('CategoryScreen', { category });
+              navigation.navigate('CategoryScreen', { category: category.name });
             }}
           >
             <Image source={{ uri: category.image }} style={styles.image} />
