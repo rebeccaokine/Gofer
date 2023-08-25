@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   TouchableOpacity,
@@ -6,207 +6,205 @@ import {
   Text,
   Image,
   StyleSheet,
-} from 'react-native';
-import { Octicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+} from "react-native";
+import { Octicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { firebase } from "../firebaseConfig";
 
-const UpcomingErrands = ({navigation}) => {
+const UpcomingErrands = ({ navigation }) => {
+  const [upcomingErrands, setUpcomingErrands] = useState([]);
+
+  const categoryImageMappings = {
+    "Home Cleaning": require("../assets/cleaning.png"),
+    Laundry: require("../assets/laundry-machine.png"),
+    Cooking: require("../assets/cooking.png"),
+    "Baby Sitting": require("../assets/babysitting.png"),
+    Delivery: require("../assets/delivery.png"),
+    "Pet Care": require("../assets/animal-care.png"),
+    Groceries: require("../assets/grocery.png"),
+  };
+
+  useEffect(() => {
+    // Fetch upcoming errands from the subcollection within the user's document
+    const fetchUpcomingErrands = async () => {
+      try {
+        const user = firebase.auth().currentUser; // Get the currently logged in user
+        if (user) {
+          const userDocRef = firebase
+            .firestore()
+            .collection("users")
+            .doc(user.uid);
+
+          const snapshot = await userDocRef.collection("upcomingErrands").get();
+
+          const errands = snapshot.docs.map((doc) => {
+            const errandData = doc.data();
+            return {
+              id: doc.id,
+              category: errandData.category,
+              title: errandData.title,
+              dateTime: errandData.dateTime ? errandData.dateTime.toDate() : null, // Convert Firestore Timestamp to JavaScript Date
+              price: errandData.price,
+              location: errandData.location,
+            };
+          });
+        
+          setUpcomingErrands(errands);
+        }
+      } catch (error) {
+        console.error("Error fetching upcoming errands:", error);
+      }
+    };
+
+    fetchUpcomingErrands();
+  }, []);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} vertical>
-      <View style={styles.container}>
-        {/**first view */}
-        <View>
-          <View
-            style={{
-              flexDirection: 'row',
-              marginBottom: 10,
-              marginHorizontal: 10,
-              justifyContent: 'space-between',
-            }}>
-            <Text
-              style={{
-                fontSize: 18,
-                fontFamily: 'Poppins-Medium',
-              }}>
-              Monday, 20th August
-            </Text>
-            <Text
-              style={{
-                fontSize: 18,
-                color: '#26AD5C',
-                fontFamily: 'Poppins-Medium',
-              }}>
-              {' '}
-              6:00am
-            </Text>
-          </View>
-          <View style={{ alignItems: 'center' }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                width: 350,
-                height: 150,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderWidth: 2,
-                borderRadius: 20,
-                backgroundColor: 'white',
-                marginBottom: 10,
-              }}>
-              <View
-                style={{
-                  width: 140,
-                  height: 130,
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderWidth: 2,
-                  borderRadius: 15,
-                  backgroundColor: 'rgba(0, 178, 255, 0.50)',
-                  marginHorizontal: 10,
-                }}>
+      {upcomingErrands.map((errand) => (
+        <View style={styles.container}>
+          <View key={errand.id}>
+            <View style={[styles.row, styles.spaceBetween]}>
+              <Text style={styles.date}>
+                {errand.dateTime.toLocaleDateString(undefined, {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                })}
+              </Text>
+              <Text style={[styles.date, styles.greenText]}>
+                {errand.dateTime.toLocaleTimeString(undefined, {
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </Text>
+            </View>
+            <View style={styles.cardContainer}>
+              <View style={styles.imageContainer}>
                 <Image
-                  source={require('../assets/laundry-machine.png')}
+                  source={categoryImageMappings[errand.category]}
                   style={styles.image}
                 />
               </View>
-              <View
-                style={{
-                  flexDirection: 'column',
-                  alignItems: 'left',
-                  justifyContent: 'center',
-                  marginRight: 10,
-                  marginTop: 4,
-                }}>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    fontFamily: 'Poppins-Medium',
-                  }}>
-                  Wash my clothes
-                </Text>
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                  }}>
+              <View style={styles.detailsContainer}>
+                <Text style={styles.title}>{errand.title}</Text>
+                <View style={styles.row}>
                   <Octicons name="location" size={18} color="black" />
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontFamily: 'Poppins-Medium',
-                    }}>
-                    {' '}
-                    Mile 7, Achimota
-                  </Text>
+                  <Text style={styles.location}>{errand.location}</Text>
                 </View>
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: 2,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontFamily: 'Poppins-Medium',
-                      color: '#00B2FF',
-                    }}>
-                    GH₵
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontFamily: 'Poppins-Medium',
-                      marginLeft: 5,
-                      marginRight: 20,
-                      color: '#00B2FF',
-                    }}>
-                    200
-                  </Text>
-
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                    }}>
+                <View style={styles.row}>
+                  <Text style={styles.price}>GH₵ {errand.price}</Text>
+                  <View style={styles.row}>
                     <AntDesign name="star" size={18} color="#FFA800" />
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        fontFamily: 'Poppins-Medium',
-                        marginLeft: 5,
-                        color: 'gray',
-                      }}>
-                      (3.2)
-                    </Text>
+                    <Text style={styles.rating}>{errand.rating}</Text>
                   </View>
                 </View>
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: 4,
-                  }}>
-                  <TouchableOpacity
-                    style={{
-                      borderWidth: 2,
-                      borderRadius: 15,
-                      backgroundColor: 'white',
-                      marginTop: 5,
-                      paddingHorizontal: 20,
-                      paddingVertical: 5,
-                      marginRight: 10,
-                    }}>
-                    <View>
-                      <Text
-                        style={{
-                          color: '#FF7373',
-                          fontFamily: 'Poppins-Medium',
-                        }}>
-                        Cancel
-                      </Text>
-                    </View>
+                <View style={styles.row}>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Cancel</Text>
                   </TouchableOpacity>
-
                   <TouchableOpacity
                     onPress={() => {
-                      navigation.navigate('StartErrand');
+                      navigation.navigate("StartErrand");
                     }}
-                    style={{
-                      borderWidth: 2,
-                      borderRadius: 15,
-                      backgroundColor: 'white',
-                      marginTop: 5,
-                      paddingHorizontal: 20,
-                      paddingVertical: 5,
-                    }}>
-                    <View>
-                      <Text
-                        style={{
-                          color: '#26AD5C',
-                          fontFamily: 'Poppins-Medium',
-                        }}>
-                        Start
-                      </Text>
-                    </View>
+                    style={styles.button}
+                  >
+                    <Text style={styles.buttonText}>Start</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      ))}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flexDirection: "column",
+    marginBottom: 15,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  spaceBetween: {
+    justifyContent: "space-between",
+  },
+  date: {
+    fontSize: 18,
+    fontFamily: "Poppins-Medium",
+  },
+  greenText: {
+    color: "#26AD5C",
+  },
+  cardContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 20,
+    backgroundColor: "white",
+    paddingVertical: 5,
+    flexDirection: "row",
+  },
+  imageContainer: {
+    width: 140,
+    height: 130,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 15,
+    backgroundColor: "rgba(0, 178, 255, 0.50)",
+    marginHorizontal: 10,
+    marginLeft: 15,
   },
   image: {
     width: 100,
     height: 100,
+  },
+  detailsContainer: {
+    flexDirection: "column",
+    alignItems: "left",
+    justifyContent: "center",
+    marginRight: 10,
+    marginTop: 4,
+  },
+  title: {
+    fontSize: 18,
+    fontFamily: "Poppins-Medium",
+  },
+  location: {
+    fontSize: 14,
+    fontFamily: "Poppins-Medium",
+    marginLeft: 5,
+  },
+  price: {
+    fontSize: 14,
+    fontFamily: "Poppins-Medium",
+    marginLeft: 5,
+    marginRight: 20,
+    color: "#00B2FF",
+  },
+  rating: {
+    fontSize: 14,
+    fontFamily: "Poppins-Medium",
+    marginLeft: 5,
+    color: "gray",
+  },
+  button: {
+    borderWidth: 2,
+    borderRadius: 15,
+    backgroundColor: "white",
+    marginTop: 5,
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    marginRight: 10,
+  },
+  buttonText: {
+    fontFamily: "Poppins-Medium",
   },
 });
 
