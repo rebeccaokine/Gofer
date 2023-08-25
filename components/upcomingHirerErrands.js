@@ -40,10 +40,10 @@ const UpcomingHirerErrands = ({ }) => {
     'Home Cleaning': require('../assets/cleaning.png'),
     'Laundry': require('../assets/laundry-machine.png'),
     'Cooking': require('../assets/cooking.png'),
-    'Baby Sitting': require('../assets/babysitting.png'),
+    'Babysitting': require('../assets/babysitting.png'),
     'Delivery': require('../assets/delivery.png'),  
     'Pet Care': require('../assets/animal-care.png'),
-    'Groceries': require('../assets/grocery.png'),
+    'Grocery Shopping': require('../assets/grocery.png'),
   };
 
   return (
