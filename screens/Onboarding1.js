@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     alignSelf: 'center',
-    paddingTop: 300,
+    paddingTop: 360,
     width: 400,
   },
   bottomSpace: {

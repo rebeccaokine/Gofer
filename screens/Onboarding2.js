@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     alignSelf: 'center',
-    paddingTop:250,
+    paddingTop:290,
     width: 400,
   },
   bottomSpace: {
