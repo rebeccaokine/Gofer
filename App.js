@@ -1,3 +1,9 @@
+import { decode } from 'base-64';
+
+if(typeof atob === 'undefined') {
+  global.atob = decode;
+}
+
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
@@ -21,7 +27,6 @@ import ScheduleOptions from './components/scheduleOptions';
 import CompleteTask from './screens/CompleteTask';
 import RateHirer from './screens/RateHirer';
 import Categories from './components/categories';
-import HomeCleaningErrands from './components/homeCleaningErrands';
 import ErrandDetails from './screens/ErrandDetails';
 import BookingConfirmation from './screens/BookingConfirmation';
 import StartErrand from './screens/StartErrand';
@@ -40,7 +45,8 @@ import Messages  from './screens/Messages';
 import ChatScreen  from './screens/ChatScreen';
 import Payment from "./screens/Hirer/Payment";
 import AddErrand from "./screens/Hirer/AddErrand";
-import Category1 from "./screens/Category1";
+import CategoryScreen from "./screens/CategoryScreen";
+import LocationInput from "./components/locationInput";
 import { useFonts } from 'expo-font';
 import {firebase} from './firebaseConfig';
 
@@ -92,7 +98,8 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-          <MainNavigator.Screen name="AddErrand" component={AddErrand}/>
+           <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+          <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
           <MainNavigator.Screen name="HirerHome" component={HirerHome}/> 
           <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
@@ -104,23 +111,23 @@ export default function App() {
             <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
-            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
-              
+           
+            
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
             <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
             <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
             <MainNavigator.Screen name="RateHirer" component={RateHirer}/>
             <MainNavigator.Screen name="Categories" component={Categories}/>
-            <MainNavigator.Screen name="Category1" component={Category1}/>
+            <MainNavigator.Screen name="CategoryScreen" component={CategoryScreen}/>
             {/** NO LONGER IN USE<MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>*/}
             <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
-            <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
+           
             <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
             <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
             <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
             <MainNavigator.Screen name="OngoingErrands" component={OngoingErrands}/>
             <MainNavigator.Screen name="StartErrand" component={StartErrand} />
-           
+            <MainNavigator.Screen name="AddErrand" component={AddErrand}/>
             <MainNavigator.Screen name="SharingLocation" component={SharingLocation} />
             <MainNavigator.Screen name="ViewHirerProfile" component={ViewHirerProfile} />
             <MainNavigator.Screen name="Profile" component={Profile} />
@@ -132,7 +139,7 @@ export default function App() {
             <MainNavigator.Screen name="Messages" component={Messages} />
             <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
             <MainNavigator.Screen name="Payment" component={Payment}/>
-            
+            <MainNavigator.Screen name="LocationInput" component={LocationInput}/>
           
           </MainNavigator.Navigator>
         </NavigationContainer>
