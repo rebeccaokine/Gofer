@@ -47,6 +47,7 @@ import Payment from "./screens/Hirer/Payment";
 import AddErrand from "./screens/Hirer/AddErrand";
 import CategoryScreen from "./screens/CategoryScreen";
 import LocationInput from "./components/locationInput";
+import { BookErrand } from './components/errandUtils';
 import { useFonts } from 'expo-font';
 import {firebase} from './firebaseConfig';
 
@@ -98,10 +99,8 @@ export default function App() {
         <StatusBar style="auto" />
         <NavigationContainer>
           <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
-           <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
-          <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
-          <MainNavigator.Screen name="HirerHome" component={HirerHome}/> 
-          <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
+         
+            <MainNavigator.Screen name="SplashScreen" component={SplashScreen} />
             <MainNavigator.Screen name="Onboarding1" component={Onboarding1} />
             <MainNavigator.Screen name="Onboarding2" component={Onboarding2} />
             <MainNavigator.Screen name="Onboarding3" component={Onboarding3} />
@@ -111,8 +110,9 @@ export default function App() {
             <MainNavigator.Screen name="ForgotPassword" component={ForgotPassword} />
             <MainNavigator.Screen name="OneTimePassword" component={OneTimePassword}/>
             <MainNavigator.Screen name="ResetPassword" component={ResetPassword}/> 
-           
-            
+            <MainNavigator.Screen name="GoferHome" component={GoferHome}/>
+            <MainNavigator.Screen name="HirerHome" component={HirerHome}/> 
+            <MainNavigator.Screen name="ErrandDetails" component={ErrandDetails} />
             <MainNavigator.Screen name="ScheduleOptions" component={ScheduleOptions}/>
             <MainNavigator.Screen name="UpcomingSchedule" component={UpcomingSchedule}/>
             <MainNavigator.Screen name="CompleteTask" component={CompleteTask}/>
@@ -121,7 +121,6 @@ export default function App() {
             <MainNavigator.Screen name="CategoryScreen" component={CategoryScreen}/>
             {/** NO LONGER IN USE<MainNavigator.Screen name="HomeCleaningErrands" component={HomeCleaningErrands}/>*/}
             <MainNavigator.Screen name="HomeCleaning" component={HomeCleaning}/>
-           
             <MainNavigator.Screen name="BookingConfirmation" component={BookingConfirmation}/>
             <MainNavigator.Screen name="UpcomingErrands" component={UpcomingErrands}/>
             <MainNavigator.Screen name="UpcomingHirerErrands" component={UpcomingHirerErrands}/>
@@ -140,6 +139,7 @@ export default function App() {
             <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
             <MainNavigator.Screen name="Payment" component={Payment}/>
             <MainNavigator.Screen name="LocationInput" component={LocationInput}/>
+            <MainNavigator.Screen name="bookErrand" component={BookErrand}/>
           
           </MainNavigator.Navigator>
         </NavigationContainer>
