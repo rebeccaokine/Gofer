@@ -28,6 +28,7 @@ const UpcomingHirerErrands = ({ }) => {
             dateTime: errandData.dateTime.toDate(), // Convert Firestore Timestamp to JavaScript Date
           });
         });
+        errands.sort((a, b) => a.dateTime - b.dateTime);
         setUpcomingErrands(errands);
       })
       .catch((error) => {
