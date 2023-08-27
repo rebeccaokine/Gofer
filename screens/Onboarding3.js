@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     alignSelf: 'center',
-    paddingTop:350,
+    paddingTop:327,
     width: 400,
   },
   bottomSpace: {
-    flex: 2,
+    flex: 6,
     marginHorizontal: 30,
   },
 });

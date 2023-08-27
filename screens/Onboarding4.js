@@ -102,11 +102,11 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     alignSelf: 'center',
-    paddingTop:300,
+    paddingTop:323,
     width: 400,
   },
   bottomSpace: {
-    flex: 2,
+    flex: 5,
     marginHorizontal: 30,
   },
 });

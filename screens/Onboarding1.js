@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     width: 400,
   },
   bottomSpace: {
-    flex: 2,
+    flex: 3,
     marginHorizontal: 30,
   },
 });

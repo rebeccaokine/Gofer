@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     marginHorizontal: 40,
+    fontFamily: 'Poppins-Medium',
   },
   containerError: {
     borderColor: 'red',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: 'white',
     paddingLeft: 30,
-    fontFamily: 'Poppins-Medium',
+    
     color: 'gray',
   },
   inputError: {

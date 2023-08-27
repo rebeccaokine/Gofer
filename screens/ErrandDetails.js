@@ -70,26 +70,19 @@ const ErrandDetails = ({ route, navigation }) => {
           <Text style={styles.title}>Errand Details</Text>
         </View>
 
-        {/* Map View 
+        
         <View style={styles.mapContainer}>
-        <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: errandData.coordinates ? errandData.coordinates.latitude : 40.689247,
-              longitude: errandData.coordinates ? errandData.coordinates.longitude : -1,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}>
-            {errandData.coordinates && (
+          <MapView style={styles.map} initialRegion={mapRegion}>
+            {errandData.location && (
               <Marker
-                coordinate={errandData.coordinates}
-                title={resolvedAddress || 'Loading...'} // Use resolved address or loading message
-                description={errandData.category}
+                coordinate={mapRegion}
+                title={errandData.location}
+                description={resolvedAddress || 'Loading...'} // Use resolved address or loading message
               />
             )}
           </MapView>
         </View>
-        */}
+       
 
         <View style={styles.hirerInformation}>
           <View>
