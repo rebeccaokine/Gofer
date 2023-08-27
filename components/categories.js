@@ -14,7 +14,6 @@ const Categories = ({ navigation }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Fetch categories from Firestore
     async function fetchCategories() {
       const db = getFirestore();
       const categoriesRef = collection(db, 'categories'); // Get a reference to the "categories" collection

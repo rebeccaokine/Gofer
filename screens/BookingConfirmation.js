@@ -28,7 +28,8 @@ const BookingConfirmation = ({ navigation }) => {
               navigation.navigate('GoferHome');
             }}
             style={{
-              marginRight: 40,
+              marginRight: 20,
+              marginTop: 10,
             }}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>

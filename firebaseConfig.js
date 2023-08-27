@@ -31,6 +31,4 @@ if (!firebase.apps.length) {
 const storage = firebase.storage();
 const messaging = firebase.messaging();
 
-
-
 export {firebase};

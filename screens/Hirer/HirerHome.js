@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   suggestedContainer: {
-    flex: 12,
+    flex: 13,
     marginLeft: 20,
   },
   suggestedHeader: {

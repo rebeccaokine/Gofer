@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { firebase } from '../firebaseConfig'; 
 import 'firebase/firestore';
@@ -19,6 +19,7 @@ const ChatScreen = ({ navigation }) => {
           const chatData = doc.data();
           return {
             ...chatData,
+            id: doc.id, // Add the document ID to the chat object
             timestamp: chatData.timestamp.toDate(), // Convert Firestore timestamp to JavaScript Date object
           };
         });
@@ -56,7 +57,10 @@ const ChatScreen = ({ navigation }) => {
     >
       <View style={styles.messageContent}>
         <Text style={styles.messageText}>{item.message}</Text>
-        <Text style={styles.timestamp}>{item.timestamp}</Text>
+        <Text style={styles.timestamp}>
+          {`${item.timestamp.getDate()}/${item.timestamp.getMonth() + 1}`}{"     "}
+          {`${item.timestamp.getHours()}:${item.timestamp.getMinutes()}`}
+        </Text>
       </View>
     </View>
   );
@@ -71,7 +75,7 @@ const ChatScreen = ({ navigation }) => {
     </View>
     <FlatList
       data={chats}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.id.toLocaleString()}
       renderItem={renderItem}
       inverted
       contentContainerStyle={styles.chatContainer}
@@ -152,6 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'gray',
     marginTop: 4,
+    textAlign: 'right',    
   },
   inputContainer: {
     flexDirection: 'row',

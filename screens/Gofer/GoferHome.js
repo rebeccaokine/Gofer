@@ -118,13 +118,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
   },
   categoriesContainer: {
-    flex: 14,
+    flex: 15,
     marginLeft: 20,
   },
   categoriesHeader: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
-    marginTop: 15,
     marginBottom: 5,
   },
   suggestedContainer: {
@@ -135,7 +134,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
     marginBottom: 10,
-    marginTop: 25,
+    marginTop: 10,
   },
 });
 

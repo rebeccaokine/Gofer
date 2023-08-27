@@ -83,9 +83,6 @@ const HirerProfile = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Login');
-          }}
           style={styles.optionContainer}>
           <View style={styles.optionIconContainer}>
             <SimpleLineIcons name="settings" size={24} color="black" />

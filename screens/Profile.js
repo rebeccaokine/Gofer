@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -12,8 +12,23 @@ import { Octicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { firebase } from '../firebaseConfig';
+import 'firebase/firestore';
 
 const Profile = ({ navigation }) => {
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const userId = 'creatorId'; 
+    const userRef = firebase.firestore().collection('users').doc(userId);
+    userRef.get().then((userDoc) => {
+      if (userDoc.exists) {
+        const userData = userDoc.data();
+        setUsername(userData.username);
+      }
+    });
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
@@ -45,7 +60,7 @@ const Profile = ({ navigation }) => {
               fontFamily: 'Poppins-Medium',
               marginBottom: 20,
             }}>
-            Dereck Griffin
+            {username}
           </Text>
         </View>
 
@@ -83,9 +98,6 @@ const Profile = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Login');
-          }}
           style={styles.optionContainer}>
           <View style={styles.optionIconContainer}>
             <SimpleLineIcons name="settings" size={24} color="black" />
@@ -133,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     fontFamily: 'Poppins-Medium',
-    marginLeft: 45,
+    marginLeft: 37,
     marginVertical: 20,
   },
   optionContainer: {
@@ -149,6 +161,8 @@ const styles = StyleSheet.create({
   optionIconContainer: {
     flexDirection: 'column',
     marginLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   optionText: {
     fontSize: 20,

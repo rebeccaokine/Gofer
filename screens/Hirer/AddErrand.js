@@ -1,12 +1,32 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Alert } from "react-native";
 import { firebase } from '../../firebaseConfig';
 import "firebase/firestore"; 
+
+const Locations = [
+  "Dstrkt 24",
+  "Cantoments",
+  "Trust Hospital",
+  "Kwabenya KFC",
+  "Makola Market",
+  "Osu Oxford Street",
+  "Accra Mall",
+  "University of Ghana",
+  "W.E.B. DuBois Center",
+  "Jamestown Lighthouse",
+  "Oxford Street, Osu",
+  "National Museum",
+  "Christiansborg Castle",
+  "Achimota Forest",
+  "Trade Fair Centre",
+  "Jumia Head Office",
+  "A&C Mall",
+  "Sakumono",
+];
 
 const AddErrand = ({ navigation }) => {
   const [category, setCategory] = useState("Home Cleaning");
@@ -17,26 +37,65 @@ const AddErrand = ({ navigation }) => {
   const [isTimePickerVisible, setTimePickerVisible] = useState(false);
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [coordinates, setCoordinates] = useState(null);
 
+  const updateDatabaseWithCoordinates = async (locationName) => {
+    try {
+      const apiKey = "AIzaSyCoTiHaUtOLEJ4QHK1AN0Jlqn3B0_pMSc4";
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+          locationName
+        )}&key=${apiKey}`
+      );
+      const data = await response.json();
+      
+      if (data.status === "OK") {
+        const { lat, lng } = data.results[0].geometry.location;
+        setCoordinates(new firebase.firestore.GeoPoint(lat, lng));
+      }
+    } catch (error) {
+      console.error("Error updating database:", error);
+    }
+  };
+
+  const handleLocationChange = (itemValue) => {
+    setSelectedLocation(itemValue);
+    setLocation(itemValue);
+    updateDatabaseWithCoordinates(itemValue);
+  };
+
+ 
   const publishErrand = async () => {
     try {
-      const db = firebase.firestore(); // Get a reference to Firestore
-      const errandData = {
-        category,
-        title,
-        dateTime: firebase.firestore.Timestamp.fromDate(new Date(date)), // Convert to Firestore Timestamp
-        price: parseFloat(price),
-        location,
-      };
-
-      // Add the errand data to the "createErrand" collection
-      await db.collection("createErrand").add(errandData);
-
-      navigation.navigate("HirerHome"); // Navigate back to the home screen
+      const db = firebase.firestore(); 
+  
+      const authUser = firebase.auth().currentUser;
+      if (authUser) {
+        const creatorId = authUser.uid;
+        const creatorName = authUser.displayName;
+  
+        const errandData = {
+          category,
+          title,
+          dateTime: firebase.firestore.Timestamp.fromDate(new Date(date)), // Convert to Firestore Timestamp
+          price: parseFloat(price),
+          location: selectedLocation,
+          coordinates,
+          creatorId, // Use the fetched creatorId here
+          creatorName, // Use the fetched creatorName here
+        };
+  
+        // Add the errand data to the "createErrand" collection
+        await db.collection("createErrand").add(errandData);
+  
+        navigation.navigate("HirerHome"); // Navigate back to the home screen
+      } 
     } catch (error) {
       console.error("Error publishing errand:", error);
     }
   };
+
 
   const handleDateChange = (selectedDate) => {
     setShowDatePicker(false);
@@ -115,33 +174,16 @@ const AddErrand = ({ navigation }) => {
           
           <View>
           <Text style={styles.label}>Location</Text>
-          <GooglePlacesAutocomplete
-            placeholder="Enter location"
-            onPress={(data) => {
-              setLocation(data.description);
-            }}
-            query={{
-              key: "AIzaSyCoTiHaUtOLEJ4QHK1AN0Jlqn3B0_pMSc4",
-              language: "en", 
-              components: "country:gh"
-            }}
-            styles={{
-              container: { flex: 1 },
-              textInputContainer: {
-                backgroundColor: "rgba(0,0,0,0)",
-              },
-              textInput: {
-                height: 50,
-                backgroundColor: "white",
-                borderColor: "black",
-                borderWidth: 2,
-                borderRadius: 25,
-                paddingHorizontal: 15,
-                fontFamily: "Poppins-Regular",
-                fontSize: 16,
-              },
-            }}
-          />
+          <Picker
+            selectedValue={selectedLocation}
+            onValueChange={handleLocationChange}
+            style={styles.picker}
+          >
+            <Picker.Item label="Select a location" value="" />
+            {Locations.map((location, index) => (
+              <Picker.Item key={index} label={location} value={location} />
+            ))}
+          </Picker>
           </View>
 
           <View style={styles.dateTimePriceContainer}>
@@ -269,7 +311,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 5,
     marginHorizontal: 30,
-    marginTop: 50,
+    marginTop: 80,
   },
   publishButtonText: {
     fontSize: 24,
@@ -277,7 +319,7 @@ const styles = StyleSheet.create({
   },
   dateTimePriceContainer: {
     flexDirection: "row",
-    marginTop: 65,
+    marginTop: 10,
   },
   dateInput: {
     marginRight: 10,

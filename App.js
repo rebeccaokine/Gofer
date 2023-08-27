@@ -94,6 +94,8 @@ export default function App() {
     return null; // Return a loading component or null while fonts or user are initializing
   }
 
+  AppRegistry.registerComponent('main', () => App);
+
   return (
     <View style={{ flex: 1 }}>
         <StatusBar style="auto" />

@@ -43,12 +43,14 @@ const UpcomingErrands = ({ navigation }) => {
               id: doc.id,
               category: errandData.category,
               title: errandData.title,
-              dateTime: errandData.dateTime ? errandData.dateTime.toDate() : null, // Convert Firestore Timestamp to JavaScript Date
+              dateTime: errandData.dateTime
+                ? errandData.dateTime.toDate()
+                : null, 
               price: errandData.price,
               location: errandData.location,
             };
           });
-        
+
           setUpcomingErrands(errands);
         }
       } catch (error) {
@@ -59,64 +61,91 @@ const UpcomingErrands = ({ navigation }) => {
     fetchUpcomingErrands();
   }, []);
 
+  const handleCancelErrand = async (errandId) => {
+    try {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        const userDocRef = firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid);
+        await userDocRef.collection("upcomingErrands").doc(errandId).delete();
+
+
+        setUpcomingErrands((prevErrands) =>
+          prevErrands.filter((errand) => errand.id !== errandId)
+        );
+      }
+    } catch (error) {
+      console.error("Error canceling errand:", error);
+    }
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} vertical>
-      {upcomingErrands.map((errand) => (
-        <View style={styles.container}>
-          <View key={errand.id}>
-            <View style={[styles.row, styles.spaceBetween]}>
-              <Text style={styles.date}>
-                {errand.dateTime.toLocaleDateString(undefined, {
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                })}
-              </Text>
-              <Text style={[styles.date, styles.greenText]}>
-                {errand.dateTime.toLocaleTimeString(undefined, {
-                  hour: "numeric",
-                  minute: "numeric",
-                })}
-              </Text>
-            </View>
-            <View style={styles.cardContainer}>
-              <View style={styles.imageContainer}>
-                <Image
-                  source={categoryImageMappings[errand.category]}
-                  style={styles.image}
-                />
+      {upcomingErrands
+        .sort((a, b) => a.dateTime - b.dateTime)
+        .map((errand) => (
+          <View style={styles.container} key={errand.id}>
+            <View>
+              <View style={[styles.row, styles.spaceBetween]}>
+                <Text style={styles.date}>
+                  {errand.dateTime.toLocaleDateString(undefined, {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                  })}
+                </Text>
+                <Text style={[styles.date, styles.greenText]}>
+                  {errand.dateTime.toLocaleTimeString(undefined, {
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
+                </Text>
               </View>
-              <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{errand.title}</Text>
-                <View style={styles.row}>
-                  <Octicons name="location" size={18} color="black" />
-                  <Text style={styles.location}>{errand.location}</Text>
+              <View style={styles.cardContainer}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={categoryImageMappings[errand.category]}
+                    style={styles.image}
+                  />
                 </View>
-                <View style={styles.row}>
-                  <Text style={styles.price}>GH₵ {errand.price}</Text>
+                <View style={styles.detailsContainer}>
+                  <Text style={styles.title}>{errand.title}</Text>
                   <View style={styles.row}>
-                    <AntDesign name="star" size={18} color="#FFA800" />
-                    <Text style={styles.rating}>{errand.rating}</Text>
+                    <Octicons name="location" size={18} color="black" />
+                    <Text style={styles.location}>{errand.location}</Text>
                   </View>
-                </View>
-                <View style={styles.row}>
-                  <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Cancel</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation.navigate("StartErrand");
-                    }}
-                    style={styles.button}
-                  >
-                    <Text style={styles.buttonText}>Start</Text>
-                  </TouchableOpacity>
+                  <View style={styles.row}>
+                    <Text style={styles.price}>GH₵ {errand.price}</Text>
+                    <View style={styles.row}>
+                      <AntDesign name="star" size={18} color="#FFA800" />
+                      <Text style={styles.rating}>{errand.rating}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.row}>
+                    <TouchableOpacity
+                      style={styles.button}
+                      onPress={() => handleCancelErrand(errand.id)} 
+                    >
+                      <Text style={styles.buttonText}>Cancel</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("SharingLocation", {
+                          destinationLocationName: errand.location,
+                        });
+                      }}
+                      style={styles.button}
+                    >
+                      <Text style={styles.buttonText}>Start</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
-        </View>
-      ))}
+        ))}
     </ScrollView>
   );
 };
@@ -158,8 +187,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 15,
     backgroundColor: "rgba(0, 178, 255, 0.50)",
-    marginHorizontal: 10,
-    marginLeft: 15,
+    marginLeft: 20,
+    marginRight: 5,
   },
   image: {
     width: 100,

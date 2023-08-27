@@ -4,6 +4,7 @@ import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { firebase } from '../firebaseConfig';
 import 'firebase/firestore';
+import { BookErrand } from './errandUtils';
 
 
 const Suggested = ({ navigation }) => {
@@ -72,8 +73,8 @@ const Suggested = ({ navigation }) => {
                   <Text>Details</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('BookingConfirmation', {  });
+                   onPress={() => {
+                    BookErrand(errand, navigation);
                   }}
                   style={styles.bookButton}>
                   <Text>Book</Text>
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     width: 220,
-    height: 290,
+    height: 270,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 200,
-    height: 140,
+    height: 120,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
@@ -114,8 +115,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   image: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
   },
   detailsContainer: {
     marginHorizontal: 10,
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 4,
+    marginTop: 2,
   },
   price: {
     fontSize: 16,
@@ -164,7 +165,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 20,
-    marginTop: 5,
   },
   detailsButton: {
     borderWidth: 2,

@@ -7,15 +7,19 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import firebase from '../firebaseConfig';
+import 'firebase/firestore';
 
 const EditProfile = ({ navigation }) => {
-  const [name, setName] = useState('Dereck Griffin');
-  const [email, setEmail] = useState('dereckgriffin@gmail.com');
-  const [phoneNumber, setPhoneNumber] = useState('0245637389');
+  const [name, setName] = useState('Rebecca Okine');
+  const [email, setEmail] = useState('rebecca@gmail.com');
+  const [phoneNumber, setPhoneNumber] = useState('023456777');
+  const [imageUri, setImageUri] = useState(null);
 
   const openGallery = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -27,21 +31,34 @@ const EditProfile = ({ navigation }) => {
         quality: 1,
       });
 
-      if (!result.canceled) {
-        // Handle the selected image here
-        console.log(result.assets);
+      if (!result.canceled && result.assets.length > 0) {
+        setImageUri(result.assets[0].uri); // Update the image URI state
       }
     }
   };
 
-  const handleSave = () => {
-    // Handle saving the edited profile here
-    console.log('Saving changes...');
+  const handleSave = async () => {
+    try {
+      const userRef = firebase.firestore().collection('users').doc('user_id'); // Replace 'user_id' with the actual user ID
+
+      const userData = {
+        name,
+        email,
+        phoneNumber,
+        // Add the new image URI to the userData object if available
+        imageUri: imageUri || null,
+      };
+
+      await userRef.set(userData, { merge: true }); // Update the document with new fields
+      console.log('User data saved to Firestore');
+    } catch (error) {
+      console.error('Error saving user data:', error);
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.contentContainer}>
+      <KeyboardAvoidingView style={styles.contentContainer}>
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
@@ -50,21 +67,19 @@ const EditProfile = ({ navigation }) => {
             style={styles.backButton}>
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
-
           <Text style={styles.title}>Edit Profile</Text>
         </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <View>
+        <View style={styles.imageContainer}>
+          <View style={styles.imageWrapper}>
             <Image
-              source={require('../assets/avatar.jpeg')}
+              source={imageUri ? { uri: imageUri } : require('../assets/avatar.jpeg')}
               style={styles.image}
             />
-          </View>
-          <View style={styles.overlay}>
-            <TouchableOpacity style={styles.cameraicon} onPress={openGallery}>
-              <Feather name="camera" size={64} color="black" />
-            </TouchableOpacity>
+            <View style={styles.overlay}>
+              <TouchableOpacity style={styles.cameraicon} onPress={openGallery}>
+                <Feather name="camera" size={64} color="black" />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
 
@@ -146,7 +161,7 @@ const EditProfile = ({ navigation }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontFamily: 'Poppins-Medium',
-                marginTop: 100,
+                marginTop: 50,
               }}>
               <Text
                 style={{
@@ -157,7 +172,7 @@ const EditProfile = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -185,7 +200,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     fontFamily: 'Poppins-Medium',
-    marginLeft: 15,
+    marginLeft: 3,
     marginVertical: 20,
   },
   hirerInformation: {
@@ -209,10 +224,10 @@ const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
     top: 0,
-    left: 110,
-    width: 150,
+    left: 112 ,
+    width: 151,
     height: 150,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     borderRadius: 110,
   },
 });

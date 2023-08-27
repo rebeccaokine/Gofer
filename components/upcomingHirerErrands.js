@@ -14,7 +14,6 @@ const UpcomingHirerErrands = ({ }) => {
   useEffect(() => {
     const db = firebase.firestore();
 
-    // Fetch errand data from the "createErrand" collection
     db.collection('createErrand')
       .get()
       .then((querySnapshot) => {
@@ -25,7 +24,7 @@ const UpcomingHirerErrands = ({ }) => {
             id: doc.id,
             category: errandData.category,
             title: errandData.title,
-            dateTime: errandData.dateTime.toDate(), // Convert Firestore Timestamp to JavaScript Date
+            dateTime: errandData.dateTime.toDate(), 
           });
         });
         errands.sort((a, b) => a.dateTime - b.dateTime);
