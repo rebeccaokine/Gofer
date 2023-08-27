@@ -70,7 +70,7 @@ const ErrandDetails = ({ route, navigation }) => {
           <Text style={styles.title}>Errand Details</Text>
         </View>
 
-        
+        {/**Map view 
         <View style={styles.mapContainer}>
           <MapView style={styles.map} initialRegion={mapRegion}>
             {errandData.location && (
@@ -82,6 +82,7 @@ const ErrandDetails = ({ route, navigation }) => {
             )}
           </MapView>
         </View>
+        */}
        
 
         <View style={styles.hirerInformation}>

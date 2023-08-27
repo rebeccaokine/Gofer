@@ -5,6 +5,7 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/firestore";
 import "firebase/compat/storage";
+import "firebase/compat/messaging";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,5 +29,8 @@ if (!firebase.apps.length) {
 }
 
 const storage = firebase.storage();
+const messaging = firebase.messaging();
+
+
 
 export {firebase};

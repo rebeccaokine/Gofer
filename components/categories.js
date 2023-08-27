@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   categoryItem: {
     width: 200,
-    height: 240,
+    height: 235,
     borderWidth: 2,
     borderRadius: 15,
     backgroundColor: 'rgba(0, 178, 255, 0.50)',
