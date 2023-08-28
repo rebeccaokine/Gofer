@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { View, TextInput, Text, StyleSheet } from "react-native";
 
 const PasswordInput = ({ placeholder, value, onChangeText, error }) => {
   return (
@@ -20,27 +20,28 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     marginHorizontal: 40,
+    fontFamily: "Poppins-Medium",
   },
   containerError: {
-    borderColor: 'red',
+    borderColor: "red",
     borderRadius: 30,
   },
   input: {
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: "black",
     borderRadius: 30,
     padding: 15,
     fontSize: 18,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingLeft: 30,
-    fontFamily: 'Poppins-Medium',
-    color: 'gray',
+
+    color: "gray",
   },
   inputError: {
-    borderColor: 'red',
+    borderColor: "red",
   },
   errorText: {
-    color: 'red',
+    color: "red",
     fontSize: 14,
     marginTop: 5,
     marginLeft: 15,

@@ -1,5 +1,12 @@
-import React from 'react';
-import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 const OngoingErrands = () => {
   return (
@@ -7,7 +14,7 @@ const OngoingErrands = () => {
       {/* Ongoing Errand 1 */}
       <View style={styles.errandItem}>
         <Image
-          source={require('../assets/cleaning.png')}
+          source={require("../assets/cleaning.png")}
           style={styles.image}
         />
         <View style={styles.errandDetails}>
@@ -22,7 +29,7 @@ const OngoingErrands = () => {
       {/* Ongoing Errand 2 */}
       <View style={styles.errandItem}>
         <Image
-          source={require('../assets/laundry-machine.png')}
+          source={require("../assets/laundry-machine.png")}
           style={styles.image}
         />
         <View style={styles.errandDetails}>
@@ -36,10 +43,7 @@ const OngoingErrands = () => {
 
       {/* Ongoing Errand 3 */}
       <View style={styles.errandItem}>
-        <Image
-          source={require('../assets/cooking.png')}
-          style={styles.image}
-        />
+        <Image source={require("../assets/cooking.png")} style={styles.image} />
         <View style={styles.errandDetails}>
           <Text style={styles.errandTitle}>Meal Prep</Text>
           <Text style={styles.category}>Cooking</Text>
@@ -48,7 +52,6 @@ const OngoingErrands = () => {
           <Text style={styles.trackButtonText}>Track</Text>
         </TouchableOpacity>
       </View>
-
     </ScrollView>
   );
 };
@@ -58,9 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   errandItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderColor: 'gray',
+    flexDirection: "row",
+    alignItems: "center",
+    borderColor: "gray",
     paddingVertical: 10,
     marginHorizontal: 15,
   },
@@ -74,15 +77,15 @@ const styles = StyleSheet.create({
   },
   errandTitle: {
     fontSize: 18,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: "Poppins-Medium",
   },
   category: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
-    color: 'gray',
+    fontFamily: "Poppins-Regular",
+    color: "gray",
   },
   trackButton: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 20,
     borderWidth: 2,
     paddingHorizontal: 15,
@@ -90,8 +93,8 @@ const styles = StyleSheet.create({
   },
   trackButtonText: {
     fontSize: 14,
-    fontFamily: 'Poppins-Medium',
-    color: 'black',
+    fontFamily: "Poppins-Medium",
+    color: "black",
   },
 });
 
