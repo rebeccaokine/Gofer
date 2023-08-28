@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {
   View,
   TouchableOpacity,
@@ -6,79 +6,46 @@ import {
   Text,
   Image,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // This component displays categories and allows navigation to specific screens
 const Categories = ({ navigation }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const db = getFirestore();
+      const categoriesRef = collection(db, "categories"); // Get a reference to the "categories" collection
+      const categoriesSnapshot = await getDocs(categoriesRef);
+      const categoriesData = categoriesSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setCategories(categoriesData);
+    }
+
+    fetchCategories();
+  }, []);
+
   return (
     <ScrollView showsHorizontalScrollIndicator={false} horizontal>
       <View style={styles.container}>
-        {/* Category: Home Cleaning */}
-        <TouchableOpacity
-          style={styles.categoryItem}
-          onPress={() => {
-            navigation.navigate('HomeCleaning');
-          }}>
-          <Image
-            source={require('../assets/cleaning.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Home Cleaning</Text>
-        </TouchableOpacity>
-
-        {/* Category: Laundry */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/laundry-machine.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Laundry</Text>
-        </TouchableOpacity>
-
-        {/* Category: Babysitting */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/babysitting.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Babysitting</Text>
-        </TouchableOpacity>
-
-        {/* Category: Pet Care */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/animal-care.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Pet Care</Text>
-        </TouchableOpacity>
-
-        {/* Category: Cooking */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/cooking.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Cooking</Text>
-        </TouchableOpacity>
-
-        {/* Category: Grocery */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/grocery.png')}
-            style={styles.image}
-          />
-        <Text style={styles.categoryTitle}> Grocery  Shopping</Text>
-        </TouchableOpacity>
-
-        {/* Category: Delivery */}
-        <TouchableOpacity style={styles.categoryItem}>
-          <Image
-            source={require('../assets/delivery.png')}
-            style={styles.image}
-          />
-          <Text style={styles.categoryTitle}>Delivery</Text>
-        </TouchableOpacity>
+        {/* Fetch Categories */}
+        {categories.map((category) => (
+          <TouchableOpacity
+            key={category.id}
+            style={styles.categoryItem}
+            onPress={() => {
+              navigation.navigate("CategoryScreen", {
+                category: category.name,
+              });
+            }}
+          >
+            <Image source={{ uri: category.image }} style={styles.image} />
+            <Text style={styles.categoryTitle}>{category.name}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </ScrollView>
   );
@@ -86,27 +53,27 @@ const Categories = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   categoryItem: {
-    width: 170,
-    height: 190,
+    width: 200,
+    height: 235,
     borderWidth: 2,
     borderRadius: 15,
-    backgroundColor: 'rgba(0, 178, 255, 0.50)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0, 178, 255, 0.50)",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 10,
   },
   image: {
-    width: 110,
-    height: 110,
+    width: 120,
+    height: 120,
     marginTop: 10,
   },
   categoryTitle: {
-    marginTop: 10,
-    fontSize: 18,
-    fontFamily: 'Poppins-Medium',
+    marginTop: 20,
+    fontSize: 20,
+    fontFamily: "Poppins-Medium",
   },
 });
 
