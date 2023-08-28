@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -6,12 +6,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import { Octicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const HirerProfile = ({ navigation }) => {
   return (
@@ -20,9 +20,10 @@ const HirerProfile = ({ navigation }) => {
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('HirerHome');
+              navigation.navigate("HirerHome");
             }}
-            style={styles.backButton}>
+            style={styles.backButton}
+          >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
 
@@ -31,29 +32,32 @@ const HirerProfile = ({ navigation }) => {
 
         <View
           style={{
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Image
-            source={require('../../assets/avatar.jpeg')}
+            source={require("../../assets/avatar.jpeg")}
             style={styles.image}
           />
           <Text
             style={{
               fontSize: 24,
-              fontFamily: 'Poppins-Medium',
+              fontFamily: "Poppins-Medium",
               marginBottom: 20,
-            }}>
+            }}
+          >
             Dereck Griffin
           </Text>
         </View>
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('EditProfile');
+            navigation.navigate("EditProfile");
           }}
-          style={styles.optionContainer}>
+          style={styles.optionContainer}
+        >
           <View style={styles.optionIconContainer}>
             <Octicons name="pencil" size={24} color="black" />
           </View>
@@ -62,9 +66,10 @@ const HirerProfile = ({ navigation }) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('VerifyProfile');
+            navigation.navigate("VerifyProfile");
           }}
-          style={styles.optionContainer}>
+          style={styles.optionContainer}
+        >
           <View style={styles.optionIconContainer}>
             <FontAwesome5 name="check-circle" size={24} color="black" />
           </View>
@@ -73,20 +78,17 @@ const HirerProfile = ({ navigation }) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Login');
+            navigation.navigate("Login");
           }}
-          style={styles.optionContainer}>
+          style={styles.optionContainer}
+        >
           <View style={styles.optionIconContainer}>
             <Ionicons name="card-outline" size={26} color="black" />
           </View>
           <Text style={styles.optionText}>View Payments</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Login');
-          }}
-          style={styles.optionContainer}>
+        <TouchableOpacity style={styles.optionContainer}>
           <View style={styles.optionIconContainer}>
             <SimpleLineIcons name="settings" size={24} color="black" />
           </View>
@@ -95,9 +97,10 @@ const HirerProfile = ({ navigation }) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Login');
+            navigation.navigate("Login");
           }}
-          style={styles.optionContainer}>
+          style={styles.optionContainer}
+        >
           <View style={styles.optionIconContainer}>
             <AntDesign name="logout" size={24} color="black" />
           </View>
@@ -113,7 +116,7 @@ const HirerProfile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
   contentContainer: {
     flex: 1,
@@ -121,8 +124,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 25,
     marginHorizontal: 20,
   },
@@ -131,32 +134,32 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: 'black',
-    fontFamily: 'Poppins-Medium',
+    color: "black",
+    fontFamily: "Poppins-Medium",
     marginLeft: 45,
     marginVertical: 20,
   },
   optionContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 15,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: "black",
     borderRadius: 30,
     marginHorizontal: 20,
   },
   optionIconContainer: {
-    flexDirection: 'column',
+    flexDirection: "column",
     marginLeft: 10,
   },
   optionText: {
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: "Poppins-Regular",
     marginLeft: 15,
   },
   image: {
-    alignSelf: 'center',
+    alignSelf: "center",
     width: 150,
     height: 150,
     borderRadius: 110,

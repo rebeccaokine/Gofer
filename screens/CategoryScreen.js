@@ -21,10 +21,10 @@ const CategoryScreen = ({ route, navigation }) => {
 
   const categoryImageMappings = {
     "Home Cleaning": require("../assets/cleaning.png"),
-    "Laundry": require("../assets/laundry-machine.png"),
-    "Cooking": require("../assets/cooking.png"),
-    "Babysitting": require("../assets/babysitting.png"),
-    "Delivery": require("../assets/delivery.png"),
+    Laundry: require("../assets/laundry-machine.png"),
+    Cooking: require("../assets/cooking.png"),
+    Babysitting: require("../assets/babysitting.png"),
+    Delivery: require("../assets/delivery.png"),
     "Pet Care": require("../assets/animal-care.png"),
     "Grocery Shopping": require("../assets/grocery.png"),
   };
@@ -136,7 +136,9 @@ const CategoryScreen = ({ route, navigation }) => {
                   <View style={styles.buttonRow}>
                     <TouchableOpacity
                       onPress={() => {
-                        navigation.navigate('ErrandDetails', { errandId: errand.id });
+                        navigation.navigate("ErrandDetails", {
+                          errandId: errand.id,
+                        });
                       }}
                       style={styles.detailsButton}
                     >

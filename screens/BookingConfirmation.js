@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Image,
@@ -6,8 +6,8 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const BookingConfirmation = ({ navigation }) => {
   return (
@@ -17,90 +17,97 @@ const BookingConfirmation = ({ navigation }) => {
           flex: 1,
           marginVertical: 40,
           marginHorizontal: 20,
-        }}>
+        }}
+      >
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: "row",
             marginHorizontal: 10,
-          }}>
-         <TouchableOpacity
+          }}
+        >
+          <TouchableOpacity
             onPress={() => {
-              navigation.navigate('GoferHome');
+              navigation.navigate("GoferHome");
             }}
             style={{
-              marginRight: 40,
-            }}>
+              marginRight: 20,
+              marginTop: 10,
+            }}
+          >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 32,
-              color: 'black',
-              textAlign: 'center',
-              fontFamily: 'Poppins-Medium',
-            }}>
+              color: "black",
+              textAlign: "center",
+              fontFamily: "Poppins-Medium",
+            }}
+          >
             Confirmation
           </Text>
         </View>
 
         <Image
-        source={require('../assets/happiness.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+          source={require("../assets/happiness.png")}
+          style={styles.image}
+          resizeMode="contain"
+        />
 
-      <View style={styles.bottomSpace}>
-        <Text
-          style={{
-            fontSize: 28,
-            fontFamily: 'Poppins-Bold',
-            textAlign: 'center',
-            color: 'black',
-            paddingTop: 20,
-          }}>
-          Booking Confirmed
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 20,
-            fontFamily: 'Poppins-Medium',
-            textAlign: 'center',
-            color: 'black',
-            paddingTop: 10,
-            paddingBottom: 60,
-          }}>
-          Task has been added to your schedule
-        </Text>
-
-        <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('GoferHome');
-            }}
+        <View style={styles.bottomSpace}>
+          <Text
             style={{
-              flex: 1,
-              padding: 10,
-              backgroundColor: '#F8EBD3',
-              borderRadius: 30,
-              borderWidth: 2,
-              borderColor: 'black',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontFamily: 'Poppins-Medium',
-            }}>
-            <Text
+              fontSize: 28,
+              fontFamily: "Poppins-Bold",
+              textAlign: "center",
+              color: "black",
+              paddingTop: 20,
+            }}
+          >
+            Booking Confirmed
+          </Text>
+
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "Poppins-Medium",
+              textAlign: "center",
+              color: "black",
+              paddingTop: 10,
+              paddingBottom: 60,
+            }}
+          >
+            Task has been added to your schedule
+          </Text>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("GoferHome");
+              }}
               style={{
-                fontSize: 24,
-              }}>
-              Back to Home
-            </Text>
-          </TouchableOpacity>
+                flex: 1,
+                padding: 10,
+                backgroundColor: "#F8EBD3",
+                borderRadius: 30,
+                borderWidth: 2,
+                borderColor: "black",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "Poppins-Medium",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 24,
+                }}
+              >
+                Back to Home
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-      </View>
-
-      
     </SafeAreaView>
   );
 };
@@ -108,11 +115,11 @@ const BookingConfirmation = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
   image: {
     flex: 1,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 300,
     width: 400,
   },

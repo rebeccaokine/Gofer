@@ -1,75 +1,70 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { firebase } from "../firebaseConfig";
+import "firebase/firestore";
 
-const ChatScreen = ({ route, navigation }) => {
-  const { message } = route.params;
+const ChatScreen = ({ navigation }) => {
+  const db = firebase.firestore();
 
-  const [inputText, setInputText] = useState('');
-  const [chats, setChats] = useState([
-    {
-      id: 1,
-      sender: {
-        name: 'John Doe',
-        avatar: require('../assets/avatar.jpeg'),
-      },
-      message: 'Hello, how are you?',
-      timestamp: '10:00 AM',
-    },
-    {
-      id: 2,
-      sender: {
-        name: 'Jane Smith',
-        avatar: require('../assets/avatar.jpeg'),
-      },
-      message: 'I am doing great!',
-      timestamp: '10:05 AM',
-    },
-    
-  ]);
+  const [inputText, setInputText] = useState("");
+  const [chats, setChats] = useState([]);
 
-  const handleSend = () => {
-    if (inputText.trim() === '') {
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("chats")
+      .orderBy("timestamp")
+      .onSnapshot((snapshot) => {
+        const newChats = snapshot.docs.map((doc) => {
+          const chatData = doc.data();
+          return {
+            ...chatData,
+            id: doc.id, // Add the document ID to the chat object
+            timestamp: chatData.timestamp.toDate(), // Convert Firestore timestamp to JavaScript Date object
+          };
+        });
+        setChats(newChats);
+      });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSend = async () => {
+    if (inputText.trim() === "") {
       return;
     }
 
     const newChat = {
-      id: chats.length + 1,
-      sender: message.sender,
+      sender: "John Doe",
       message: inputText.trim(),
-      timestamp: getCurrentTimestamp(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     };
 
-    setChats([...chats, newChat]);
-    setInputText('');
-  };
-
-  const getCurrentTimestamp = () => {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-    return `${formattedHours}:${formattedMinutes}`;
+    try {
+      await db.collection("chats").add(newChat);
+      setInputText("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   const renderItem = ({ item }) => (
-    <View
-      style={[
-        styles.messageContainer,
-        item.sender.name === message.sender.name ? styles.rightMessageContainer : styles.leftMessageContainer,
-      ]}
-    >
-      {item.sender.name !== message.sender.name && (
-        <Image source={item.sender.avatar} style={styles.avatar} />
-      )}
+    <View style={[styles.messageContainer, styles.rightMessageContainer]}>
       <View style={styles.messageContent}>
-        {item.sender.name !== message.sender.name && (
-          <Text style={styles.senderName}>{item.sender.name}</Text>
-        )}
         <Text style={styles.messageText}>{item.message}</Text>
-        <Text style={styles.timestamp}>{item.timestamp}</Text>
+        <Text style={styles.timestamp}>
+          {`${item.timestamp.getDate()}/${item.timestamp.getMonth() + 1}`}
+          {"     "}
+          {`${item.timestamp.getHours()}:${item.timestamp.getMinutes()}`}
+        </Text>
       </View>
     </View>
   );
@@ -77,14 +72,17 @@ const ChatScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
           <AntDesign name="leftcircleo" size={37} color="black" />
         </TouchableOpacity>
-        <Text style={styles.title}>{message.sender.name}</Text>
+        <Text style={styles.title}>Chat</Text>
       </View>
       <FlatList
         data={chats}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id.toLocaleString()}
         renderItem={renderItem}
         inverted
         contentContainerStyle={styles.chatContainer}
@@ -107,11 +105,11 @@ const ChatScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 10,
     paddingHorizontal: 20,
     paddingTop: 10,
@@ -121,8 +119,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontFamily: 'Poppins-Medium',
-    marginLeft: 80,
+    fontFamily: "Poppins-Medium",
+    marginLeft: 110,
     marginVertical: 40,
   },
   chatContainer: {
@@ -130,16 +128,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   messageContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    alignItems: "flex-start",
     marginBottom: 10,
     paddingHorizontal: 10,
   },
   leftMessageContainer: {
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
   },
   rightMessageContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   avatar: {
     width: 40,
@@ -148,14 +146,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   messageContent: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 15,
     paddingVertical: 8,
     paddingHorizontal: 12,
   },
   senderName: {
     fontSize: 14,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: "Poppins-Medium",
     marginBottom: 4,
   },
   messageText: {
@@ -163,15 +161,15 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: 'gray',
+    color: "gray",
     marginTop: 4,
+    textAlign: "right",
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 10,
     paddingBottom: 10,
-    
   },
   input: {
     flex: 1,
@@ -185,7 +183,7 @@ const styles = StyleSheet.create({
   sendButton: {
     padding: 4,
     borderRadius: 20,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
 });
 
