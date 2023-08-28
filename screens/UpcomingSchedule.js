@@ -1,52 +1,54 @@
-import React from 'react';
+import React from "react";
 import {
   SafeAreaView,
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-} from 'react-native';
-import NavigationBar from '../components/navigationBar';
-import { AntDesign } from '@expo/vector-icons';
-import ScheduleOptions from '../components/scheduleOptions';
+} from "react-native";
+import NavigationBar from "../components/navigationBar";
+import { AntDesign } from "@expo/vector-icons";
+import ScheduleOptions from "../components/scheduleOptions";
 
-const UpcomingSchedule = ({navigation}) => {
+const UpcomingSchedule = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-     
       <View
         style={{
           flex: 1,
           marginVertical: 40,
           marginHorizontal: 20,
-        }}>
+        }}
+      >
         <View
           style={{
-            flexDirection: 'row',
-          }}>
+            flexDirection: "row",
+          }}
+        >
           <TouchableOpacity
             onPress={() => {
-            navigation.navigate('GoferHome');
-          }}
+              navigation.navigate("GoferHome");
+            }}
             style={{
               marginRight: 40,
-            }}>
+            }}
+          >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
-          
+
           <Text
             style={{
               fontSize: 32,
-              color: 'black',
+              color: "black",
               marginBottom: 30,
-              fontFamily: 'Poppins-Medium',
+              fontFamily: "Poppins-Medium",
               marginLeft: 30,
-            }}>
+            }}
+          >
             Schedule
           </Text>
-         
         </View>
-         <ScheduleOptions  navigation={navigation} />
+        <ScheduleOptions navigation={navigation} />
       </View>
 
       <NavigationBar />
@@ -57,7 +59,7 @@ const UpcomingSchedule = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3'
+    backgroundColor: "#F8EBD3",
   },
 });
 

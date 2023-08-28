@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import { Camera } from 'expo-camera';
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { Camera } from "expo-camera";
+import { getStorage, ref, uploadString } from "firebase/storage";
+import { firebase } from "../firebaseConfig";
 
 const ScanID = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -10,13 +12,13 @@ const ScanID = ({ navigation }) => {
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasCameraPermission(status === 'granted');
+      setHasCameraPermission(status === "granted");
     })();
   }, []);
 
   const handleCameraPress = async () => {
     if (!hasCameraPermission) {
-      console.log('Camera permission not granted');
+      console.log("Camera permission not granted");
       return;
     }
 
@@ -30,15 +32,31 @@ const ScanID = ({ navigation }) => {
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
-      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
+      setSelectedImage(result.assets[0].uri);
+
+      const imageRef = ref(
+        firebase.storage(),
+        "images/" + result.assets[0].uri
+      );
+
+      try {
+        // Upload the image
+        await uploadString(imageRef, result.assets[0].base64, "base64");
+        console.log("Image uploaded successfully");
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+
+      navigation.navigate("VerificationFeedback", {
+        imageUri: result.assets[0].uri,
+      });
     }
   };
 
   const handleGalleryPress = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== 'granted') {
-      console.log('Media library permission not granted');
+    if (status !== "granted") {
+      console.log("Media library permission not granted");
       return;
     }
 
@@ -52,8 +70,24 @@ const ScanID = ({ navigation }) => {
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri); // Use assets array to access selected image
-      navigation.navigate('VerificationFeedback', { imageUri: result.assets[0].uri });
+      setSelectedImage(result.assets[0].uri);
+
+      const imageRef = ref(
+        firebase.storage(),
+        "images/" + result.assets[0].uri
+      );
+
+      try {
+        // Upload the image
+        await uploadString(imageRef, result.assets[0].base64, "base64");
+        console.log("Image uploaded successfully");
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+
+      navigation.navigate("VerificationFeedback", {
+        imageUri: result.assets[0].uri,
+      });
     }
   };
 
@@ -63,7 +97,8 @@ const ScanID = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={handleCameraPress}
-          disabled={!hasCameraPermission}>
+          disabled={!hasCameraPermission}
+        >
           <Text style={styles.buttonText}>Take a Photo</Text>
         </TouchableOpacity>
 
@@ -78,10 +113,11 @@ const ScanID = ({ navigation }) => {
         )}
       </View>
       <TouchableOpacity
-      style={{flex: 1}}
+        style={{ flex: 1 }}
         onPress={() => {
-          navigation.navigate('VerifyProfile');
-        }}>
+          navigation.navigate("VerifyProfile");
+        }}
+      >
         <Text style={styles.buttonText}>Back </Text>
       </TouchableOpacity>
     </View>
@@ -92,27 +128,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 350,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F8EBD3',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F8EBD3",
   },
   buttoncontainer: {
     flex: 3,
-    alignItems: 'center',
-    backgroundColor: '#F8EBD3',
+    alignItems: "center",
+    backgroundColor: "#F8EBD3",
   },
   button: {
     marginBottom: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 30,
     borderWidth: 2,
   },
   buttonText: {
-    color: 'black',
+    color: "black",
     fontSize: 18,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: "Poppins-Medium",
   },
   imageContainer: {
     marginTop: 20,

@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
+import React, { useState, useEffect } from "react";
+import { SafeAreaView, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import MapView, { Marker } from "react-native-maps";
+import * as Location from "expo-location";
+import axios from "axios";
+import MapViewDirections from "react-native-maps-directions";
+import { firebase } from "../firebaseConfig";
+import "firebase/firestore";
 
-const SharingLocation = ({ navigation }) => {
+const SharingLocation = ({ navigation, route }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [mapRegion, setMapRegion] = useState({
     latitude: 5.6037,
@@ -12,6 +16,8 @@ const SharingLocation = ({ navigation }) => {
     latitudeDelta: 0.02,
     longitudeDelta: 0.02,
   });
+  const [routeDirections, setRouteDirections] = useState(null);
+  const GOOGLE_MAPS_APIKEY = "AIzaSyCoTiHaUtOLEJ4QHK1AN0Jlqn3B0_pMSc4";
 
   useEffect(() => {
     getLocationAsync();
@@ -19,7 +25,7 @@ const SharingLocation = ({ navigation }) => {
 
   const getLocationAsync = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status === 'granted') {
+    if (status === "granted") {
       const location = await Location.getCurrentPositionAsync({});
       setUserLocation(location.coords);
       setMapRegion({
@@ -27,93 +33,81 @@ const SharingLocation = ({ navigation }) => {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
+
+      const destinationLocationName = route.params?.destinationLocationName;
+
+      // Fetch route directions
+      const directions = await fetchDirections(
+        location.coords,
+        destinationLocationName,
+        GOOGLE_MAPS_APIKEY
+      );
+      setRouteDirections(directions);
     }
   };
 
-  const zoomIn = () => {
-    setMapRegion({
-      ...mapRegion,
-      latitudeDelta: mapRegion.latitudeDelta / 2,
-      longitudeDelta: mapRegion.longitudeDelta / 2,
-    });
-  };
+  const fetchDirections = async (origin, destinationName, apiKey) => {
+    const encodedDestination = encodeURIComponent(destinationName);
+    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${encodedDestination}&key=${apiKey}`;
 
-  const zoomOut = () => {
-    setMapRegion({
-      ...mapRegion,
-      latitudeDelta: mapRegion.latitudeDelta * 2,
-      longitudeDelta: mapRegion.longitudeDelta * 2,
-    });
+    try {
+      const response = await axios.get(url);
+      return response.data.routes[0];
+    } catch (error) {
+      console.error("Error fetching directions:", error);
+      return null;
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.contentContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('UpcomingSchedule');
-            }}
-            style={styles.backButton}>
-            <AntDesign name="leftcircleo" size={37} color="black" />
-          </TouchableOpacity>
-
-          <Text style={styles.title}>Sharing Location</Text>
-        </View>
-
-        <View style={styles.details}>
-          <View style={styles.mapContainer}>
-            <MapView
-              style={styles.map}
-              region={mapRegion}>
-              <Marker
-                coordinate={userLocation || { latitude: 5.6037, longitude: -0.187 }}
-                title="Current Location"
-                description="Your current location"
-                pinColor="#00B2FF"
-              />
-            </MapView>
-          </View>
-
-          <View style={styles.zoomButtons}>
-            <View style={{marginRight: 85}}>
-            <TouchableOpacity onPress={zoomOut} style={styles.zoomButton}>
-              <AntDesign name="minuscircle" size={24} color="black" />
-            </TouchableOpacity>
-            </View>
-            <View style={{marginLeft: 60}}>
-            <TouchableOpacity onPress={zoomIn} style={styles.zoomButton}>
-              <AntDesign name="pluscircle" size={24} color="black" />
-            </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={{ marginHorizontal: 40 }}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('CompleteTask');
+      <MapView style={styles.map} region={mapRegion}>
+        {userLocation && (
+          <Marker
+            coordinate={userLocation}
+            title="Current Location"
+            description="Your current location"
+            pinColor="#00B2FF"
+          />
+        )}
+        {userLocation && routeDirections && (
+          <>
+            <MapViewDirections
+              origin={userLocation}
+              destination={route.params.destinationLocationName}
+              apikey={GOOGLE_MAPS_APIKEY}
+              strokeWidth={3}
+              strokeColor="blue"
+              directions={routeDirections}
+            />
+            <Marker
+              coordinate={{
+                latitude: routeDirections.legs[0].start_location.lat,
+                longitude: routeDirections.legs[0].start_location.lng,
               }}
-              style={{
-                marginTop: 12,
-                padding: 10,
-                backgroundColor: '#F8EBD3',
-                borderRadius: 30,
-                borderWidth: 2,
-                borderColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontFamily: 'Poppins-Medium',
-              }}>
-              <Text
-                style={{
-                  fontSize: 24,
-                }}>
-                Complete Task
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+              title="Origin"
+              description="Starting point"
+            />
+            <Marker
+              coordinate={{
+                latitude: routeDirections.legs[0].end_location.lat,
+                longitude: routeDirections.legs[0].end_location.lng,
+              }}
+              title="Destination"
+              description={route.params.destinationLocationName}
+            />
+          </>
+        )}
+      </MapView>
+
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("CompleteTask");
+        }}
+        style={styles.completeButton}
+      >
+        <Text style={styles.buttonText}>Complete Task</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -121,53 +115,24 @@ const SharingLocation = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
-  },
-  contentContainer: {
-    flex: 1,
-    marginVertical: 40,
-    marginHorizontal: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 20,
-    marginBottom: 10,
-  },
-  backButton: {
-    marginRight: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontFamily: 'Poppins-Medium',
-  },
-  mapContainer: {
-    height: 600,
-    borderRadius: 10,
-    overflow: 'hidden',
   },
   map: {
     flex: 1,
-    borderWidth: 2,
+  },
+  completeButton: {
+    position: "absolute",
+    bottom: 20,
+    alignSelf: "center",
+    padding: 10,
+    paddingHorizontal: 30,
+    backgroundColor: "#F8EBD3",
     borderRadius: 30,
+    borderWidth: 2,
+    borderColor: "black",
   },
-  details: {
-    flex: 1,
-    marginHorizontal: 10,
-  },
-  zoomButtons: {
-    position: 'absolute',
-    flexDirection: 'row',
-    bottom: 50,
-    right: 60,
-  },
-  zoomButton: {
-    backgroundColor: '#F8EBD3',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'black',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+  buttonText: {
+    fontSize: 24,
+    textAlign: "center",
   },
 });
 

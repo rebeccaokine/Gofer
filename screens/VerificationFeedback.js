@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Image,
@@ -6,8 +6,8 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const VerificationFeedback = ({ navigation }) => {
   return (
@@ -15,92 +15,99 @@ const VerificationFeedback = ({ navigation }) => {
       <View
         style={{
           flex: 1,
-          marginVertical: 20,
+          marginVertical: 50,
           marginHorizontal: 20,
-        }}>
+        }}
+      >
         <View
           style={{
-            flexDirection: 'row',
-          }}>
-         <TouchableOpacity
+            flexDirection: "row",
+          }}
+        >
+          <TouchableOpacity
             onPress={() => {
-              navigation.navigate('GoferHome');
+              navigation.navigate("GoferHome");
             }}
             style={{
               marginRight: 30,
-            }}>
+            }}
+          >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 26,
-              color: 'black',
-              textAlign: 'center',
-              fontFamily: 'Poppins-SemiBold',
-            }}>
+              color: "black",
+              textAlign: "center",
+              fontFamily: "Poppins-SemiBold",
+            }}
+          >
             Profile Under Review
           </Text>
         </View>
 
         <Image
-        source={require('../assets/examining.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+          source={require("../assets/examining.png")}
+          style={styles.image}
+          resizeMode="contain"
+        />
 
-      <View style={styles.bottomSpace}>
-        <Text
-          style={{
-            fontSize: 28,
-            fontFamily: 'Poppins-SemiBold',
-            textAlign: 'center',
-            color: 'black',
-            paddingTop: 20,
-          }}>
-          We are reviewing your ID
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 20,
-            fontFamily: 'Poppins-Medium',
-            textAlign: 'center',
-            color: 'black',
-            paddingTop: 10,
-            paddingBottom: 60,
-          }}>
-          As soon as your details are verified, you’ll receive a blue checkmark on your profile
-        </Text>
-
-        <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('GoferHome');
-            }}
+        <View style={styles.bottomSpace}>
+          <Text
             style={{
-              flex: 1,
-              padding: 10,
-              backgroundColor: '#F8EBD3',
-              borderRadius: 30,
-              borderWidth: 2,
-              borderColor: 'black',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontFamily: 'Poppins-Medium',
-              marginHorizontal: 10,
-            }}>
-            <Text
+              fontSize: 28,
+              fontFamily: "Poppins-SemiBold",
+              textAlign: "center",
+              color: "black",
+              paddingTop: 20,
+            }}
+          >
+            We are reviewing your ID
+          </Text>
+
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "Poppins-Medium",
+              textAlign: "center",
+              color: "black",
+              paddingTop: 10,
+              paddingBottom: 60,
+            }}
+          >
+            As soon as your details are verified, you will receive a blue
+            checkmark on your profile
+          </Text>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("GoferHome");
+              }}
               style={{
-                fontSize: 24,
-              }}>
-              Back to Home
-            </Text>
-          </TouchableOpacity>
+                flex: 1,
+                padding: 10,
+                backgroundColor: "#F8EBD3",
+                borderRadius: 30,
+                borderWidth: 2,
+                borderColor: "black",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "Poppins-Medium",
+                marginHorizontal: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 24,
+                }}
+              >
+                Back to Home
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-      </View>
-
-      
     </SafeAreaView>
   );
 };
@@ -108,11 +115,11 @@ const VerificationFeedback = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
   image: {
     flex: 1,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 300,
     width: 400,
   },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -6,9 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-} from 'react-native';
-import NavigationBar from '../components/navigationBar';
-import { AntDesign } from '@expo/vector-icons';
+} from "react-native";
+import NavigationBar from "../components/navigationBar";
+import { AntDesign } from "@expo/vector-icons";
 
 const ViewHirerProfile = ({ navigation }) => {
   return (
@@ -17,61 +17,66 @@ const ViewHirerProfile = ({ navigation }) => {
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('GoferHome');
+              navigation.navigate("GoferHome");
             }}
-            style={styles.backButton}>
+            style={styles.backButton}
+          >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
 
           <Text style={styles.title}>Hirer Profile</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Image
-            source={require('../assets/avatar.jpeg')}
+            source={require("../assets/avatar.jpeg")}
             style={styles.image}
           />
           <View style={styles.verifyContainer}>
             <Image
-              source={require('../assets/verify.png')}
+              source={require("../assets/verify.png")}
               style={styles.verifyImage}
             />
           </View>
         </View>
         <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Messages');
-              }}
-              style={{
-                padding: 5,
-                backgroundColor: '#F8EBD3',
-                borderRadius: 30,
-                borderWidth: 2,
-                borderColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontFamily: 'Poppins-Medium',
-                marginHorizontal: 120,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                }}>
-                Message
-              </Text>
+          onPress={() => {
+            navigation.navigate("Messages");
+          }}
+          style={{
+            padding: 5,
+            backgroundColor: "#F8EBD3",
+            borderRadius: 30,
+            borderWidth: 2,
+            borderColor: "black",
+            justifyContent: "center",
+            alignItems: "center",
+            fontFamily: "Poppins-Medium",
+            marginHorizontal: 120,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+            }}
+          >
+            Message
+          </Text>
         </TouchableOpacity>
 
         <View style={styles.hirerInformation}>
           {/**NAME */}
           <View>
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <Text
                 style={{
                   fontSize: 20,
-                  color: 'grey',
-                  fontFamily: 'Poppins-Medium',
-                }}>
+                  color: "grey",
+                  fontFamily: "Poppins-Medium",
+                }}
+              >
                 Name
               </Text>
             </View>
@@ -79,8 +84,9 @@ const ViewHirerProfile = ({ navigation }) => {
               style={{
                 marginTop: 5,
                 fontSize: 24,
-                fontFamily: 'Poppins-Regular',
-              }}>
+                fontFamily: "Poppins-Regular",
+              }}
+            >
               Dereck Griffin
             </Text>
           </View>
@@ -88,41 +94,46 @@ const ViewHirerProfile = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 20,
-                color: 'grey',
-                fontFamily: 'Poppins-Medium',
-              }}>
+                color: "grey",
+                fontFamily: "Poppins-Medium",
+              }}
+            >
               Email
             </Text>
             <Text
               style={{
                 marginTop: 5,
                 fontSize: 22,
-                fontFamily: 'Poppins-Regular',
-              }}>
+                fontFamily: "Poppins-Regular",
+              }}
+            >
               dereckgriffin@gmail.com
             </Text>
           </View>
           <View
             style={{
               marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <View style={{ flexDirection: 'column' }}>
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <View style={{ flexDirection: "column" }}>
               <Text
                 style={{
                   fontSize: 20,
-                  color: 'grey',
-                  fontFamily: 'Poppins-Medium',
-                }}>
-                Date
+                  color: "grey",
+                  fontFamily: "Poppins-Medium",
+                }}
+              >
+                Phone Number
               </Text>
               <Text
                 style={{
                   marginTop: 5,
                   fontSize: 22,
-                  fontFamily: 'Poppins-Regular',
-                }}>
+                  fontFamily: "Poppins-Regular",
+                }}
+              >
                 0245637389
               </Text>
             </View>
@@ -137,7 +148,7 @@ const ViewHirerProfile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8EBD3',
+    backgroundColor: "#F8EBD3",
   },
   contentContainer: {
     flex: 1,
@@ -145,8 +156,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 30,
     marginHorizontal: 20,
   },
@@ -155,8 +166,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: 'black',
-    fontFamily: 'Poppins-Medium',
+    color: "black",
+    fontFamily: "Poppins-Medium",
     marginLeft: 5,
   },
   hirerInformation: {
@@ -165,7 +176,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   image: {
-    alignSelf: 'center',
+    alignSelf: "center",
     width: 150,
     height: 150,
     borderRadius: 110,
@@ -173,10 +184,10 @@ const styles = StyleSheet.create({
   },
   verifyContainer: {
     borderRadius: 15,
-    marginLeft: -30, 
+    marginLeft: -30,
     marginTop: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   verifyImage: {
     width: 40,
