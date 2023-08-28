@@ -47,8 +47,7 @@ const Login = ({ navigation }) => {
         password: password,
       })
       .then(response => {
-        // Backend returns a token upon successful login
-        const token = response.data.token;
+        
     
         // Navigate to the appropriate screen based on the user type
         if (activeOption === 'gofer') {
