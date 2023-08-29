@@ -52,6 +52,33 @@ const ErrandDetails = ({ route, navigation }) => {
     fetchErrandData();
   }, [errandId]);
 
+  const handleBookButton = async (errand) => {
+    try {
+      // Replace 'userDocumentId' with the actual ID of the user's document
+      const userUid = firebase.auth().currentUser.uid;
+
+      // Add the errand to the 'upcomingErrands' subcollection of the user's document
+      await firebase
+        .firestore()
+        .collection("users")
+        .doc(userUid)
+        .collection("upcomingErrands")
+        .add({
+          errandId: errand.id,
+          category: errand.category,
+          title: errand.title,
+          location: errand.location,
+          price: errand.price,
+          dateTime: errand.dateTime,
+        });
+
+      // Navigate to the confirmation screen
+      navigation.navigate("BookingConfirmation");
+    } catch (error) {
+      console.error("Error booking errand:", error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
@@ -137,6 +164,7 @@ const ErrandDetails = ({ route, navigation }) => {
                 price: errandData.price,
                 dateTime: errandData.dateTime,
               };
+              handleBookButton(errand);
             }}
             style={styles.bookButton}
           >

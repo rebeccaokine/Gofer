@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   View,
@@ -10,7 +10,9 @@ import {
 import NavigationBar from "../components/navigationBar";
 import { AntDesign } from "@expo/vector-icons";
 
+
 const ViewHirerProfile = ({ navigation }) => {
+    
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
@@ -41,7 +43,7 @@ const ViewHirerProfile = ({ navigation }) => {
         </View>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Messages");
+            navigation.navigate("ChatScreen");
           }}
           style={{
             padding: 5,
@@ -87,7 +89,7 @@ const ViewHirerProfile = ({ navigation }) => {
                 fontFamily: "Poppins-Regular",
               }}
             >
-              Dereck Griffin
+              Thelma Griffin
             </Text>
           </View>
           <View style={{ marginTop: 20 }}>
@@ -107,7 +109,7 @@ const ViewHirerProfile = ({ navigation }) => {
                 fontFamily: "Poppins-Regular",
               }}
             >
-              dereckgriffin@gmail.com
+              thelmagriffin@gmail.com
             </Text>
           </View>
           <View
@@ -162,13 +164,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   backButton: {
-    marginRight: 40,
+    marginRight: 30,
   },
   title: {
     fontSize: 32,
     color: "black",
     fontFamily: "Poppins-Medium",
-    marginLeft: 5,
   },
   hirerInformation: {
     flex: 1,

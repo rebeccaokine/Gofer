@@ -50,7 +50,7 @@ const RateHirer = ({ navigation }) => {
           <MaterialCommunityIcons name="cash" size={42} color="black" />
           <Text style={{ fontSize: 24, fontFamily: "Poppins-Regular" }}>
             {" "}
-            Cash{"                           "}₵200
+            Cash{"                      "}₵200
           </Text>
         </View>
 
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontFamily: "Poppins-Medium",
-    marginLeft: 25,
+    marginLeft: 15,
     color: "black",
   },
   image: {

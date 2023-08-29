@@ -92,9 +92,7 @@ const Profile = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Login");
-          }}
+         
           style={styles.optionContainer}
         >
           <View style={styles.optionIconContainer}>

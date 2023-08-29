@@ -36,7 +36,7 @@ const Onboarding1 = ({ navigation }) => {
             fontFamily: "Poppins-Regular",
             textAlign: "left",
             color: "black",
-            paddingBottom: 60,
+            paddingBottom: 40,
           }}
         >
           Effortlessly delegate your tasks and errands. Let Gofer be your

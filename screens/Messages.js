@@ -15,7 +15,7 @@ const Messages = ({ navigation }) => {
     {
       id: 1,
       sender: {
-        name: "John Doe",
+        name: "Cindy Lee",
         avatar: require("../assets/avatar.jpeg"),
       },
       message: "Hello, how are you?",

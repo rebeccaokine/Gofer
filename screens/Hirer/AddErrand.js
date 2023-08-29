@@ -29,7 +29,6 @@ const Locations = [
   "Christiansborg Castle",
   "Achimota Forest",
   "Trade Fair Centre",
-  "Jumia Head Office",
   "A&C Mall",
   "Sakumono",
 ];

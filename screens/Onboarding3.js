@@ -37,7 +37,7 @@ const Onboarding3 = ({ navigation }) => {
             fontFamily: "Poppins-Regular",
             textAlign: "left",
             color: "black",
-            paddingBottom: 40,
+            paddingBottom: 20,
           }}
         >
           Enjoy the convenience of seamless task scheduling and focus on what

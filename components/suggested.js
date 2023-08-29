@@ -58,6 +58,33 @@ const Suggested = ({ navigation }) => {
     return indices;
   };
 
+  const handleBookButton = async (errand) => {
+    try {
+     
+      const userUid = firebase.auth().currentUser.uid;
+
+      // Add the errand to the 'upcomingErrands' subcollection of the user's document
+      await firebase
+        .firestore()
+        .collection("users")
+        .doc(userUid)
+        .collection("upcomingErrands")
+        .add({
+          errandId: errand.id,
+          category: errand.category,
+          title: errand.title,
+          location: errand.location,
+          price: errand.price,
+          dateTime: errand.dateTime,
+        });
+
+      // Navigate to the confirmation screen
+      navigation.navigate("BookingConfirmation");
+    } catch (error) {
+      console.error("Error booking errand:", error);
+    }
+  };
+
   return (
     <ScrollView showsHorizontalScrollIndicator={false} horizontal>
       <View style={styles.container}>
@@ -77,6 +104,10 @@ const Suggested = ({ navigation }) => {
               </View>
               <View style={styles.priceRow}>
                 <Text style={styles.price}>GH₵ {errand.price}</Text>
+                <View style={styles.priceRow}>
+                      <AntDesign name="star" size={18} color="#FFA800" />
+                      <Text style={styles.rating}>(4.3)</Text>
+                </View>
               </View>
               <View style={styles.buttonRow}>
                 <TouchableOpacity
@@ -89,8 +120,13 @@ const Suggested = ({ navigation }) => {
                 >
                   <Text>Details</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bookButton}>
-                  <Text>Book</Text>
+                <TouchableOpacity
+                      onPress={() => {
+                        handleBookButton(errand);
+                      }}
+                      style={styles.bookButton}
+                    >
+                      <Text>Book</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -154,7 +190,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 2,
   },
   price: {
     fontSize: 16,

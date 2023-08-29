@@ -21,10 +21,10 @@ const CategoryScreen = ({ route, navigation }) => {
 
   const categoryImageMappings = {
     "Home Cleaning": require("../assets/cleaning.png"),
-    Laundry: require("../assets/laundry-machine.png"),
-    Cooking: require("../assets/cooking.png"),
-    Babysitting: require("../assets/babysitting.png"),
-    Delivery: require("../assets/delivery.png"),
+    "Laundry": require("../assets/laundry-machine.png"),
+    "Cooking": require("../assets/cooking.png"),
+    "Babysitting": require("../assets/babysitting.png"),
+    "Delivery": require("../assets/delivery.png"),
     "Pet Care": require("../assets/animal-care.png"),
     "Grocery Shopping": require("../assets/grocery.png"),
   };
@@ -75,10 +75,8 @@ const CategoryScreen = ({ route, navigation }) => {
 
   const handleBookButton = async (errand) => {
     try {
-      // Replace 'userDocumentId' with the actual ID of the user's document
       const userUid = firebase.auth().currentUser.uid;
-
-      // Add the errand to the 'upcomingErrands' subcollection of the user's document
+      
       await firebase
         .firestore()
         .collection("users")
@@ -93,7 +91,6 @@ const CategoryScreen = ({ route, navigation }) => {
           dateTime: errand.dateTime,
         });
 
-      // Navigate to the confirmation screen
       navigation.navigate("BookingConfirmation");
     } catch (error) {
       console.error("Error booking errand:", error);
@@ -132,6 +129,10 @@ const CategoryScreen = ({ route, navigation }) => {
                   </View>
                   <View style={styles.priceRow}>
                     <Text style={styles.price}>GH₵ {errand.price}</Text>
+                    <View style={styles.priceRow}>
+                      <AntDesign name="star" size={18} color="#FFA800" />
+                      <Text style={styles.rating}>(4.3)</Text>
+                </View>
                   </View>
                   <View style={styles.buttonRow}>
                     <TouchableOpacity
@@ -203,6 +204,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "white",
     marginBottom: 10,
+    padding: 10,
+  },
+  rating: {
+    fontSize: 16,
+    fontFamily: "Poppins-Medium",
+    marginLeft: 5,
+    color: "gray",
   },
   imageContainer: {
     width: 140,
@@ -213,7 +221,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 15,
     backgroundColor: "rgba(0, 178, 255, 0.50)",
-    marginHorizontal: 10,
+    marginHorizontal: 5,
+    marginLeft: 10,
   },
   image: {
     width: 100,
@@ -224,7 +233,6 @@ const styles = StyleSheet.create({
     alignItems: "left",
     justifyContent: "center",
     marginRight: 10,
-    marginTop: 5,
   },
   title: {
     fontSize: 18,
@@ -232,7 +240,6 @@ const styles = StyleSheet.create({
   },
   locationRow: {
     flexDirection: "row",
-    marginTop: 4,
   },
   location: {
     fontSize: 14,
@@ -241,7 +248,6 @@ const styles = StyleSheet.create({
   },
   priceRow: {
     flexDirection: "row",
-    marginTop: 4,
   },
   price: {
     fontSize: 16,
@@ -252,7 +258,6 @@ const styles = StyleSheet.create({
   },
   buttonRow: {
     flexDirection: "row",
-    marginTop: 3,
   },
   detailsButton: {
     borderWidth: 2,

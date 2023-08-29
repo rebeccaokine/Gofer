@@ -18,10 +18,10 @@ const UpcomingErrands = ({ navigation }) => {
     "Home Cleaning": require("../assets/cleaning.png"),
     Laundry: require("../assets/laundry-machine.png"),
     Cooking: require("../assets/cooking.png"),
-    "Baby Sitting": require("../assets/babysitting.png"),
+    Babysitting: require("../assets/babysitting.png"),
     Delivery: require("../assets/delivery.png"),
     "Pet Care": require("../assets/animal-care.png"),
-    Groceries: require("../assets/grocery.png"),
+    "Grocery Shopping": require("../assets/grocery.png"),
   };
 
   useEffect(() => {
@@ -119,7 +119,7 @@ const UpcomingErrands = ({ navigation }) => {
                     <Text style={styles.price}>GH₵ {errand.price}</Text>
                     <View style={styles.row}>
                       <AntDesign name="star" size={18} color="#FFA800" />
-                      <Text style={styles.rating}>{errand.rating}</Text>
+                      <Text style={styles.rating}>(4.3)</Text>
                     </View>
                   </View>
                   <View style={styles.row}>
@@ -130,10 +130,56 @@ const UpcomingErrands = ({ navigation }) => {
                       <Text style={styles.buttonText}>Cancel</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() => {
-                        navigation.navigate("SharingLocation", {
-                          destinationLocationName: errand.location,
-                        });
+                      onPress={async () => {
+                        try {
+                          const user = firebase.auth().currentUser;
+                          if (user) {
+                            const db = firebase.firestore();
+                            const userDocRef = db
+                              .collection("users")
+                              .doc(user.uid);
+                            
+                            // Get the errand document reference                                                  
+                            const errandRef = userDocRef
+                              .collection("upcomingErrands")
+                              .doc(errand.id);
+                        
+                            // Fetch the errand data before starting
+                            const errandDoc = await errandRef.get();
+                            if (errandDoc.exists) {
+                              const errandData = errandDoc.data();
+
+                              await userDocRef
+                              .collection("ongoingErrands")
+                              .add(errandData);
+
+                              // Add the started errand to errandHistory subcollection
+                              await userDocRef
+                                .collection("createErrand")
+                                .doc("errandHistory")
+                                .collection("errandHistory")
+                                .add(errandData);
+
+                              // Delete the started errand from upcomingErrands subcollection
+                              await errandRef.delete();
+
+                              console.log(
+                                "Errand added to errandHistory and removed from upcomingErrands on start"
+                              );
+
+                              // Navigate to the SharingLocation screen
+                              navigation.navigate("SharingLocation", {
+                                destinationLocationName: errand.location,
+                              });
+                            } else {
+                              console.log(
+                                "Errand not found in upcomingErrands subcollection"
+                              );
+                            }
+                          }
+                        } catch (error) {
+                          console.error("Error starting errand:", error);
+                        }
                       }}
                       style={styles.button}
                     >

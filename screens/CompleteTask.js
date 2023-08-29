@@ -27,7 +27,8 @@ const CompleteTask = ({ navigation }) => {
         >
           <TouchableOpacity
             style={{
-              marginRight: 25,
+              marginRight: 5,
+              marginTop: 5,
             }}
           >
             <AntDesign name="leftcircleo" size={37} color="black" />

@@ -36,7 +36,7 @@ const Onboarding2 = ({ navigation }) => {
             fontFamily: "Poppins-Regular",
             textAlign: "left",
             color: "black",
-            paddingBottom: 40,
+            paddingBottom: 20,
           }}
         >
           Stay informed about the real-time whereabouts of your assigned Gofer.

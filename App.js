@@ -46,8 +46,10 @@ import ChatScreen from "./screens/ChatScreen";
 import Payment from "./screens/Hirer/Payment";
 import AddErrand from "./screens/Hirer/AddErrand";
 import CategoryScreen from "./screens/CategoryScreen";
+import TrackLocation from "./screens/TrackLocation";
 import { useFonts } from "expo-font";
 import { firebase } from "./firebaseConfig";
+
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -179,6 +181,7 @@ export default function App() {
           <MainNavigator.Screen name="Messages" component={Messages} />
           <MainNavigator.Screen name="ChatScreen" component={ChatScreen} />
           <MainNavigator.Screen name="Payment" component={Payment} />
+          <MainNavigator.Screen name="TrackLocation" component={TrackLocation} />
         </MainNavigator.Navigator>
       </NavigationContainer>
     </View>

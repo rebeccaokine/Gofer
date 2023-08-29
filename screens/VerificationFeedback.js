@@ -29,14 +29,14 @@ const VerificationFeedback = ({ navigation }) => {
               navigation.navigate("GoferHome");
             }}
             style={{
-              marginRight: 30,
+              marginRight: 10,
             }}
           >
             <AntDesign name="leftcircleo" size={37} color="black" />
           </TouchableOpacity>
           <Text
             style={{
-              fontSize: 26,
+              fontSize: 24,
               color: "black",
               textAlign: "center",
               fontFamily: "Poppins-SemiBold",
@@ -55,7 +55,7 @@ const VerificationFeedback = ({ navigation }) => {
         <View style={styles.bottomSpace}>
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 26,
               fontFamily: "Poppins-SemiBold",
               textAlign: "center",
               color: "black",
@@ -72,7 +72,7 @@ const VerificationFeedback = ({ navigation }) => {
               textAlign: "center",
               color: "black",
               paddingTop: 10,
-              paddingBottom: 60,
+              paddingBottom: 10,
             }}
           >
             As soon as your details are verified, you will receive a blue
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     alignSelf: "center",
-    paddingTop: 300,
+    paddingTop: 200,
     width: 400,
   },
   bottomSpace: {
