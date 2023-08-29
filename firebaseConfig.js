@@ -28,7 +28,4 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
-const storage = firebase.storage();
-const messaging = firebase.messaging();
-
 export {firebase};
